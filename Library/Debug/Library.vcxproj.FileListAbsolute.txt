@@ -1,0 +1,14 @@
+C:\Users\Ridwan\Desktop\Pie V2\Year 2 Sem 2\3D Game Creation\Assignment 2\NYP_Framework_A2\Debug\Library.pdb
+C:\Users\Ridwan\Desktop\Pie V2\Year 2 Sem 2\3D Game Creation\Assignment 2\NYP_Framework_A2\Library\Debug\Library.pdb
+C:\Users\Ridwan\Desktop\Pie V2\Year 2 Sem 2\Studio Project 4\Backup\Debug\Library.pdb
+C:\Users\Ridwan\Desktop\Pie V2\Year 2 Sem 2\Studio Project 4\Backup\Library\Debug\Library.pdb
+C:\Users\Julius\Source\Repos\SP4\Debug\Library.pdb
+C:\Users\Julius\Source\Repos\SP4\Library\Debug\Library.pdb
+C:\Users\Ridwan\source\repos\SP4\Debug\Library.pdb
+C:\Users\Ridwan\source\repos\SP4\Library\Debug\Library.pdb
+C:\Users\Julius\Source\Repos\SP4(2)\Debug\Library.pdb
+C:\Users\Julius\Source\Repos\SP4(2)\Library\Debug\Library.pdb
+C:\Users\Julius\Source\Repos\StudioProjectNumber4\Debug\Library.pdb
+C:\Users\Julius\Source\Repos\StudioProjectNumber4\Library\Debug\Library.pdb
+C:\Users\Ridwan\source\repos\Sp4_3\Debug\Library.pdb
+C:\Users\Ridwan\source\repos\Sp4_3\Library\Debug\Library.pdb

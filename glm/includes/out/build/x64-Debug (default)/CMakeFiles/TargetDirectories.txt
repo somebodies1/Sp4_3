@@ -1,0 +1,4 @@
+C:/Users/Ridwan/source/repos/Sp4_3/glm/includes/out/build/x64-Debug (default)/CMakeFiles/edit_cache.dir
+C:/Users/Ridwan/source/repos/Sp4_3/glm/includes/out/build/x64-Debug (default)/CMakeFiles/glm_static.dir
+C:/Users/Ridwan/source/repos/Sp4_3/glm/includes/out/build/x64-Debug (default)/CMakeFiles/glm_shared.dir
+C:/Users/Ridwan/source/repos/Sp4_3/glm/includes/out/build/x64-Debug (default)/CMakeFiles/rebuild_cache.dir
