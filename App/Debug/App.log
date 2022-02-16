@@ -1,3 +1,2 @@
-﻿  Scene3D.cpp
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+﻿  SolidObjectManager.cpp
   App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe

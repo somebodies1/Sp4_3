@@ -222,8 +222,8 @@ bool CSolidObjectManager::CheckForCollision(void)
 				if (
 					((*it)->GetType() == CSolidObject::TYPE::PLAYER)
 					&&
-					(((*it_other)->GetType() >= CSolidObject::TYPE::NPC) &&
-						((*it_other)->GetType() <= CSolidObject::TYPE::OTHERS))
+					(((*it_other)->GetType() == CSolidObject::TYPE::NPC) &&
+						((*it_other)->GetType() == CSolidObject::TYPE::OTHERS))
 					)
 				{
 					(*it)->RollbackPosition();
@@ -233,11 +233,11 @@ bool CSolidObjectManager::CheckForCollision(void)
 					break;
 				}
 				else if (
-						(((*it)->GetType() >= CSolidObject::TYPE::NPC) &&
-						((*it)->GetType() <= CSolidObject::TYPE::OTHERS))
+						(((*it)->GetType() == CSolidObject::TYPE::NPC) &&
+						((*it)->GetType() == CSolidObject::TYPE::OTHERS))
 						&&
-						(((*it_other)->GetType() >= CSolidObject::TYPE::NPC) &&
-						((*it_other)->GetType() <= CSolidObject::TYPE::OTHERS))
+						(((*it_other)->GetType() == CSolidObject::TYPE::NPC) &&
+						((*it_other)->GetType() == CSolidObject::TYPE::OTHERS))
 					)
 				{
 					(*it)->RollbackPosition();
@@ -247,8 +247,8 @@ bool CSolidObjectManager::CheckForCollision(void)
 				}
 				// Check if a movable entity collides with a non-movable entity
 				if (
-						(((*it)->GetType() >= CSolidObject::TYPE::PLAYER) &&
-							((*it)->GetType() <= CSolidObject::TYPE::OTHERS))
+						(((*it)->GetType() == CSolidObject::TYPE::PLAYER) &&
+							((*it)->GetType() == CSolidObject::TYPE::OTHERS))
 						&&
 						((*it_other)->GetType() == CSolidObject::TYPE::STRUCTURE)
 					)
@@ -261,7 +261,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 				}
 				//statusEffects
 				if (
-					(((*it)->GetType() >= CSolidObject::TYPE::PLAYER) &&
+					(((*it)->GetType() == CSolidObject::TYPE::PLAYER) &&
 					((*it_other)->GetType() == CSolidObject::TYPE::SPEED_UP)
 					))
 				{
@@ -275,7 +275,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					break;
 				}
 				if (
-					(((*it)->GetType() >= CSolidObject::TYPE::PLAYER) &&
+					(((*it)->GetType() == CSolidObject::TYPE::PLAYER) &&
 						((*it_other)->GetType() == CSolidObject::TYPE::INVINCIBLE_UP)
 						))
 				{
@@ -289,7 +289,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					break;
 				}
 				if (
-					((*it)->GetType() >= CSolidObject::TYPE::PLAYER)
+					((*it)->GetType() == CSolidObject::TYPE::PLAYER)
 					&&((*it_other)->GetType() == CSolidObject::TYPE::CAR))
 					
 				{
