@@ -10,3 +10,5 @@ C:\Users\Julius\Source\Repos\SP4(2)\Debug\Library.pdb
 C:\Users\Julius\Source\Repos\SP4(2)\Library\Debug\Library.pdb
 C:\Users\Julius\Source\Repos\StudioProjectNumber4\Debug\Library.pdb
 C:\Users\Julius\Source\Repos\StudioProjectNumber4\Library\Debug\Library.pdb
+C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Debug\Library.pdb
+C:\Users\Julius\source\repos\Sp4_3(NEW)\Library\Debug\Library.pdb

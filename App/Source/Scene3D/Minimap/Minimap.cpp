@@ -5,7 +5,7 @@
  */
 #include "Minimap.h"
 
-// Include ShaderManager
+ // Include ShaderManager
 #include "RenderControl/ShaderManager.h"
 
 #include <iostream>
@@ -28,6 +28,7 @@ CMinimap::~CMinimap(void)
 	glDeleteBuffers(1, &uiTextureColorBuffer);
 	glDeleteBuffers(1, &RBO);
 	glDeleteVertexArrays(1, &VAO_BORDER);
+	glDeleteVertexArrays(1, &VAO_ARROW);
 	glDeleteBuffers(1, &VBO_BORDER);
 }
 
@@ -46,17 +47,18 @@ bool CMinimap::Init(void)
 	// Set screenTexture to 0 in the shader program
 	CShaderManager::GetInstance()->activeShader->setInt("screenTexture", 0);
 
-	float vertices[] = 
-	{
-		// positions	// texCoords
-		0.5f, 1.0f,		0.0f, 1.0f,
-		0.5f, 0.5f,		0.0f, 0.0f,
-		1.0f, 0.5f,		1.0f, 0.0f,
+	int i = 0;
+	float vertices[148];
 
-		0.5f, 1.0f,		0.0f, 1.0f,
-		1.0f, 0.5f,		1.0f, 0.0f,
-		1.0f, 1.0f,		1.0f, 1.0f
-	};
+
+	for (int theta = 0; theta <= 360; theta += 10)
+	{
+		vertices[i] = 0.25f * cos(glm::radians((float)theta)) + 0.75f;
+		vertices[i + 1] = 0.25f * sin(glm::radians((float)theta)) + 0.75f;
+		vertices[i + 2] = 0.5f * cos(glm::radians((float)theta)) + 0.5f;
+		vertices[i + 3] = 0.5f * sin(glm::radians((float)theta)) + 0.5f;
+		i += 4;
+	}
 
 	// Set up the rendering environment
 	glGenVertexArrays(1, &VAO);
@@ -91,14 +93,17 @@ bool CMinimap::Init(void)
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	// Setup the border
-	float vertices_border[] =
+	float vertices_border[148];
+	i = 0;
+
+	for (int theta = 0; theta <= 360; theta += 10)
 	{
-		// positions	// texCoords
-		0.5f, 1.0f,		0.0f, 1.0f,
-		0.5f, 0.5f,		0.0f, 0.0f,
-		1.0f, 0.5f,		1.0f, 0.0f,
-		1.0f, 1.0f,		1.0f, 1.0f
-	};
+		vertices[i] = 0.25f * cos(glm::radians((float)theta)) + 0.75f;
+		vertices[i + 1] = 0.25f * sin(glm::radians((float)theta)) + 0.75f;
+		vertices[i + 2] = 0.5f * cos(glm::radians((float)theta)) + 0.5f;
+		vertices[i + 3] = 0.5f * sin(glm::radians((float)theta)) + 0.5f;
+		i += 4;
+	}
 
 	// Set up the rendering environment
 	glGenVertexArrays(1, &VAO_BORDER);
@@ -110,6 +115,32 @@ bool CMinimap::Init(void)
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+
+	// Setup the Arrow
+	float vertices_arrow[] =
+	{
+		// positions			// Colour					// texCoords
+		0.75f, 0.8f, 1.0f,		1.0f, 1.0f, 1.0f, 1.0f,		0.5f, 1.0f,
+		0.725f, 0.675f, 1.0f,	1.0f, 1.0f, 1.0f, 1.0f,		0.0f, 0.0f,
+		0.75f, 0.7f, 1.0f,		1.0f, 1.0f, 1.0f, 1.0f,		0.5f, 0.5f,
+
+		0.75f, 0.8f, 1.0f,		1.0f, 1.0f, 1.0f, 1.0f,		0.5f, 1.0f,
+		0.75f, 0.7f, 1.0f,		1.0f, 1.0f, 1.0f, 1.0f,		0.5f, 0.5f,
+		0.775f, 0.675f, 1.0f,	1.0f, 1.0f, 1.0f, 1.0f,		1.0f, 0.0f,
+	};
+
+	// Set up the rendering environment
+	glGenVertexArrays(1, &VAO_ARROW);
+	glGenBuffers(1, &VBO_ARROW);
+	glBindVertexArray(VAO_ARROW);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_ARROW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices_arrow), &vertices_arrow, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(7 * sizeof(float)));
 
 	return true;
 }
@@ -190,23 +221,53 @@ void CMinimap::Render(void)
 {
 	// Render the texture for the minimap
 	glBindVertexArray(VAO);
-		// Use the color attachment texture as the texture of the quad plane
-		glBindTexture(GL_TEXTURE_2D, uiTextureColorBuffer);
-		glDrawArrays(GL_TRIANGLES, 0, 6);
-		// Reset to default
-		glBindTexture(GL_TEXTURE_2D, 0);
+	// Use the color attachment texture as the texture of the quad plane
+	glBindTexture(GL_TEXTURE_2D, uiTextureColorBuffer);
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 148);
+	// Reset to default
+	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindVertexArray(0);
 
 	// Render the border
 	glBindVertexArray(VAO_BORDER);
-		glDrawArrays(GL_LINE_LOOP, 0, 4);
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 148);
 	// Reset to default
 	glBindVertexArray(0);
 
+	// Activate shader
+	CShaderManager::GetInstance()->Use("2DColorShader");
+
+	// Render the Arrow
+	glBindVertexArray(VAO_ARROW);
+
+	//Provide an identiy matrix as there is no projection
+	glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+	unsigned int transformLoc = glGetUniformLocation(CShaderManager::GetInstance()->activeShader->ID, "transform");
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+
+	//Set Current color for the color shader
+	unsigned int colorLoc = glGetUniformLocation(CShaderManager::GetInstance()->activeShader->ID, "runtime_color");
+	glUniform4fv(colorLoc, 1, glm::value_ptr(currentColor));
+
+	// Get the texture to be rendered
+	glBindTexture(GL_TEXTURE_2D, uiTextureColorBuffer);
+
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	// Reset to default
+	glBindTexture(GL_TEXTURE_2D, 0);
+	// Reset to default
+	glBindVertexArray(0);
 }
 
 /**
- @brief PostRender Set up the OpenGL display environment after rendering.
+ @brief PostRender Set the player color that is use in the color shader
+ */
+void CMinimap::SetPlayerArrowCurrentColor(glm::vec4 value)
+{
+	currentColor = value;
+}
+/**
+ @brief PostRender Set up the OpenGL display environment after renderindg.
  */
 void CMinimap::PostRender(void)
 {
