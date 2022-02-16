@@ -54,7 +54,7 @@
 
 //Include Enemies
 #include "Entities/Enemy3D.h"
-//#include "Entities/Spider.h"
+#include "Entities/Spider.h"
 
 //Include GUI_Scene3D
 #include "GUI_Scene3D.h"

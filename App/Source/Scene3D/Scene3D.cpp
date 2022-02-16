@@ -284,29 +284,28 @@ bool CScene3D::Init(void)
 	cSolidObjectManager->Add(cEnemy3D);
 	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
 
-	//// Initialise the Spider
-	//fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
-	//Spider* spider = new Spider(glm::vec3(0.0f, fCheckHeight, -20.0f));
-	//spider->SetShader("Shader3DNoColour");
-	//spider->Init();
-	//spider->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
-	//spider->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	// Initialise the Spider
+	fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
+	Spider* spider = new Spider(glm::vec3(0.0f, fCheckHeight, -20.0f));
+	spider->SetShader("Shader3DNoColour");
+	spider->Init();
+	spider->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
+	spider->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 	////cEnemy3D->SetScale(glm::vec3(0.5f));
 	//
-	//// Assign a cPistol to the cEnemy3D
-	//CPistol* spiderPistol = new CPistol();
-	//// Set the position, rotation and scale of this weapon
-	////cEnemyPistol->SetPosition(glm::vec3(0.05f, -0.075f, 0.5f));
-	////cEnemyPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
-	//spiderPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
-	//// Initialise the instance
-	//spiderPistol->Init();
-	//spiderPistol->SetShader("Shader3D_Model");
-	//spider->SetWeapon(0, spiderPistol);
-	//spider->SetMaxHP(200);
-	//cSolidObjectManager->Add(spider);
-	//cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
-	//// Add the cEnemy3D to the cSolidObjectManager
+	// Assign a cPistol to the cEnemy3D
+	CPistol* spiderPistol = new CPistol();
+	// Set the position, rotation and scale of this weapon
+	//cEnemyPistol->SetPosition(glm::vec3(0.05f, -0.075f, 0.5f));
+	//cEnemyPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
+	spiderPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
+	// Initialise the instance
+	spiderPistol->Init();
+	spiderPistol->SetShader("Shader3D_Model");
+	spider->SetWeapon(0, spiderPistol);
+	spider->SetMaxHP(200);
+	cSolidObjectManager->Add(spider);
+	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
 	
 	// Initialise a CStructure3D
 	fCheckHeight = cTerrain->GetHeight(2.0f, -2.0f);
