@@ -40,7 +40,8 @@ public:
 		STRUCTURE,	// Buildings etc
 		PROJECTILE,
 		CARD_PROJECTILE,
-		POWER_UP,
+		SPEED_UP,
+		INVINCIBLE_UP,
 		CAR,
 		NUM_TYPES
 	};
@@ -81,6 +82,8 @@ public:
 	virtual void SetMovementSpeed(const float fMovementSpeed);
 	virtual void SetStatus(const bool bStatus);
 	virtual void SetMaxHP(const int newMaxHP);
+	virtual void SetHP(int playerhp);
+	virtual void SetInvis(bool isinvis);
 
 	// Get Methods
 	virtual const GLuint GetTextureID(void) const;
@@ -94,6 +97,8 @@ public:
 	virtual const glm::vec4 GetColour(void) const;
 	virtual const float GetMovementSpeed(void) const;
 	virtual const bool GetStatus(void) const;
+	virtual int GetHP(void);
+	virtual bool GetInvis();
 
 	// These methods are for marking this CEntity3D for deletion
 	virtual void SetToDelete(const bool bToDelete);
@@ -166,6 +171,8 @@ protected:
 
 	// Boolean flag to indicate if this CEntity3D is to be deleted
 	bool bToDelete;
+
+	bool IsInvis;
 
 	// HP to check if dead
 	int currentHP;

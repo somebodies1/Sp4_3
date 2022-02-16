@@ -33,7 +33,7 @@ CEntity3D::CEntity3D()
 	, fRotationAngle(0.0f)
 	, vec3RotationAxis(1.0f)
 	, vec4Colour(1.0f)
-	, fMovementSpeed(2.5f)
+	, fMovementSpeed(5.f)
 	, bStatus(false)
 	, bToDelete(false)
 {
@@ -81,6 +81,7 @@ bool CEntity3D::Init(void)
 
 	bStatus = true;
 	maxHP = currentHP = 100;
+	IsInvis = false;
 	//activepowerList;
 	return true;
 }
@@ -156,6 +157,16 @@ void CEntity3D::SetMaxHP(const int newMaxHP)
 	maxHP = currentHP = newMaxHP;
 }
 
+void CEntity3D::SetHP(int playerhp)
+{
+	//currentHP = playerhp;
+}
+
+void CEntity3D::SetInvis(bool isinvis)
+{
+	IsInvis = isinvis;
+}
+
 // Get methods
 const GLuint CEntity3D::GetTextureID(void) const
 {
@@ -200,6 +211,16 @@ const float CEntity3D::GetMovementSpeed(void) const
 const bool CEntity3D::GetStatus(void) const
 {
 	return bStatus;
+}
+
+int CEntity3D::GetHP(void)
+{
+	return currentHP;
+}
+
+bool CEntity3D::GetInvis()
+{
+	return IsInvis;
 }
 
 // These methods are for marking this CEntity3D for deletion
@@ -249,11 +270,18 @@ void CEntity3D::PowerupUpdate(const double dElapsedTime)
 			if (activepowerList[i]->getTimeLeft() <= 0.f)
 			{
 				activepowerList[i]->setDead(true);
-				this->SetMovementSpeed(2.5f); //effect
+				this->SetMovementSpeed(5.f); //effect
 				activepowerList.erase(activepowerList.begin());
 				//std::cout << "Speed Dead" << endl;
 				break;
+			
 		case powerup::INVINCIBLE:
+			if (activepowerList[i]->getTimeLeft() <= 0.f)
+			{
+				activepowerList[i]->setDead(true);
+				this->SetInvis(false);
+				activepowerList.erase(activepowerList.begin());
+			}
 			break;
 		case powerup::FIRERATE:
 			break;
@@ -302,12 +330,24 @@ void CEntity3D::AddPowerup(CEntity3D* dude, powerup::POWERUPTYPE pType, float ne
 		{
 			powerup* p = new powerup(pType, newTime); //create new powerup
 			dude->activepowerList.push_back(p); //push to vector
-			dude->SetMovementSpeed(dude->GetMovementSpeed() * 10.f); //effect
+			dude->SetMovementSpeed(dude->GetMovementSpeed() * 3.f); //effect
 			//std::cout << this->GetMovementSpeed() << endl;
-			std::cout << "New SPeed" << endl;
+			//std::cout << "New SPeed" << endl;
 		}
 		break;
 	case powerup::INVINCIBLE:
+		if (AddPowerupTime(dude, pType, newTime))
+		{
+			return;
+		}
+		else
+		{
+			powerup* p = new powerup(pType, newTime); //create new powerup
+			dude->activepowerList.push_back(p); //push to vector
+			dude->SetInvis(true); //effect
+			//std::cout << this->GetMovementSpeed() << endl;
+			//std::cout << "New SPeed" << endl;
+		}
 		break;
 	case powerup::FIRERATE:
 		break;

@@ -259,9 +259,10 @@ bool CSolidObjectManager::CheckForCollision(void)
 					cout << "** Collision between Entity and Structure ***" << endl;
 					break;
 				}
+				//statusEffects
 				if (
 					(((*it)->GetType() >= CSolidObject::TYPE::PLAYER) &&
-					((*it_other)->GetType() == CSolidObject::TYPE::POWER_UP)
+					((*it_other)->GetType() == CSolidObject::TYPE::SPEED_UP)
 					))
 				{
 					(*it)->RollbackPosition();
@@ -271,6 +272,20 @@ bool CSolidObjectManager::CheckForCollision(void)
 					std::cout << (*it)->GetMovementSpeed() << std::endl;
 					(*it_other)->SetStatus(false);
 						cout << "** Collision between Entity and powerUP ***" << endl;
+					break;
+				}
+				if (
+					(((*it)->GetType() >= CSolidObject::TYPE::PLAYER) &&
+						((*it_other)->GetType() == CSolidObject::TYPE::INVINCIBLE_UP)
+						))
+				{
+					(*it)->RollbackPosition();
+					(*it)->AddPowerup((*it), powerup::INVINCIBLE, 5.f);
+					//if (((*it)->GetType() == CSolidObject::TYPE::PLAYER))
+						//bResult = true;
+					std::cout << (*it)->GetMovementSpeed() << std::endl;
+					(*it_other)->SetStatus(false);
+					cout << "** Collision between Entity and powerUP ***" << endl;
 					break;
 				}
 				if (
@@ -317,11 +332,11 @@ bool CSolidObjectManager::CheckForCollision(void)
 					if ((cProjectileManager->vProjectile[i])->GetSource() == (*it))
 						continue;
 					(cProjectileManager->vProjectile[i])->SetStatus(false);
-					if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::CARD_PROJECTILE)
+					if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::CARD_PROJECTILE && (*it)->GetInvis()==false)
 					{
 						cInventoryItem->Remove(20);
 					}
-					else if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::PROJECTILE)
+					else if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::PROJECTILE && (*it)->GetInvis() == false)
 					{
 						cInventoryItem->Remove(10);
 					}

@@ -50,6 +50,7 @@
 //Include CStructure3D
 #include "Entities/Structure3D.h"
 #include "Entities/SpeedUpbox.h"
+#include "Entities/InvincibleBox.h"
 
 //Include Enemies
 #include "Entities/Enemy3D.h"

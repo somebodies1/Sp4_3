@@ -239,7 +239,7 @@ void CGUI_Scene3D::Update(const double dElapsedTime)
 
 	// Display the FPS
 	ImGui::TextColored(ImVec4(1, 1, 0, 1), "FPS: %d", cFPSCounter->GetFrameRate());
-
+	//ImGui::TextColored(ImVec4(1, 1, 0, 1), "health: %d", cEntity3D->GetHP());
 	// Render the Health
 	ImGuiWindowFlags healthWindowFlags = ImGuiWindowFlags_AlwaysAutoResize |
 		ImGuiWindowFlags_NoBackground |
@@ -318,7 +318,7 @@ void CGUI_Scene3D::Update(const double dElapsedTime)
 	ImGui::SetWindowFontScale(1.5f * relativeScale_y);
 	ImGui::TextColored(ImVec4(1, 1, 0, 1), "Position : ");
 	ImGui::TextColored(ImVec4(1, 1, 0, 1), "%3.2f, %3.2f, %3.2f",
-		CPlayer3D::GetInstance()->GetMovementSpeed(),
+		CCamera::GetInstance()->vec3Position.x,
 		CCamera::GetInstance()->vec3Position.y,
 		CCamera::GetInstance()->vec3Position.z);
 	ImGui::End();

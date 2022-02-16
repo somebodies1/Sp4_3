@@ -76,8 +76,12 @@
     <ClCompile Include="Source\Scene3D\Math\Mtx44.cpp" />
     <ClCompile Include="Source\Scene3D\Math\timer.cpp" />
     <ClCompile Include="Source\Scene3D\Math\Vector3.cpp" />
+
     <ClCompile Include="Source\Scene3D\Entities\Spider.cpp" />
     <ClCompile Include="Source\Scene3D\WeaponInfo\AssaultRifle.cpp" />
+
+    <ClCompile Include="Source\Scene3D\Entities\InvincibleBox.cpp" />
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -156,7 +160,11 @@
     <ClInclude Include="Source\Scene3D\Math\MyMath.h" />
     <ClInclude Include="Source\Scene3D\Math\timer.h" />
     <ClInclude Include="Source\Scene3D\Math\Vector3.h" />
+
     <ClInclude Include="Source\Scene3D\Entities\Spider.h" />
     <ClInclude Include="Source\Scene3D\WeaponInfo\AssaultRifle.h" />
+
+    <ClInclude Include="Source\Scene3D\Entities\InvincibleBox.h" />
+
   </ItemGroup>
 </Project>

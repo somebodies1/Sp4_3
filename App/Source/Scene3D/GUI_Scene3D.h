@@ -112,4 +112,6 @@ protected:
 
 	// The handler containing the instance of CPlayer3D
 	CPlayer3D* cPlayer3D;
+
+	CEntity3D* cEntity3D;
 };

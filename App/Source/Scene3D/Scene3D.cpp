@@ -328,7 +328,7 @@ bool CScene3D::Init(void)
 	cStructure3D->Init();
 	cStructure3D->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 	//cStructure3D->SetScale(glm::vec3(0.5f));
-
+	cSolidObjectManager->Add(cStructure3D);
 	
 	// Initialise a CStructure3D
 	float fCheckHeight1;
@@ -339,8 +339,14 @@ bool CScene3D::Init(void)
 	cSpeedUpbox->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 	cSolidObjectManager->Add(cSpeedUpbox);
 
-	// Add the cStructure3D to the cSolidObjectManager
-	cSolidObjectManager->Add(cStructure3D);
+	float fCheckHeight2;
+	fCheckHeight2 = cTerrain->GetHeight(2.0f, -2.0f);
+	CInvincibleBox* cInvincibleBox = new CInvincibleBox(glm::vec3(8.0f, fCheckHeight2, -2.0f));
+	cInvincibleBox->SetShader("Shader3D");
+	cInvincibleBox->Init();
+	cInvincibleBox->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+	cSolidObjectManager->Add(cInvincibleBox);
+	
 
 	//Load the GUI entities
 	//Store the cGUI_Scene3D instance here

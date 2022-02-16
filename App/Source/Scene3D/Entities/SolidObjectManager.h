@@ -79,6 +79,7 @@ protected:
 
 	//Handler for gameManager3D class
 	CGameManager3D* cGameManager3D;
+	CEntity3D* cEntity3D;
 
 
 	int enemyCount;
