@@ -53,6 +53,7 @@
     <ClCompile Include="Source\Scene3D\Entities\SolidObject.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\SolidObjectManager.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\SpeedUpbox.cpp" />
+    <ClCompile Include="Source\Scene3D\Entities\Spider.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\Structure3D.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\SUV.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\TreeKabak3D.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="Source\Scene3D\Entities\SolidObject.h" />
     <ClInclude Include="Source\Scene3D\Entities\SolidObjectManager.h" />
     <ClInclude Include="Source\Scene3D\Entities\SpeedUpbox.h" />
+    <ClInclude Include="Source\Scene3D\Entities\Spider.h" />
     <ClInclude Include="Source\Scene3D\Entities\Structure3D.h" />
     <ClInclude Include="Source\Scene3D\Entities\SUV.h" />
     <ClInclude Include="Source\Scene3D\Entities\TreeKabak3D.h" />

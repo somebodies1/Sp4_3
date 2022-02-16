@@ -1,2 +1,3 @@
-﻿  Scene3D.cpp
+﻿  Spider.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Spider.cpp(312): warning C4715: 'Spider::DischargeWeapon': not all control paths return a value
   App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe
