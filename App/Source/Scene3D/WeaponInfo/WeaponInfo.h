@@ -26,6 +26,7 @@ public:
 	{
 		PISTOL,
 		CARD,
+		ASSAULT_RIFLE,
 		NUM_WEAPON_TYPE
 	};
 

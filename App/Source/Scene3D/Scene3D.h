@@ -42,11 +42,10 @@
 //Incldue CProjectileManager
 #include "WeaponInfo/ProjectileManager.h"
 
-//Include CPistol
+//Include Weapons
 #include "WeaponInfo/Pistol.h"
-
-//Include CCard
 #include "WeaponInfo/Card.h"
+#include "WeaponInfo/AssaultRifle.h"
 
 //Include CStructure3D
 #include "Entities/Structure3D.h"

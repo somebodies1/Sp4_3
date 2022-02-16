@@ -77,6 +77,7 @@
     <ClCompile Include="Source\Scene3D\Math\timer.cpp" />
     <ClCompile Include="Source\Scene3D\Math\Vector3.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\Spider.cpp" />
+    <ClCompile Include="Source\Scene3D\WeaponInfo\AssaultRifle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -156,5 +157,6 @@
     <ClInclude Include="Source\Scene3D\Math\timer.h" />
     <ClInclude Include="Source\Scene3D\Math\Vector3.h" />
     <ClInclude Include="Source\Scene3D\Entities\Spider.h" />
+    <ClInclude Include="Source\Scene3D\WeaponInfo\AssaultRifle.h" />
   </ItemGroup>
 </Project>

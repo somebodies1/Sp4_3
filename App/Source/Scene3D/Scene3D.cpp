@@ -237,6 +237,9 @@ bool CScene3D::Init(void)
 	//cPistol->Init();
 	//cPistol->SetShader("Shader3D_Model");
 	//cPlayer3D->SetWeapon(0, cPistol);
+	
+
+	//PLAYER WEAPONS
 
 	//Assign cCard to cPlayer3D
 	CCard* cCard = new CCard();
@@ -249,16 +252,27 @@ bool CScene3D::Init(void)
 	cCard->SetShader("Shader3D_Model");
 	cPlayer3D->SetWeapon(0, cCard);
 
-	//Assign cPistol to cPlayer3D
-	CPistol* cPistol = new CPistol();
+	////Assign cPistol to cPlayer3D
+	//CPistol* cPistol = new CPistol();
+	////Set the position, rotation and scale of this weapon
+	//cPistol->SetPosition(glm::vec3(0.05f, -0.075f, -0.3f));
+	//cPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
+	//cPistol->SetScale(glm::vec3(0.75f, 0.75f, 0.75f));
+	////Initialise instance
+	//cPistol->Init();
+	//cPistol->SetShader("Shader3D_Model");
+	//cPlayer3D->SetWeapon(1, cPistol);
+
+	//Assign cARifle to cPlayer3D
+	CAssaultRifle* cARifle = new CAssaultRifle();
 	//Set the position, rotation and scale of this weapon
-	cPistol->SetPosition(glm::vec3(0.05f, -0.075f, -0.3f));
-	cPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
-	cPistol->SetScale(glm::vec3(0.75f, 0.75f, 0.75f));
+	cARifle->SetPosition(glm::vec3(0.05f, -0.075f, -0.3f));
+	cARifle->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
+	cARifle->SetScale(glm::vec3(0.75f, 0.75f, 0.75f));
 	//Initialise instance
-	cPistol->Init();
-	cPistol->SetShader("Shader3D_Model");
-	cPlayer3D->SetWeapon(1, cPistol);
+	cARifle->Init();
+	cARifle->SetShader("Shader3D_Model");
+	cPlayer3D->SetWeapon(1, cARifle);
 
 	// Initialise the cEnemy3D
 	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
@@ -769,6 +783,11 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 	{
 		cPlayer3D->SetCurrentWeapon(1);
 	}
+
+	//if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_3))
+	//{
+	//	cPlayer3D->SetCurrentWeapon(2);
+	//}
 
 	if (CKeyboardController::GetInstance()->IsKeyPressed(GLFW_KEY_8))
 	{
