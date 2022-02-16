@@ -123,6 +123,11 @@ float CWeaponInfo::GetMaxReloadTime(void) const
 	return dMaxReloadTime;
 }
 
+CWeaponInfo::WEAPON_TYPE CWeaponInfo::GetWeaponType(void) const
+{
+	return weaponType;
+}
+
 /**
  @brief Set the time between shots
  @param dTimeBetweenShots A const double variable containing the time between shots

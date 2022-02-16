@@ -55,6 +55,7 @@ public:
 
 	virtual float GetReloadTime(void) const;
 	virtual float GetMaxReloadTime(void) const;
+	virtual WEAPON_TYPE GetWeaponType(void) const;
 
 	// Set the time between shots
 	virtual void SetTimeBetweenShots(const double dTimeBetweenShots);

@@ -820,9 +820,19 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 	}
 
 	//Get mouse button updates
-	if (cMouseController->IsButtonReleased(CMouseController::BUTTON_TYPE::LMB))
+	if (cPlayer3D->GetWeapon()->GetWeaponType() == CWeaponInfo::WEAPON_TYPE::CARD)
 	{
-		cPlayer3D->DischargeWeapon();
+		if (cMouseController->IsButtonReleased(CMouseController::BUTTON_TYPE::LMB))
+		{
+			cPlayer3D->DischargeWeapon();
+		}
+	}
+	else if (cPlayer3D->GetWeapon()->GetWeaponType() == CWeaponInfo::WEAPON_TYPE::ASSAULT_RIFLE)
+	{
+		if (cMouseController->IsButtonDown(CMouseController::BUTTON_TYPE::LMB))
+		{
+			cPlayer3D->DischargeWeapon();
+		}
 	}
 
 	if (cMouseController->IsButtonPressed(CMouseController::BUTTON_TYPE::RMB))
