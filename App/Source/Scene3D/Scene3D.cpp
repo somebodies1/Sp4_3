@@ -321,7 +321,7 @@ bool CScene3D::Init(void)
 	cSolidObjectManager->Add(spider);
 	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
 	
-	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
+	fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
 	// Initialise a CStructure3D
 	fCheckHeight = cTerrain->GetHeight(2.0f, -2.0f);
 	CStructure3D* cStructure3D = new CStructure3D(glm::vec3(2.0f, fCheckHeight, -2.0f));
