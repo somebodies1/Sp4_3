@@ -55,7 +55,15 @@ public:
 
 	virtual float GetReloadTime(void) const;
 	virtual float GetMaxReloadTime(void) const;
+
+	virtual void SetWeaponType(WEAPON_TYPE wType);
 	virtual WEAPON_TYPE GetWeaponType(void) const;
+
+	virtual void SetChargeTime(double newTime);
+	virtual double GetChargeTime(void) const;
+
+	virtual void SetMaxChargeTime(double newTime);
+	virtual double GetMaxChargeTime(void) const;
 
 	// Set the time between shots
 	virtual void SetTimeBetweenShots(const double dTimeBetweenShots);
@@ -124,4 +132,7 @@ protected:
 	unsigned int iIndicesSize;
 
 	WEAPON_TYPE weaponType;
+
+	double dChargeTime;
+	double dMaxChargeTime;
 };

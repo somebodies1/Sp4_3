@@ -123,9 +123,34 @@ float CWeaponInfo::GetMaxReloadTime(void) const
 	return dMaxReloadTime;
 }
 
+void CWeaponInfo::SetWeaponType(WEAPON_TYPE wType)
+{
+	weaponType = wType;
+}
+
 CWeaponInfo::WEAPON_TYPE CWeaponInfo::GetWeaponType(void) const
 {
 	return weaponType;
+}
+
+void CWeaponInfo::SetChargeTime(double newTime)
+{
+	dChargeTime = newTime;
+}
+
+double CWeaponInfo::GetChargeTime(void) const
+{
+	return dChargeTime;
+}
+
+void CWeaponInfo::SetMaxChargeTime(double newTime)
+{
+	dMaxChargeTime = newTime;
+}
+
+double CWeaponInfo::GetMaxChargeTime(void) const
+{
+	return dMaxChargeTime;
 }
 
 /**
@@ -207,6 +232,9 @@ bool CWeaponInfo::Init(void)
 	dMaxReloadTime = 5.0f;
 	// Boolean flag to indicate if weapon can fire now
 	bFire = true;
+
+	dChargeTime = 0.0f;
+	dMaxChargeTime = 0.0f;
 
 	// Update the model matrix
 	model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
@@ -292,7 +320,7 @@ bool CWeaponInfo::Discharge(glm::vec3 vec3Position,
 			case WEAPON_TYPE::CARD:
 				CProjectileManager::GetInstance()->Activate(vec3Position + vec3Front * 0.75f,
 					vec3Front,
-					2.0f, 20.0f, pSource, this->weaponType);
+					2.0f, 40.0f * dChargeTime, pSource, this->weaponType);
 				break;
 			default:
 				CProjectileManager::GetInstance()->Activate(vec3Position + vec3Front * 0.75f,

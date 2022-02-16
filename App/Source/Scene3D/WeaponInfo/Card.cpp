@@ -54,6 +54,9 @@ bool CCard::Init(void)
 	// Boolean flag to indicate if weapon can fire now
 	bFire = true;
 
+	dChargeTime = 0.0f;
+	dMaxChargeTime = 1.0f;
+
 	// Call the parent's Init()
 	CEntity3D::Init();
 	weaponType = WEAPON_TYPE::CARD;

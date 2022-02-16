@@ -820,19 +820,28 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 	}
 
 	//Get mouse button updates
-	if (cPlayer3D->GetWeapon()->GetWeaponType() == CWeaponInfo::WEAPON_TYPE::CARD)
+	switch (cPlayer3D->GetWeapon()->GetWeaponType())
 	{
-		if (cMouseController->IsButtonReleased(CMouseController::BUTTON_TYPE::LMB))
+	case CWeaponInfo::WEAPON_TYPE::CARD:
+		if (cMouseController->IsButtonDown(CMouseController::BUTTON_TYPE::LMB))
 		{
-			cPlayer3D->DischargeWeapon();
+			if (cPlayer3D->GetWeapon()->GetMaxChargeTime() > cPlayer3D->GetWeapon()->GetChargeTime())
+			{
+				cPlayer3D->GetWeapon()->SetChargeTime(cPlayer3D->GetWeapon()->GetChargeTime() + dElapsedTime);
+			}
+			
 		}
-	}
-	else if (cPlayer3D->GetWeapon()->GetWeaponType() == CWeaponInfo::WEAPON_TYPE::ASSAULT_RIFLE)
-	{
+		else if (cMouseController->IsButtonReleased(CMouseController::BUTTON_TYPE::LMB))
+		{
+			cPlayer3D->DischargeWeapon(); //Release based on charge
+		}
+		break;
+	case CWeaponInfo::WEAPON_TYPE::ASSAULT_RIFLE:
 		if (cMouseController->IsButtonDown(CMouseController::BUTTON_TYPE::LMB))
 		{
 			cPlayer3D->DischargeWeapon();
 		}
+		break;
 	}
 
 	if (cMouseController->IsButtonPressed(CMouseController::BUTTON_TYPE::RMB))
