@@ -1,0 +1,4 @@
+Card Weapon
+Player Sliding
+Player SMovements
+Win/Lose Condition

@@ -1,9 +1,151 @@
 ﻿  Application.cpp
+  GameStateManager.cpp
+  IntroState.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\Ridwan\source\repos\Sp4_3\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+  MenuState.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\Ridwan\source\repos\Sp4_3\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\GameStateManagement\MenuState.cpp(133,43): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\GameStateManagement\MenuState.cpp(132,73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\GameStateManagement\MenuState.cpp(134,95): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\GameStateManagement\MenuState.cpp(134,55): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  PauseState.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\Ridwan\source\repos\Sp4_3\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\GameStateManagement\PauseState.cpp(103,43): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\GameStateManagement\PauseState.cpp(102,73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\GameStateManagement\PauseState.cpp(104,95): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\GameStateManagement\PauseState.cpp(104,55): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
   Play3DGameState.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\Users\Julius\Source\Repos\Sp4_3(NEW)\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
-  GUI_Scene3D.cpp
-  Minimap.cpp
-  Scene3D.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+  PlayGameState.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\Ridwan\source\repos\Sp4_3\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+  main.cpp
+  BackgroundEntity.cpp
+  Enemy2D.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Enemy2D.cpp(458,22): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Enemy2D.cpp(488,22): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Enemy2D.cpp(582,66): warning C4244: '-=': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=glm::i32
+          ]
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Enemy2D.cpp(635,60): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=glm::i32
+          ]
+  GameManager.cpp
+  GUI_Scene2D.cpp
+  InventoryItem.cpp
+  InventoryManager.cpp
+  Map2D.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Map2D.cpp(656,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Map2D.cpp(657,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Map2D.cpp(718,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Map2D.cpp(727,20): warning C4018: '<': signed/unsigned mismatch
+  Physics2D.cpp
+  Player2D.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Player2D.cpp(522,22): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Player2D.cpp(552,22): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Player2D.cpp(646,66): warning C4244: '-=': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=glm::i32
+          ]
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Player2D.cpp(699,60): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=glm::i32
+          ]
+  Scene2D.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Scene2D.cpp(53,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Scene2D.cpp(177,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene2D\Scene2D.cpp(250,20): warning C4018: '<': signed/unsigned mismatch
+  FSM.cpp
+  Camera.cpp
   Generating Code...
-  App.vcxproj -> C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Debug\App.exe
+  Compiling...
+  BloodScreen.cpp
+  CameraEffects.cpp
+  CameraEffectsManager.cpp
+  CameraShake.cpp
+  CrossHair.cpp
+  DirtScreen.cpp
+  LoseScreen.cpp
+  ScopeScreen.cpp
+  SweatScreen.cpp
+  WinScreen.cpp
+  Baryonyx.cpp
+  Car.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(234,12): warning C4244: 'argument': conversion from 'const double' to 'float', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(315,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(342,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Charano.cpp
+  Dinosaur.cpp
+  Edo.cpp
+  Enemy3D.cpp
+  EntityManager.cpp
+  Hut_Concrete.cpp
+  Player3D.cpp
+  SolidObject.cpp
+  Generating Code...
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Enemy3D.cpp(374): warning C4715: 'CEnemy3D::DischargeWeapon': not all control paths return a value
+  Compiling...
+  SolidObjectManager.cpp
+  SpeedUpbox.cpp
+  Structure3D.cpp
+  SUV.cpp
+  TreeKabak3D.cpp
+  GameManager3D.cpp
+  GUI_Scene3D.cpp
+  MatrixStack.cpp
+  Mtx44.cpp
+  timer.cpp
+  Vector3.cpp
+  Minimap.cpp
+  Physics3D.cpp
+  powerup.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Powerup\powerup.cpp(70,16): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  PowerUpManager.cpp
+  Scene3D.cpp
+  Decor.cpp
+  LVTower.cpp
+  Planet.cpp
+  SceneNode.cpp
+  Generating Code...
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\SceneGraph\SceneNode.cpp(116): warning C4715: 'CSceneNode::Init': not all control paths return a value
+  Compiling...
+  SpinTower.cpp
+  Wheel.cpp
+  SkyBox.cpp
+  Terrain.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Terrain\Terrain.cpp(436,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Terrain\Terrain.cpp(437,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Texture.cpp
+  vertexBufferObject.cpp
+  Waypoint.cpp
+  WaypointManager.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Waypoint\WaypointManager.cpp(208,19): warning C4018: '>=': signed/unsigned mismatch
+  Card.cpp
+  Pistol.cpp
+  Projectile.cpp
+  ProjectileManager.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(29,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(59,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(176,32): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(190,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(201,21): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(226,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(256,20): warning C4018: '<': signed/unsigned mismatch
+  WeaponInfo.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(118,9): warning C4244: 'return': conversion from 'const double' to 'float', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(123,9): warning C4244: 'return': conversion from 'const double' to 'float', possible loss of data
+  SoundController.cpp
+  SoundInfo.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe
