@@ -2,6 +2,16 @@
   Play3DGameState.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\Ridwan\source\repos\Sp4_3\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+  BloodScreen.cpp
+  CameraEffects.cpp
+  CameraEffectsManager.cpp
+  CameraShake.cpp
+  CrossHair.cpp
+  DirtScreen.cpp
+  LoseScreen.cpp
+  ScopeScreen.cpp
+  SweatScreen.cpp
+  WinScreen.cpp
   Baryonyx.cpp
   Car.cpp
 C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(234,12): warning C4244: 'argument': conversion from 'const double' to 'float', possible loss of data
@@ -11,17 +21,44 @@ C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(342,18): 
   Dinosaur.cpp
   Edo.cpp
   Enemy3D.cpp
+  EntityManager.cpp
   Hut_Concrete.cpp
+  Generating Code...
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Enemy3D.cpp(374): warning C4715: 'CEnemy3D::DischargeWeapon': not all control paths return a value
+  Compiling...
+  InvincibleBox.cpp
   Player3D.cpp
-  SUV.cpp
+  SolidObject.cpp
   SolidObjectManager.cpp
+  SpeedUpbox.cpp
   Spider.cpp
+  Structure3D.cpp
+  SUV.cpp
+  TreeKabak3D.cpp
   GUI_Scene3D.cpp
+  Minimap.cpp
+  powerup.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Powerup\powerup.cpp(73,16): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
   PowerUpManager.cpp
   Scene3D.cpp
+  Decor.cpp
+  LVTower.cpp
+  Planet.cpp
+  SceneNode.cpp
+  SpinTower.cpp
+  Wheel.cpp
+  Generating Code...
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\SceneGraph\SceneNode.cpp(116): warning C4715: 'CSceneNode::Init': not all control paths return a value
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Spider.cpp(312): warning C4715: 'Spider::DischargeWeapon': not all control paths return a value
+  Compiling...
+  SkyBox.cpp
+  Terrain.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Terrain\Terrain.cpp(436,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Terrain\Terrain.cpp(437,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   AssaultRifle.cpp
   Card.cpp
   Pistol.cpp
+  Projectile.cpp
   ProjectileManager.cpp
 C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(29,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(59,20): warning C4018: '<': signed/unsigned mismatch
@@ -30,12 +67,9 @@ C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManag
 C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(201,21): warning C4018: '<=': signed/unsigned mismatch
 C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(226,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(256,20): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Spider.cpp(312): warning C4715: 'Spider::DischargeWeapon': not all control paths return a value
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Enemy3D.cpp(374): warning C4715: 'CEnemy3D::DischargeWeapon': not all control paths return a value
-  Compiling...
   WeaponInfo.cpp
 C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(118,9): warning C4244: 'return': conversion from 'const double' to 'float', possible loss of data
 C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(123,9): warning C4244: 'return': conversion from 'const double' to 'float', possible loss of data
   Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe

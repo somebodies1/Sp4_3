@@ -266,8 +266,8 @@ bool CScene3D::Init(void)
 	//Assign cARifle to cPlayer3D
 	CAssaultRifle* cARifle = new CAssaultRifle();
 	//Set the position, rotation and scale of this weapon
-	cARifle->SetPosition(glm::vec3(0.05f, -0.075f, -0.3f));
-	cARifle->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
+	cARifle->SetPosition(glm::vec3(0.3f, -0.1f, -0.9f));
+	//cARifle->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
 	cARifle->SetScale(glm::vec3(0.75f, 0.75f, 0.75f));
 	//Initialise instance
 	cARifle->Init();

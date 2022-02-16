@@ -68,6 +68,7 @@ bool CAssaultRifle::Init(void)
 	std::vector<GLuint> index_buffer_data;
 
 	std::string file_path = "Models/AssaultRifle/assault_rifle.obj";
+	cout << "Loaded: "<< file_path.c_str() << endl;
 	bool success = CLoadOBJ::LoadOBJ(file_path.c_str(), vertices, uvs, normals, true);
 	if (!success)
 	{
@@ -93,13 +94,13 @@ bool CAssaultRifle::Init(void)
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(ModelVertex), (void*)(sizeof(glm::vec3) + sizeof(glm::vec3)));
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	//// load and create a texture 
-	//iTextureID = CImageLoader::GetInstance()->LoadTextureGetID("Models/AssaultRifle/assault_rifle.jpg", false);
-	//if (iTextureID == 0)
-	//{
-	//	cout << "Unable to load Models/AssaultRifle/assault_rifle.jpg" << endl;
-	//	return false;
-	//}
+	// load and create a texture 
+	iTextureID = CImageLoader::GetInstance()->LoadTextureGetID("Models/AssaultRifle/assault_rifle.jpg", false);
+	if (iTextureID == 0)
+	{
+		cout << "Unable to load Models/AssaultRifle/assault_rifle.jpg" << endl;
+		return false;
+	}
 
 	return true;
 }
