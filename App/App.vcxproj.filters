@@ -82,6 +82,7 @@
 
     <ClCompile Include="Source\Scene3D\Entities\InvincibleBox.cpp" />
 
+    <ClCompile Include="Source\Scene3D\Entities\Soldier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -166,5 +167,6 @@
 
     <ClInclude Include="Source\Scene3D\Entities\InvincibleBox.h" />
 
+    <ClInclude Include="Source\Scene3D\Entities\Soldier.h" />
   </ItemGroup>
 </Project>

@@ -55,6 +55,7 @@
 //Include Enemies
 #include "Entities/Enemy3D.h"
 #include "Entities/Spider.h"
+#include "Entities/Soldier.h"
 
 //Include GUI_Scene3D
 #include "GUI_Scene3D.h"
@@ -88,6 +89,8 @@ public:
 	void PostRender(void);
 
 	void PlayerControlsUpdate(const double dElapsedTime);
+
+	void Enemy(void);
 
 protected:
 	// The handler to the CSettings

@@ -51,6 +51,7 @@
     <ClCompile Include="Source\Scene3D\Entities\Hut_Concrete.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\InvincibleBox.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\Player3D.cpp" />
+    <ClCompile Include="Source\Scene3D\Entities\Soldier.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\SolidObject.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\SolidObjectManager.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\SpeedUpbox.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="Source\Scene3D\Entities\Hut_Concrete.h" />
     <ClInclude Include="Source\Scene3D\Entities\InvincibleBox.h" />
     <ClInclude Include="Source\Scene3D\Entities\Player3D.h" />
+    <ClInclude Include="Source\Scene3D\Entities\Soldier.h" />
     <ClInclude Include="Source\Scene3D\Entities\SolidObject.h" />
     <ClInclude Include="Source\Scene3D\Entities\SolidObjectManager.h" />
     <ClInclude Include="Source\Scene3D\Entities\SpeedUpbox.h" />

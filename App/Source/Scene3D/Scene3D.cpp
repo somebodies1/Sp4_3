@@ -321,6 +321,7 @@ bool CScene3D::Init(void)
 	cSolidObjectManager->Add(spider);
 	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
 	
+	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
 	// Initialise a CStructure3D
 	fCheckHeight = cTerrain->GetHeight(2.0f, -2.0f);
 	CStructure3D* cStructure3D = new CStructure3D(glm::vec3(2.0f, fCheckHeight, -2.0f));
@@ -465,6 +466,8 @@ bool CScene3D::Init(void)
 	LVTower::Create();
 	Planet::Create();
 	Decor::Create();
+
+	Enemy();
 
 	return true;
 }
@@ -856,4 +859,77 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 		cCamera->fZoom = 45.0f;
 		CCameraEffectsManager::GetInstance()->Get("ScopeScreen")->SetStatus(false);
 	}
+}
+
+void CScene3D::Enemy(void)
+{
+	// Initialise the cEnemy3D
+	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
+	CEnemy3D* cEnemy3D = new CEnemy3D(glm::vec3(0.0f, fCheckHeight, -10.0f));
+	cEnemy3D->SetShader("Shader3D");
+	cEnemy3D->Init();
+	cEnemy3D->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
+	cEnemy3D->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	//cEnemy3D->SetScale(glm::vec3(0.5f));
+
+	// Assign a cPistol to the cEnemy3D
+	CPistol* cEnemyPistol = new CPistol();
+	// Set the position, rotation and scale of this weapon
+	//cEnemyPistol->SetPosition(glm::vec3(0.05f, -0.075f, 0.5f));
+	//cEnemyPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
+	cEnemyPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
+	// Initialise the instance
+	cEnemyPistol->Init();
+	cEnemyPistol->SetShader("Shader3D_Model");
+	cEnemy3D->SetWeapon(0, cEnemyPistol);
+	cEnemy3D->SetMaxHP(200);
+
+	cSolidObjectManager->Add(cEnemy3D);
+	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
+
+	// Initialise the Spider
+	fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
+	Spider* spider = new Spider(glm::vec3(0.0f, fCheckHeight, -20.0f));
+	spider->SetShader("Shader3DNoColour");
+	spider->Init();
+	spider->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
+	spider->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	////cEnemy3D->SetScale(glm::vec3(0.5f));
+	//
+	// Assign a cPistol to the cEnemy3D
+	CPistol* spiderPistol = new CPistol();
+	// Set the position, rotation and scale of this weapon
+	//cEnemyPistol->SetPosition(glm::vec3(0.05f, -0.075f, 0.5f));
+	//cEnemyPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
+	spiderPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
+	// Initialise the instance
+	spiderPistol->Init();
+	spiderPistol->SetShader("Shader3D_Model");
+	spider->SetWeapon(0, spiderPistol);
+	spider->SetMaxHP(200);
+	cSolidObjectManager->Add(spider);
+	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
+
+	// Initialise the Soldier
+	fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
+	Soldier* soldier = new Soldier(glm::vec3(0.0f, fCheckHeight, -20.0f));
+	soldier->SetShader("Shader3DNoColour");
+	soldier->Init();
+	soldier->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
+	soldier->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	////cEnemy3D->SetScale(glm::vec3(0.5f));
+	//
+	// Assign a cPistol to the cEnemy3D
+	CPistol* soldierPistol = new CPistol();
+	// Set the position, rotation and scale of this weapon
+	//cEnemyPistol->SetPosition(glm::vec3(0.05f, -0.075f, 0.5f));
+	//cEnemyPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
+	soldierPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
+	// Initialise the instance
+	soldierPistol->Init();
+	soldierPistol->SetShader("Shader3D_Model");
+	soldier->SetWeapon(0, soldierPistol);
+	soldier->SetMaxHP(200);
+	cSolidObjectManager->Add(soldier);
+	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
 }
