@@ -87,6 +87,8 @@ public:
 	// PostRender
 	void PostRender(void);
 
+	void PlayerControlsUpdate(const double dElapsedTime);
+
 protected:
 	// The handler to the CSettings
 	CSettings* cSettings;

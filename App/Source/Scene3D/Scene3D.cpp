@@ -460,97 +460,10 @@ bool CScene3D::Update(const double dElapsedTime)
 	//Store the position for rollback if needed
 	cPlayer3D->StorePositionForRollback();
 
-	if (cPlayer3D->GetSlideTime() > 0.0f && cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::SLIDE)
+	if (cPlayer3D->GetSMovement() != CPlayer3D::PLAYER_SMOVEMENT::CAR)
 	{
-		cPlayer3D->SlideMovement((float)dElapsedTime);
+		PlayerControlsUpdate(dElapsedTime);
 	}
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_W))
-	{
-		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::FORWARD, (float)dElapsedTime);
-		((CCameraShake*)CCameraEffectsManager::GetInstance()->Get("CameraShake"))->bToBeUpdated = true;
-	}
-	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_S))
-	{
-		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::BACKWARD, (float)dElapsedTime);
-		((CCameraShake*)CCameraEffectsManager::GetInstance()->Get("CameraShake"))->bToBeUpdated = true;
-	}
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_A))
-		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::LEFT, (float)dElapsedTime);
-	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_D))
-		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::RIGHT, (float)dElapsedTime);
-
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_SPACE))
-	{
-		if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::SLIDE)
-		{
-			cPlayer3D->SetSlideTime(0.0f);
-			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::STAND);
-		}
-		cPlayer3D->SetToJump();
-	}
-
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_LEFT_SHIFT))
-	{
-		cPlayer3D->SetMovementSpeed(15);
-		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(true);
-	}
-	else if (CKeyboardController::GetInstance()->IsKeyReleased(GLFW_KEY_LEFT_SHIFT))
-	{
-		cPlayer3D->SetMovementSpeed(CPlayer3D::GetInstance()->PLAYER_SPEED);
-		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(false);
-	}
-		
-
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_G) && cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::STAND)
-	{
-		bool bStatus = CCameraEffectsManager::GetInstance()->Get("DirtScreen")->GetStatus();
-		CCameraEffectsManager::GetInstance()->Get("DirtScreen")->SetStatus(!bStatus);
-
-		cPlayer3D->SlideMovement((float)dElapsedTime);
-	}
-		
-
-	//SMovements
-	if (CKeyboardController::GetInstance()->IsKeyPressed(GLFW_KEY_C))
-	{
-		if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::STAND)
-		{
-			bool bStatus = CCameraEffectsManager::GetInstance()->Get("DirtScreen")->GetStatus();
-			CCameraEffectsManager::GetInstance()->Get("DirtScreen")->SetStatus(!bStatus);
-
-			cPlayer3D->SetMovementSpeed(DEFAULT_STAND * 0.5f);
-			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::CROUCH);
-		}
-		else if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::CROUCH || cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::SLIDE)
-		{
-			if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::SLIDE)
-			{
-				//bool bStatus = CCameraEffectsManager::GetInstance()->Get("DirtScreen")->GetStatus();
-				//CCameraEffectsManager::GetInstance()->Get("DirtScreen")->SetStatus(!bStatus);
-				cPlayer3D->SetSlideTime(0.0f);
-			}
-			bool bStatus = CCameraEffectsManager::GetInstance()->Get("DirtScreen")->GetStatus();
-			CCameraEffectsManager::GetInstance()->Get("DirtScreen")->SetStatus(!bStatus);
-
-			cPlayer3D->SetMovementSpeed(DEFAULT_STAND);
-			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::STAND);
-		}
-	}
-		
-	if (CKeyboardController::GetInstance()->IsKeyPressed(GLFW_KEY_V))
-	{
-		if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::CROUCH)
-		{
-			cPlayer3D->SetMovementSpeed(DEFAULT_STAND * 0.25f);
-			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::PRONE);
-		}
-		else if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::PRONE)
-		{
-			cPlayer3D->SetMovementSpeed(DEFAULT_STAND * 0.5f);
-			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::CROUCH);
-		}
-	}
-		
 
 	//Get keyboard and mouse updates
 	if (!cPlayer3D->IsCameraAttached())
@@ -574,7 +487,7 @@ bool CScene3D::Update(const double dElapsedTime)
 		cPlayer3D->ProcessRotate((float)cMouseController->GetMouseDeltaX(), (float)cMouseController->GetMouseDeltaY());
 		cCamera->ProcessMouseScroll((float)cMouseController->GetMouseScrollStatus(CMouseController::SCROLL_TYPE::SCROLL_TYPE_YOFFSET));
 	}
-	
+
 	//Detach camera
 	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_0))
 	{
@@ -589,60 +502,6 @@ bool CScene3D::Update(const double dElapsedTime)
 
 		//Reset key so that it will not repeat until key is released and pressed again
 		CKeyboardController::GetInstance()->ResetKey(GLFW_KEY_0);
-	}
-
-	//Switch weapon
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_1))
-	{
-		cPlayer3D->SetCurrentWeapon(0);
-	}
-		
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_2))
-	{
-		cPlayer3D->SetCurrentWeapon(1);
-	}
-
-	if (CKeyboardController::GetInstance()->IsKeyPressed(GLFW_KEY_8))
-	{
-		bool bStatus = CCameraEffectsManager::GetInstance()->Get("CameraShake")->GetStatus();
-		CCameraEffectsManager::GetInstance()->Get("CameraShake")->SetStatus(!bStatus);
-
-		//Reset the key so that it will not repeat until the key is pressed again
-		CKeyboardController::GetInstance()->ResetKey(GLFW_KEY_8);
-	}
-
-	if (CKeyboardController::GetInstance()->IsKeyPressed(GLFW_KEY_9))
-	{
-		bool bStatus = CCameraEffectsManager::GetInstance()->Get("CrossHair")->GetStatus();
-		CCameraEffectsManager::GetInstance()->Get("CrossHair")->SetStatus(!bStatus);
-
-		//Reset the key so that it will not repeat until the key is pressed again
-		CKeyboardController::GetInstance()->ResetKey(GLFW_KEY_9);
-	}
-
-	//Reload
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_R))
-	{
-		cPlayer3D->GetWeapon()->Reload();
-	}
-
-	//Get mouse button updates
-	if (cMouseController->IsButtonReleased(CMouseController::BUTTON_TYPE::LMB))
-	{
-		cPlayer3D->DischargeWeapon();
-	}
-
-	if (cMouseController->IsButtonPressed(CMouseController::BUTTON_TYPE::RMB))
-	{
-		//Switch on scope mode and zoom in
-		cCamera->fZoom = 1.0f;
-		CCameraEffectsManager::GetInstance()->Get("ScopeScreen")->SetStatus(true);
-	}
-	else if (cMouseController->IsButtonReleased(CMouseController::BUTTON_TYPE::RMB))
-	{
-		//Switch on scope mode and zoom in
-		cCamera->fZoom = 45.0f;
-		CCameraEffectsManager::GetInstance()->Get("ScopeScreen")->SetStatus(false);
 	}
 
 	//Update the solid objects
@@ -801,4 +660,157 @@ void CScene3D::Render(void)
  */
 void CScene3D::PostRender(void)
 {
+}
+
+void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
+{
+	//Update Slide
+	if (cPlayer3D->GetSlideTime() > 0.0f && cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::SLIDE)
+	{
+		cPlayer3D->SlideMovement((float)dElapsedTime);
+	}
+
+	//Movement
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_W))
+	{
+		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::FORWARD, (float)dElapsedTime);
+		((CCameraShake*)CCameraEffectsManager::GetInstance()->Get("CameraShake"))->bToBeUpdated = true;
+	}
+	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_S))
+	{
+		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::BACKWARD, (float)dElapsedTime);
+		((CCameraShake*)CCameraEffectsManager::GetInstance()->Get("CameraShake"))->bToBeUpdated = true;
+	}
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_A))
+		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::LEFT, (float)dElapsedTime);
+	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_D))
+		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::RIGHT, (float)dElapsedTime);
+
+	//Jump
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_SPACE))
+	{
+		if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::SLIDE)
+		{
+			cPlayer3D->SetSlideTime(0.0f);
+			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::STAND);
+		}
+		cPlayer3D->SetToJump();
+	}
+
+	//Sprint
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_LEFT_SHIFT))
+	{
+		cPlayer3D->SetMovementSpeed(15);
+		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(true);
+	}
+	else if (CKeyboardController::GetInstance()->IsKeyReleased(GLFW_KEY_LEFT_SHIFT))
+	{
+		cPlayer3D->SetMovementSpeed(CPlayer3D::GetInstance()->PLAYER_SPEED);
+		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(false);
+	}
+
+	//Slide
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_G) && cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::STAND)
+	{
+		bool bStatus = CCameraEffectsManager::GetInstance()->Get("DirtScreen")->GetStatus();
+		CCameraEffectsManager::GetInstance()->Get("DirtScreen")->SetStatus(!bStatus);
+
+		cPlayer3D->SlideMovement((float)dElapsedTime);
+	}
+
+
+	//SMovements
+	if (CKeyboardController::GetInstance()->IsKeyPressed(GLFW_KEY_C))
+	{
+		if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::STAND)
+		{
+			bool bStatus = CCameraEffectsManager::GetInstance()->Get("DirtScreen")->GetStatus();
+			CCameraEffectsManager::GetInstance()->Get("DirtScreen")->SetStatus(!bStatus);
+
+			cPlayer3D->SetMovementSpeed(DEFAULT_STAND * 0.5f);
+			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::CROUCH);
+		}
+		else if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::CROUCH || cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::SLIDE)
+		{
+			if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::SLIDE)
+			{
+				//bool bStatus = CCameraEffectsManager::GetInstance()->Get("DirtScreen")->GetStatus();
+				//CCameraEffectsManager::GetInstance()->Get("DirtScreen")->SetStatus(!bStatus);
+				cPlayer3D->SetSlideTime(0.0f);
+			}
+			bool bStatus = CCameraEffectsManager::GetInstance()->Get("DirtScreen")->GetStatus();
+			CCameraEffectsManager::GetInstance()->Get("DirtScreen")->SetStatus(!bStatus);
+
+			cPlayer3D->SetMovementSpeed(DEFAULT_STAND);
+			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::STAND);
+		}
+	}
+
+	if (CKeyboardController::GetInstance()->IsKeyPressed(GLFW_KEY_V))
+	{
+		if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::CROUCH)
+		{
+			cPlayer3D->SetMovementSpeed(DEFAULT_STAND * 0.25f);
+			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::PRONE);
+		}
+		else if (cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::PRONE)
+		{
+			cPlayer3D->SetMovementSpeed(DEFAULT_STAND * 0.5f);
+			cPlayer3D->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::CROUCH);
+		}
+	}
+
+	//Switch weapon
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_1))
+	{
+		cPlayer3D->SetCurrentWeapon(0);
+	}
+
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_2))
+	{
+		cPlayer3D->SetCurrentWeapon(1);
+	}
+
+	if (CKeyboardController::GetInstance()->IsKeyPressed(GLFW_KEY_8))
+	{
+		bool bStatus = CCameraEffectsManager::GetInstance()->Get("CameraShake")->GetStatus();
+		CCameraEffectsManager::GetInstance()->Get("CameraShake")->SetStatus(!bStatus);
+
+		//Reset the key so that it will not repeat until the key is pressed again
+		CKeyboardController::GetInstance()->ResetKey(GLFW_KEY_8);
+	}
+
+	if (CKeyboardController::GetInstance()->IsKeyPressed(GLFW_KEY_9))
+	{
+		bool bStatus = CCameraEffectsManager::GetInstance()->Get("CrossHair")->GetStatus();
+		CCameraEffectsManager::GetInstance()->Get("CrossHair")->SetStatus(!bStatus);
+
+		//Reset the key so that it will not repeat until the key is pressed again
+		CKeyboardController::GetInstance()->ResetKey(GLFW_KEY_9);
+	}
+
+	//Reload
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_R))
+	{
+		cPlayer3D->GetWeapon()->Reload();
+	}
+
+	//Get mouse button updates
+	if (cMouseController->IsButtonReleased(CMouseController::BUTTON_TYPE::LMB))
+	{
+		cPlayer3D->DischargeWeapon();
+	}
+
+	if (cMouseController->IsButtonPressed(CMouseController::BUTTON_TYPE::RMB))
+	{
+		//Switch on scope mode and zoom in
+		cCamera->fZoom = 1.0f;
+		CCameraEffectsManager::GetInstance()->Get("ScopeScreen")->SetStatus(true);
+	}
+	else if (cMouseController->IsButtonReleased(CMouseController::BUTTON_TYPE::RMB))
+	{
+		//Switch on scope mode and zoom in
+		cCamera->fZoom = 45.0f;
+		CCameraEffectsManager::GetInstance()->Get("ScopeScreen")->SetStatus(false);
+	}
 }

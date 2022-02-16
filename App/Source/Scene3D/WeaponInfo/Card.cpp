@@ -49,6 +49,8 @@ bool CCard::Init(void)
 	dTimeBetweenShots = 0.1666;
 	// The elapsed time (between shots)
 	dElapsedTime = 0.0;
+	// The maximum elapsed time for reloading of a magazine in milliseconds
+	dMaxReloadTime = 1.0f;
 	// Boolean flag to indicate if weapon can fire now
 	bFire = true;
 
