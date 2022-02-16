@@ -1,4 +1,5 @@
 Card Weapon
+Chargable Weapons
 Player Sliding
 Player SMovements
 Win/Lose Condition
