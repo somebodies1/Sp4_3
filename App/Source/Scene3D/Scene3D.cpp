@@ -856,6 +856,7 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 		else if (cMouseController->IsButtonReleased(CMouseController::BUTTON_TYPE::LMB))
 		{
 			cPlayer3D->DischargeWeapon(); //Release based on charge
+			cPlayer3D->GetWeapon()->SetChargeTime(0.0f);
 		}
 		break;
 	case CWeaponInfo::WEAPON_TYPE::ASSAULT_RIFLE:
