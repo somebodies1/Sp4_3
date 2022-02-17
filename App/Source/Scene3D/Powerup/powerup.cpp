@@ -49,6 +49,8 @@ powerup::POWERUPTYPE powerup::Update(double dt)
 	case INVINCIBLE:
 		decreaseTime(dt);
 		break;
+	case SLOWED:
+		decreaseTime(dt);
 	}
 	return powertype;
 }

@@ -283,7 +283,13 @@ void CEntity3D::PowerupUpdate(const double dElapsedTime)
 				activepowerList.erase(activepowerList.begin());
 			}
 			break;
-		case powerup::FIRERATE:
+		case powerup::SLOWED:
+			if (activepowerList[i]->getTimeLeft() <= 0.f)
+			{
+				activepowerList[i]->setDead(true);
+				this->SetMovementSpeed(5.f);
+				activepowerList.erase(activepowerList.begin());
+			}
 			break;
 			}
 		}
@@ -349,7 +355,20 @@ void CEntity3D::AddPowerup(CEntity3D* dude, powerup::POWERUPTYPE pType, float ne
 			//std::cout << "New SPeed" << endl;
 		}
 		break;
-	case powerup::FIRERATE:
+	case powerup::SLOWED:
+		if (AddPowerupTime(dude, pType, newTime))
+		{
+			return;
+		}
+		else
+		{
+			powerup* p = new powerup(pType, newTime); //create new powerup
+			dude->activepowerList.push_back(p); //push to vector
+			dude->SetMovementSpeed(dude->GetMovementSpeed() * 0.5f); //effect
+			//std::cout << this->GetMovementSpeed() << endl;
+			//std::cout << "New SPeed" << endl;
+		}
+	
 		break;
 	}
 }

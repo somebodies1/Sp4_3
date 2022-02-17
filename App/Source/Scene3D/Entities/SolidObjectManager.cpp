@@ -280,11 +280,12 @@ bool CSolidObjectManager::CheckForCollision(void)
 						))
 				{
 					(*it)->RollbackPosition();
-					(*it)->AddPowerup((*it), powerup::INVINCIBLE, 5.f);
+					(*it)->AddPowerup((*it), powerup::INVINCIBLE, 9.f);
 					//if (((*it)->GetType() == CSolidObject::TYPE::PLAYER))
 						//bResult = true;
 					std::cout << (*it)->GetMovementSpeed() << std::endl;
 					(*it_other)->SetStatus(false);
+					//cInventoryItem->Add(30);
 					cout << "** Collision between Entity and powerUP ***" << endl;
 					break;
 				}
@@ -340,12 +341,14 @@ bool CSolidObjectManager::CheckForCollision(void)
 					{
 						cInventoryItem->Remove(10);
 					}
+					
 
 					if (cInventoryItem->GetCount() <= 0)
 					{
 						// Player loses the game
 						CGameManager3D::GetInstance()->bPlayerLost = true;
 					}
+					(*it)->AddPowerup((*it), powerup::SLOWED,1.f);
 					cout << "** RayBoxCollision between Player and Projectile ***" << endl;
 					bResult = true;
 					break;

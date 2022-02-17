@@ -14,6 +14,7 @@ public:
 		INVINCIBLE,
 		FIRERATE,
 		TIMESTOP,
+		SLOWED,
 		NUM_POWERUPTYPE
 	};
 	
