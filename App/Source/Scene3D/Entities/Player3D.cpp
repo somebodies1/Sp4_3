@@ -325,6 +325,7 @@ void CPlayer3D::ProcessMovement(const PLAYERMOVEMENT direction, const float delt
 		return;
 
 	float velocity = fMovementSpeed * deltaTime;
+	float WalkVelocity = fMovementSpeed * deltaTime / 2;
 	if (direction == PLAYERMOVEMENT::FORWARD)
 	{
 		vec3Position += vec3Front * velocity;
@@ -347,6 +348,16 @@ void CPlayer3D::ProcessMovement(const PLAYERMOVEMENT direction, const float delt
 	{
 		vec3Position += vec3Right * velocity;
 		lastMovement[1] = PLAYERMOVEMENT::RIGHT;
+	}
+	if (direction == PLAYERMOVEMENT::WALK)
+	{
+		vec3Position += vec3Front * WalkVelocity;
+		lastMovement[1] = PLAYERMOVEMENT::WALK;
+	}
+	if (direction == PLAYERMOVEMENT::WALKBACKWARD)
+	{
+		vec3Position -= vec3Front * WalkVelocity;
+		lastMovement[1] = PLAYERMOVEMENT::WALKBACKWARD;
 	}
 		
 

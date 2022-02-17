@@ -46,6 +46,8 @@ public:
 		BACKWARD,
 		LEFT,
 		RIGHT,
+		WALK,
+		WALKBACKWARD,
 		NUM_MOVEMENTS
 	};
 

@@ -693,7 +693,17 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 	}
 
 	//Movement
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_W))
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_W) && CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_CAPS_LOCK))
+	{
+		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::WALK, (float)dElapsedTime);
+		((CCameraShake*)CCameraEffectsManager::GetInstance()->Get("CameraShake"))->bToBeUpdated = true;
+	}
+	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_S) && CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_CAPS_LOCK))
+	{
+		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::WALKBACKWARD, (float)dElapsedTime);
+		((CCameraShake*)CCameraEffectsManager::GetInstance()->Get("CameraShake"))->bToBeUpdated = true;
+	}
+	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_W))
 	{
 		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::FORWARD, (float)dElapsedTime);
 		((CCameraShake*)CCameraEffectsManager::GetInstance()->Get("CameraShake"))->bToBeUpdated = true;
@@ -703,6 +713,7 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::BACKWARD, (float)dElapsedTime);
 		((CCameraShake*)CCameraEffectsManager::GetInstance()->Get("CameraShake"))->bToBeUpdated = true;
 	}
+	
 	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_A))
 		cPlayer3D->ProcessMovement(CPlayer3D::PLAYERMOVEMENT::LEFT, (float)dElapsedTime);
 	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_D))
