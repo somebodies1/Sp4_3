@@ -468,6 +468,9 @@ bool CPlayer3D::Update(const double dElapsedTime)
 			cCamera->vec3Position.y = vec3Position.y * 0.95f + cCamera->vec3Offset.y;
 			cCamera->vec3Position.z = vec3Position.z + cCamera->vec3Offset.z;
 			break;
+		case PLAYER_SMOVEMENT::CAR:
+			cCamera->vec3Position = vec3Position + cCamera->vec3Offset;
+			
 		default:
 			cCamera->vec3Position= vec3Position + cCamera->vec3Offset;
 			break;
@@ -479,7 +482,7 @@ bool CPlayer3D::Update(const double dElapsedTime)
 		cCamera->fYaw = fYaw;
 		cCamera->fPitch = fPitch;
 	}
-
+	
 	// Constraint the player's position
 	Constraint();
 

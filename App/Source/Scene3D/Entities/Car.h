@@ -53,7 +53,7 @@ public:
 	bool justpress = false;
 
 	CPlayer3D* player;
-
+	CCamera* carCam;
 	// Default Constructor
 	CCar(void);
 
@@ -97,4 +97,9 @@ public:
 	float GetAngle(Vector3 vec1, Vector3 vec2);
 	void updateCar(float dt);
 	void IncrementToValue(float& dir, float spd, float target);
+
+	// Attach a camera to this class instance
+	void AttachCamera(CCamera* cCamera = NULL);
+	// Check if a camera ia attached to this class instance
+	bool IsCameraAttached(void);
 };

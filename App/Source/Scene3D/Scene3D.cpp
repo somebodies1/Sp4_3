@@ -516,10 +516,12 @@ bool CScene3D::Update(const double dElapsedTime)
 		if (cPlayer3D->IsCameraAttached())
 		{
 			cPlayer3D->AttachCamera();
+			cout << "not attached" << endl;
 		}
 		else
 		{
 			cPlayer3D->AttachCamera(cCamera);
+			cout << "attached" << endl;
 		}
 
 		//Reset key so that it will not repeat until key is released and pressed again
@@ -686,6 +688,12 @@ void CScene3D::PostRender(void)
 
 void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 {
+	
+	//if (!cPlayer3D->IsCameraAttached())
+	//{
+	//	cPlayer3D->AttachCamera(cCamera);
+	//}
+	
 	//Update Slide
 	if (cPlayer3D->GetSlideTime() > 0.0f && cPlayer3D->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::SLIDE)
 	{

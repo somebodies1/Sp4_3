@@ -1,1 +1,5 @@
-﻿
+﻿  Car.cpp
+C:\Users\xielo\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(234,12): warning C4244: 'argument': conversion from 'const double' to 'float', possible loss of data
+C:\Users\xielo\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(315,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\xielo\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(354,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  App.vcxproj -> C:\Users\xielo\Source\Repos\Sp4_3\Debug\App.exe

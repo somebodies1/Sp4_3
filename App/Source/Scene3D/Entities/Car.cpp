@@ -42,7 +42,7 @@ CCar::CCar(const glm::vec3 vec3Position,
 	this->vec3Position = glm::vec3(vec3Position.x, vec3Position.y + fHeightOffset, vec3Position.z);
 	this->vec3Front = vec3Front;
 	player = CPlayer3D::GetInstance();
-
+	carCam = CCamera::GetInstance();
 	CarVector = Vector3(vec3Position.x, vec3Position.y, vec3Position.z);
 }
 
@@ -316,16 +316,27 @@ void CCar::updateCar(float dt)
 	float rotationspd = 7 * dt;
 
 	//Entering car for player
+	static float buttonPress = 1.0f;
 	float length = glm::length(player->GetPosition() - vec3Position);
-	if (length <= 3 && CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_M) && justpress == false) {
-		justpress = true;
+	if (length <= 3 && CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_M) && buttonPress <= 0.0f) {
+		//justpress = !justpress;
+		
+		buttonPress = 1.f;
+		player->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::CAR);
+		std::cout << "Im in a car\n";
+		AttachCamera(CCamera::GetInstance());
+	}
+	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_M) && buttonPress <= 0.0f)
+	{
+		buttonPress = 1.f;
 		if (player->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::CAR) {
 			player->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::STAND);
+			AttachCamera(nullptr);
 		}
-		else {
-			player->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::CAR);
-			std::cout << "Im in a car\n";
-		}
+	}
+	else if (buttonPress > 0.0f)
+	{
+		buttonPress -= dt;
 	}
 
 	if (player->GetSMovement() != CPlayer3D::PLAYER_SMOVEMENT::CAR)
@@ -411,6 +422,27 @@ void CCar::updateCar(float dt)
 	vec3Position = glm::vec3(CarVector.x, CarVector.y, CarVector.z);
 	float fHeightCheck = CTerrain::GetInstance()->GetHeight(vec3Position.x, vec3Position.z);
 	vec3Position.y = fHeightCheck + 0.5f;
+
+	player->SetPosition(vec3Position);
+	std::cout << "Player posx: " << player->GetPosition().x << endl;
+	std::cout << "Player posy: " << player->GetPosition().y << endl;
+	std::cout << "Player posz: " << player->GetPosition().z << endl;
+
+	std::cout << "Car posx: " << vec3Position.x << endl;
+	std::cout << "Car posy: " << vec3Position.y << endl;
+	std::cout << "Car posz: " << vec3Position.z << endl;
+
+	if (carCam)
+	{
+		carCam->vec3Position.x = vec3Position.x + carCam->vec3Offset.x;
+		carCam->vec3Position.y = vec3Position.y * 1.2f + carCam->vec3Offset.y;
+		carCam->vec3Position.z = vec3Position.z + carCam->vec3Offset.z;
+		carCam->vec3Front = vec3Front;
+		carCam->vec3Up = glm::vec3(0.0f, 1.0f, 0.0f);
+		//cCamera->vec3Right = vec3Right;
+		//cCamera->fYaw = fYaw;
+		//cCamera->fPitch = fPitch;
+	}
 }
 
 void CCar::IncrementToValue(float& dir, float spd, float target)
@@ -424,5 +456,29 @@ void CCar::IncrementToValue(float& dir, float spd, float target)
 	else {
 		dir = target;
 	}
+}
+
+void CCar::AttachCamera(CCamera* cCamera)
+{
+	// Set the camera to the player
+	this->carCam = cCamera;
+
+	// Update the camera's attributes with the player's attributes
+	if (carCam)
+	{
+		carCam->vec3Position = vec3Position;
+		carCam->vec3Front = vec3Front;
+		//cCamera->vec3Up = vec3Up;
+		//cCamera->vec3Right = vec3Right;
+		//cCamera->fYaw = fYaw;
+		//cCamera->fPitch = fPitch;
+	}
+}
+
+bool CCar::IsCameraAttached(void)
+{
+	if (carCam)
+		return true;
+	return false;
 }
 
