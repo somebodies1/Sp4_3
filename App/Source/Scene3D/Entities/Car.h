@@ -50,6 +50,8 @@ public:
 	Vector3 CarVector;
 	Vector3 prev_CarVector;
 
+	bool justpress = false;
+
 	CPlayer3D* player;
 
 	// Default Constructor

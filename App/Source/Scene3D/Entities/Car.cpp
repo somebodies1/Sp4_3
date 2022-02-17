@@ -317,7 +317,8 @@ void CCar::updateCar(float dt)
 
 	//Entering car for player
 	float length = glm::length(player->GetPosition() - vec3Position);
-	if (length <= 3 && CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_M)) {
+	if (length <= 3 && CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_M) && justpress == false) {
+		justpress = true;
 		if (player->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::CAR) {
 			player->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::STAND);
 		}
