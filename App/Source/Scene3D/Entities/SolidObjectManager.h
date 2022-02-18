@@ -23,6 +23,7 @@
 //Include InventoryManager
 #include "../../Scene2D/InventoryManager.h"
 #include "../GameManager3D.h"
+#include "../Entities/Player3D.h"
 
 class CSolidObjectManager : public CSingletonTemplate<CSolidObjectManager>
 {
@@ -80,7 +81,7 @@ protected:
 	//Handler for gameManager3D class
 	CGameManager3D* cGameManager3D;
 	CEntity3D* cEntity3D;
-
+	CPlayer3D* cPlayer3D;
 
 	int enemyCount;
 	// Default Constructor

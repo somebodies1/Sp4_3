@@ -61,6 +61,7 @@ bool CSolidObjectManager::Init(void)
 	lSolidObject.clear();
 
 	cProjectileManager = CProjectileManager::GetInstance();
+	cPlayer3D = CPlayer3D::GetInstance();
 
 	// Get the handler to the CInventoryManager instance
 	cInventoryManager = CInventoryManager::GetInstance();
@@ -285,6 +286,8 @@ bool CSolidObjectManager::CheckForCollision(void)
 						//bResult = true;
 					std::cout << (*it)->GetMovementSpeed() << std::endl;
 					(*it_other)->SetStatus(false);
+					
+					//cInventoryItem = cInventoryManager->GetItem("Health");
 					//cInventoryItem->Add(30);
 					cout << "** Collision between Entity and powerUP ***" << endl;
 					break;
@@ -363,11 +366,13 @@ bool CSolidObjectManager::CheckForCollision(void)
 					{
 						if ((*it)->DamageCheck(20))
 							SetEnemyCount(GetEnemyCount() - 1);
+						cPlayer3D->SetScore(cPlayer3D->GetScore() + 3);
 					}
 					else if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::PROJECTILE)
 					{
 						if ((*it)->DamageCheck(10))
 							SetEnemyCount(GetEnemyCount() - 1);
+						cPlayer3D->SetScore(cPlayer3D->GetScore() + 1);
 					}
 					
 					if (GetEnemyCount() <= 0)

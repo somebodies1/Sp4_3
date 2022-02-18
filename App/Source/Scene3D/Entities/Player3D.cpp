@@ -650,3 +650,7 @@ void CPlayer3D::PrintSelf(void)
 	cout << "CPlayer3D::PrintSelf()" << endl;
 	cout << "========================" << endl;
 }
+
+
+
+

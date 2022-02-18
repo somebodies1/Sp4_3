@@ -1,0 +1,3 @@
+Status Effects/ Power up class
+Imrpoved minimap
+Score System

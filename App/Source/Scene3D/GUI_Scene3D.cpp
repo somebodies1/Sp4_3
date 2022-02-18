@@ -239,6 +239,7 @@ void CGUI_Scene3D::Update(const double dElapsedTime)
 
 	// Display the FPS
 	ImGui::TextColored(ImVec4(1, 1, 0, 1), "FPS: %d", cFPSCounter->GetFrameRate());
+	ImGui::TextColored(ImVec4(1, 1, 0, 1), "Score: %d", cPlayer3D->GetScore());
 	//ImGui::TextColored(ImVec4(1, 1, 0, 1), "health: %d", cEntity3D->GetHP());
 	// Render the Health
 	ImGuiWindowFlags healthWindowFlags = ImGuiWindowFlags_AlwaysAutoResize |

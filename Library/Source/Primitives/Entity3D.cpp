@@ -78,10 +78,12 @@ bool CEntity3D::Init(void)
 {
 	// Get the handler to the CSettings Singleton
 	cSettings = CSettings::GetInstance();
+	
 
 	bStatus = true;
 	maxHP = currentHP = 100;
 	IsInvis = false;
+	PScore = 0;
 	//activepowerList;
 	return true;
 }
@@ -223,6 +225,16 @@ bool CEntity3D::GetInvis()
 	return IsInvis;
 }
 
+void CEntity3D::SetScore(int pscore)
+{
+	this->PScore = pscore;
+}
+
+int CEntity3D::GetScore()
+{
+	return PScore;
+}
+
 // These methods are for marking this CEntity3D for deletion
 /**
  @brief Mark this CEntity3D for deletion
@@ -291,6 +303,8 @@ void CEntity3D::PowerupUpdate(const double dElapsedTime)
 				activepowerList.erase(activepowerList.begin());
 			}
 			break;
+		
+
 			}
 		}
 

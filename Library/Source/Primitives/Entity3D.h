@@ -100,6 +100,9 @@ public:
 	virtual int GetHP(void);
 	virtual bool GetInvis();
 
+	virtual int GetScore();
+	virtual void SetScore(int pscore);
+
 	// These methods are for marking this CEntity3D for deletion
 	virtual void SetToDelete(const bool bToDelete);
 	virtual const bool IsToDelete(void) const;
@@ -173,6 +176,7 @@ protected:
 	bool bToDelete;
 
 	bool IsInvis;
+	int PScore;
 
 	// HP to check if dead
 	int currentHP;

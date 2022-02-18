@@ -138,6 +138,8 @@ public:
 	// Print Self
 	virtual void PrintSelf(void);
 
+	
+
 protected:
 	// The handle to the CCamera class instance
 	CCamera* cCamera;
@@ -149,6 +151,8 @@ protected:
 	CWeaponInfo* cPrimaryWeapon;
 	CWeaponInfo* cSecondaryWeapon;
 	int iCurrentWeapon;
+
+	
 
 	// Player/Camera Sway
 	float fCameraSwayAngle; 
