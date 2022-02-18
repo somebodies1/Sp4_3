@@ -365,14 +365,19 @@ bool CSolidObjectManager::CheckForCollision(void)
 					if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::CARD_PROJECTILE)
 					{
 						if ((*it)->DamageCheck(20))
+						{
 							SetEnemyCount(GetEnemyCount() - 1);
-						cPlayer3D->SetScore(cPlayer3D->GetScore() + 3);
+							cPlayer3D->SetScore(cPlayer3D->GetScore() + 3);
+						}
+							
 					}
 					else if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::PROJECTILE)
 					{
 						if ((*it)->DamageCheck(10))
+						{
 							SetEnemyCount(GetEnemyCount() - 1);
-						cPlayer3D->SetScore(cPlayer3D->GetScore() + 1);
+							cPlayer3D->SetScore(cPlayer3D->GetScore() + 1);
+						}
 					}
 					
 					if (GetEnemyCount() <= 0)
