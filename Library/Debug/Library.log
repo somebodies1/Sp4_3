@@ -2,3 +2,6 @@
 C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Library\Source\Primitives\Entity3D.cpp(287,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Library\Source\Primitives\Entity3D.cpp(426,20): warning C4018: '<': signed/unsigned mismatch
   Library.vcxproj -> C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Debug\Library.lib
+C:\School\Sp4_3\Library\Source\Primitives\Entity3D.cpp(270,20): warning C4018: '<': signed/unsigned mismatch
+C:\School\Sp4_3\Library\Source\Primitives\Entity3D.cpp(384,20): warning C4018: '<': signed/unsigned mismatch
+  Library.vcxproj -> C:\School\Sp4_3\Debug\Library.lib

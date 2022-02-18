@@ -35,6 +35,7 @@ public:
 	{
 		PLAYER = 0,
 		NPC,
+		SPIDER,
 		DRONE,
 		OTHERS,		// Default value: Other entities such as ground and skybox
 		STRUCTURE,	// Buildings etc

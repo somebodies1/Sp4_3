@@ -101,7 +101,13 @@ void CEntity3D::SetShader(const std::string& _name)
 
 bool CEntity3D::DamageCheck(const int damage)
 {
+	int tempHp = currentHP;
+
 	currentHP -= damage;
+	if (tempHp > currentHP && TYPE::SPIDER)
+	{
+		vec3Position.y += 1.f;
+	}
 	if (currentHP <= 0) //if dead
 	{
 		SetStatus(false);

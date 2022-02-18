@@ -373,7 +373,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					bResult = true;
 					break;
 				}
-				else if ((*it)->GetType() == CSolidObject::TYPE::NPC)
+				else if ((*it)->GetType() == CSolidObject::TYPE::NPC || (*it)->GetType() == CSolidObject::TYPE::SPIDER)
 				{
 					// If this projectile is fired by the NPC, then skip it
 					if ((cProjectileManager->vProjectile[i])->GetSource() == (*it))

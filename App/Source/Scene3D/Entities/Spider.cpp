@@ -125,7 +125,7 @@ bool Spider::Init(void)
 	CSolidObject::Init();
 
 	// Set the type
-	SetType(CEntity3D::TYPE::NPC);
+	SetType(CEntity3D::TYPE::SPIDER);
 
 	// Initialise the cPlayer3D
 	cPlayer3D = CPlayer3D::GetInstance();
@@ -436,6 +436,31 @@ bool Spider::Update(const double dElapsedTime)
 			ProcessMovement(SPIDERMOVEMENT::FORWARD, (float)dElapsedTime);
 			if (_DEBUG_FSM == true)
 				cout << "Attacking now" << endl;
+		}
+		else
+		{
+			// If NPC loses track of player, then go back to the nearest waypoint
+			vec3Front = glm::normalize((cWaypointManager->GetNearestWaypoint(vec3Position)->GetPosition() - vec3Position));
+			UpdateFrontAndYaw();
+
+			// Swtich to patrol mode
+			sCurrentFSM = FSM::PATROL;
+			//iFSMCounter = 0;
+			if (_DEBUG_FSM == true)
+				cout << "Switching to Patrol State" << endl;
+		}
+		iFSMCounter++;
+		break;
+	case FSM::FLY:
+		if (glm::distance(vec3Position, cPlayer3D->GetPosition())/*this->currentHP*/ )
+		{
+			vec3Front = glm::normalize((cPlayer3D->GetPosition() - vec3Position));
+			UpdateFrontAndYaw();
+
+			// Process the movement
+			ProcessMovement(SPIDERMOVEMENT::BACKWARD, (float)dElapsedTime);
+			if (_DEBUG_FSM == true)
+				cout << "Running now" << endl;
 		}
 		else
 		{
