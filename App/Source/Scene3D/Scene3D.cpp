@@ -348,6 +348,13 @@ bool CScene3D::Init(void)
 	cInvincibleBox->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 	cSolidObjectManager->Add(cInvincibleBox);
 	
+	float fCheckHeight3;
+	fCheckHeight3 = cTerrain->GetHeight(2.0f, -2.0f);
+	CHealthUP* cHealthUP = new CHealthUP(glm::vec3(11.0f, fCheckHeight3, -2.0f));
+	cHealthUP->SetShader("Shader3D");
+	cHealthUP->Init();
+	cHealthUP->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+	cSolidObjectManager->Add(cHealthUP);
 
 	//Load the GUI entities
 	//Store the cGUI_Scene3D instance here

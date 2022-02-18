@@ -293,6 +293,23 @@ bool CSolidObjectManager::CheckForCollision(void)
 					break;
 				}
 				if (
+					(((*it)->GetType() == CSolidObject::TYPE::PLAYER) &&
+						((*it_other)->GetType() == CSolidObject::TYPE::HEALTH_UP)
+						))
+				{
+					(*it)->RollbackPosition();
+					(*it)->AddPowerup((*it), powerup::HEALTHUP, 2.f);
+					//if (((*it)->GetType() == CSolidObject::TYPE::PLAYER))
+						//bResult = true;
+					
+					(*it_other)->SetStatus(false);
+
+					cInventoryItem = cInventoryManager->GetItem("Health");
+					cInventoryItem->Add(30);
+					cout << "** Collision between Entity and powerUP ***" << endl;
+					break;
+				}
+				if (
 					((*it)->GetType() == CSolidObject::TYPE::PLAYER)
 					&&((*it_other)->GetType() == CSolidObject::TYPE::CAR))
 					

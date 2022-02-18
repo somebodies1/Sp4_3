@@ -15,6 +15,7 @@ public:
 		FIRERATE,
 		TIMESTOP,
 		SLOWED,
+		HEALTHUP,
 		NUM_POWERUPTYPE
 	};
 	

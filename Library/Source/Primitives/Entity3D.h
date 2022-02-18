@@ -42,6 +42,7 @@ public:
 		CARD_PROJECTILE,
 		SPEED_UP,
 		INVINCIBLE_UP,
+		HEALTH_UP,
 		CAR,
 		NUM_TYPES
 	};
@@ -84,6 +85,8 @@ public:
 	virtual void SetMaxHP(const int newMaxHP);
 	virtual void SetHP(int playerhp);
 	virtual void SetInvis(bool isinvis);
+	virtual void SetScore(int pscore);
+	virtual void SetHeathUP(bool ishealthup);
 
 	// Get Methods
 	virtual const GLuint GetTextureID(void) const;
@@ -99,9 +102,9 @@ public:
 	virtual const bool GetStatus(void) const;
 	virtual int GetHP(void);
 	virtual bool GetInvis();
-
 	virtual int GetScore();
-	virtual void SetScore(int pscore);
+	virtual bool GetHealthUP();
+	
 
 	// These methods are for marking this CEntity3D for deletion
 	virtual void SetToDelete(const bool bToDelete);
@@ -176,6 +179,7 @@ protected:
 	bool bToDelete;
 
 	bool IsInvis;
+	bool IsHealthUP;
 	int PScore;
 
 	// HP to check if dead

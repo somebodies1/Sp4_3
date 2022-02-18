@@ -83,6 +83,7 @@ bool CEntity3D::Init(void)
 	bStatus = true;
 	maxHP = currentHP = 100;
 	IsInvis = false;
+	IsHealthUP = false;
 	PScore = 0;
 	//activepowerList;
 	return true;
@@ -230,9 +231,19 @@ void CEntity3D::SetScore(int pscore)
 	this->PScore = pscore;
 }
 
+void CEntity3D::SetHeathUP(bool ishealthup)
+{
+	this->IsHealthUP = ishealthup;
+}
+
 int CEntity3D::GetScore()
 {
 	return PScore;
+}
+
+bool CEntity3D::GetHealthUP()
+{
+	return IsHealthUP;
 }
 
 // These methods are for marking this CEntity3D for deletion
@@ -303,7 +314,14 @@ void CEntity3D::PowerupUpdate(const double dElapsedTime)
 				activepowerList.erase(activepowerList.begin());
 			}
 			break;
-		
+		case powerup::HEALTHUP:
+			if (activepowerList[i]->getTimeLeft() <= 0.f)
+			{
+				activepowerList[i]->setDead(true);
+				this->SetHeathUP(false);
+				activepowerList.erase(activepowerList.begin());
+			}
+			break;
 
 			}
 		}
@@ -384,7 +402,23 @@ void CEntity3D::AddPowerup(CEntity3D* dude, powerup::POWERUPTYPE pType, float ne
 		}
 	
 		break;
+
+	case powerup::HEALTHUP:
+		if (AddPowerupTime(dude, pType, newTime))
+		{
+			return;
+		}
+		else
+		{
+			powerup* p = new powerup(pType, newTime); //create new powerup
+			dude->activepowerList.push_back(p); //push to vector
+			dude->SetHeathUP(true); //effect
+			//std::cout << this->GetMovementSpeed() << endl;
+			//std::cout << "New SPeed" << endl;
+		}
+		break;
 	}
+	
 }
 
 bool CEntity3D::AddPowerupTime(CEntity3D* dude, powerup::POWERUPTYPE pType, float newT)

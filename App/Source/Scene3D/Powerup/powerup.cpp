@@ -51,6 +51,10 @@ powerup::POWERUPTYPE powerup::Update(double dt)
 		break;
 	case SLOWED:
 		decreaseTime(dt);
+		break;
+	case HEALTHUP:
+		decreaseTime(dt);
+		break;
 	}
 	return powertype;
 }

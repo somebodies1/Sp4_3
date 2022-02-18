@@ -51,6 +51,7 @@
 #include "Entities/Structure3D.h"
 #include "Entities/SpeedUpbox.h"
 #include "Entities/InvincibleBox.h"
+#include "Entities/HealthUP.h"
 
 //Include Enemies
 #include "Entities/Enemy3D.h"
