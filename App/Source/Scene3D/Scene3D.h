@@ -67,6 +67,7 @@
 // Include CEntityManager
 #include "Entities\EntityManager.h"
 #include "GameManager3D.h"
+#include "../GameStateManagement/GameStateManager.h"
 
 class CSettings;
 
@@ -138,6 +139,8 @@ protected:
 
 	//Handler to gameManager class
 	CGameManager3D* cGameManager3D;
+
+	CGameStateManager* cGameStateManager;
 
 	// Constructor
 	CScene3D(void);

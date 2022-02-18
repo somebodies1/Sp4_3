@@ -11,6 +11,8 @@
 
 #include "..\Scene3D\Scene3D.h"
 
+#include "../SoundController/SoundController.h"
+
 class CPlay3DGameState : public CGameStateBase
 {
 public:
@@ -18,6 +20,7 @@ public:
 	CPlay3DGameState(void);
 	// Destructor
 	~CPlay3DGameState(void);
+
 
 	// Init this class instance
 	virtual bool Init(void);

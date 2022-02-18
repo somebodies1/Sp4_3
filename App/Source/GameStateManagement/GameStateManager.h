@@ -25,6 +25,7 @@ public:
 	bool AddGameState(const std::string& _name, CGameStateBase* _scene);
 	bool RemoveGameState(const std::string& _name);
 	bool SetActiveGameState(const std::string& _name);
+	CGameStateBase* GetPauseGameState(void);
 	bool CheckGameStateExist(const std::string& _name);
 	bool SetPauseGameState(const std::string& _name);
 	void OffPauseGameState(void);

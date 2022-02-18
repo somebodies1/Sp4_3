@@ -87,6 +87,12 @@ bool CMenuState::Init(void)
 	startButtonData.fileName = "Image\\GUI\\PlayButton.png";
 	startButtonData.textureID = il->LoadTextureGetID(startButtonData.fileName.c_str(), false);
 
+	VolumeUpButtonData.fileName = "Image\\GUI\\VoumeUp.png";
+	VolumeUpButtonData.textureID = il->LoadTextureGetID(startButtonData.fileName.c_str(), false);
+
+	VolumeDownButtonData.fileName = "Image\\GUI\\VolumeDown.png";
+	VolumeDownButtonData.textureID = il->LoadTextureGetID(startButtonData.fileName.c_str(), false);
+
 	play3DButtonData.fileName = "Image\\GUI\\PlayButton_3D.png";
 	play3DButtonData.textureID = il->LoadTextureGetID(play3DButtonData.fileName.c_str(), false);
 
@@ -159,6 +165,15 @@ bool CMenuState::Update(const double dElapsedTime)
 			cout << "Loading Play3DGameState" << endl;
 			CGameStateManager::GetInstance()->SetActiveGameState("Play3DGameState");
 		}
+		//// Add codes for Start button here
+		//if (ImGui::ImageButton((ImTextureID)VolumeUpButtonData.textureID,
+		//	ImVec2(buttonWidth, buttonHeight), ImVec2(0.0, 0.0), ImVec2(1.0, 1.0)))
+		//{
+		//	// Reset the CKeyboardController
+		//	CKeyboardController::GetInstance()->Reset();
+
+		//	CSoundController::GetInstance()->MasterVolumeIncrease();
+		//}
 		// Add codes for Exit button here
 		if (ImGui::ImageButton((ImTextureID)exitButtonData.textureID,
 			ImVec2(buttonWidth, buttonHeight), ImVec2(0.0, 0.0), ImVec2(1.0, 1.0)))

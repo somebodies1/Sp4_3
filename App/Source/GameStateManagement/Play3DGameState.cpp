@@ -49,7 +49,6 @@ bool CPlay3DGameState::Init(void)
 		cout << "Failed to load Scene2D" << endl;
 		return false;
 	}
-
 	return true;
 }
 
@@ -76,7 +75,12 @@ bool CPlay3DGameState::Update(const double dElapsedTime)
 
 		// Load the menu state
 		cout << "Loading PauseState" << endl;
-		CGameStateManager::GetInstance()->SetPauseGameState("PauseState");
+
+
+		if (CGameStateManager::GetInstance()->SetPauseGameState("PauseState"))
+		{
+			
+		}
 	}
 
 	// Call the CScene3D's Update method

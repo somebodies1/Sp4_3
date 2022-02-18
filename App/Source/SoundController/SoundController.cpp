@@ -146,7 +146,7 @@ void CSoundController::PlaySoundByID(const int ID)
 bool CSoundController::MasterVolumeIncrease(void)
 {
 	// Get the current volume
-	float fCurrentVolume = cSoundEngine->getSoundVolume() + 0.1f;
+	float fCurrentVolume = cSoundEngine->getSoundVolume() + 0.05f;
 	cout << "MasterVolumeIncrease: fCurrentVolume = " << fCurrentVolume << endl;
 	// Check if the maximum volume has been reached
 	if (fCurrentVolume > 1.0f)
@@ -165,7 +165,7 @@ bool CSoundController::MasterVolumeIncrease(void)
 bool CSoundController::MasterVolumeDecrease(void)
 {
 	// Get the current volume
-	float fCurrentVolume = cSoundEngine->getSoundVolume() - 0.5f;
+	float fCurrentVolume = cSoundEngine->getSoundVolume() - 0.1f;
 	cout << "MasterVolumeDecrease: fCurrentVolume = " << fCurrentVolume << endl;
 	// Check if the minimum volume has been reached
 	if (fCurrentVolume < 0.0f)

@@ -67,10 +67,13 @@ bool CPauseState::Init(void)
 
 	// Load the images for buttons
 	CImageLoader* il = CImageLoader::GetInstance();
-	VolumeIncreaseButtonData.fileName = "Image\\GUI\\VolumeIncreaseButton.png";
+	VolumeIncreaseButtonData.fileName = "Image\\GUI\\VolumeUp.png";
 	VolumeIncreaseButtonData.textureID = il->LoadTextureGetID(VolumeIncreaseButtonData.fileName.c_str(), false);
-	VolumeDecreaseButtonData.fileName = "Image\\GUI\\VolumeDecreaseButton.png";
+	VolumeDecreaseButtonData.fileName = "Image\\GUI\\VolumeDown.png";
 	VolumeDecreaseButtonData.textureID = il->LoadTextureGetID(VolumeDecreaseButtonData.fileName.c_str(), false);
+	
+	if (CSettings::GetInstance()->bDisableMousePointer == true)
+		glfwSetInputMode(CSettings::GetInstance()->pWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
 	return true;
 }
@@ -109,6 +112,8 @@ bool CPauseState::Update(const double dElapsedTime)
 
 		// Display the FPS
 		ImGui::TextColored(ImVec4(1, 1, 1, 1), "In-Game Menu");
+
+
 
 		// Add codes for Start button here
 		if (ImGui::ImageButton((ImTextureID)VolumeIncreaseButtonData.textureID,
@@ -161,6 +166,15 @@ void CPauseState::Render(void)
  @brief Destroy this class instance
  */
 void CPauseState::Destroy(void)
-{
-	// cout << "CPauseState::Destroy()\n" << endl;
+{// Disable the cursor
+	if (CSettings::GetInstance()->bDisableMousePointer == true)
+		glfwSetInputMode(CSettings::GetInstance()->pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	else
+		// Hide the cursor
+		if (CSettings::GetInstance()->bShowMousePointer == false)
+			glfwSetInputMode(CSettings::GetInstance()->pWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+
+
+
+	 cout << "CPauseState::Destroy()\n" << endl;
 }

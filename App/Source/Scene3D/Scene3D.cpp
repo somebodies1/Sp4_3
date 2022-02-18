@@ -176,6 +176,8 @@ bool CScene3D::Init(void)
 	cCamera = CCamera::GetInstance();
 	cCamera->vec3Position = glm::vec3(0.0f, 0.5f, 3.0f);
 
+	//cSoundController->LoadSound(FileSystem::getPath("Sounds\\bgmusic.mp3"), 1, true);
+
 	// Store the keyboard controller singleton instance here
 	cKeyboardController = CKeyboardController::GetInstance();
 
@@ -191,7 +193,11 @@ bool CScene3D::Init(void)
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\Sound_Bell.ogg"), 1, true);
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\Sound_Explosion.ogg"), 2, true);
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\Sound_Jump.ogg"), 3, true);
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\bgmusic.ogg"), 4, true);
 
+	cSoundController->PlaySoundByID(4);
+
+	//cSoundController->PlaySoundByID(4);
 	//Load Environment Entities
 	//Load SkyBox
 	cSkyBox = CSkyBox::GetInstance();
@@ -488,6 +494,8 @@ bool CScene3D::Update(const double dElapsedTime)
 {
 	//Store the position for rollback if needed
 	cPlayer3D->StorePositionForRollback();
+
+	//if ()
 
 	if (cPlayer3D->GetSMovement() != CPlayer3D::PLAYER_SMOVEMENT::CAR)
 	{

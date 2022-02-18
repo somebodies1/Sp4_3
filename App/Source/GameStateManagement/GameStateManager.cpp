@@ -175,6 +175,11 @@ bool CGameStateManager::SetActiveGameState(const std::string& _name)
 	return true;
 }
 
+CGameStateBase* CGameStateManager::GetPauseGameState(void)
+{
+	return pauseGameState;
+}
+
 bool CGameStateManager::CheckGameStateExist(const std::string& _name)
 {
 	return GameStateMap.count(_name) != 0;
@@ -185,6 +190,7 @@ bool CGameStateManager::SetPauseGameState(const std::string& _name)
 	// Toggle to nullptr if pauseGameState already is in use
 	if (pauseGameState != nullptr)
 	{
+		pauseGameState->Destroy();
 		pauseGameState = nullptr;
 		return true;
 	}

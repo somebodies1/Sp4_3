@@ -11,6 +11,8 @@
 
 #include "Primitives/Mesh.h"
 #include "../Scene2D/BackgroundEntity.h"
+#include "../SoundController/SoundController.h"
+#include "../SoundController/SoundInfo.h"
 
 #include <string>
 
@@ -37,6 +39,8 @@ public:
 	// Destructor
 	~CMenuState(void);
 
+	CSoundController* cSoundController;
+
 	// Init this class instance
 	virtual bool Init(void);
 	// Update this class instance
@@ -49,6 +53,8 @@ public:
 protected:
 	CBackgroundEntity* background;
 	ButtonData startButtonData;
+	ButtonData VolumeUpButtonData;
+	ButtonData VolumeDownButtonData;
 	ButtonData play3DButtonData;
 	ButtonData exitButtonData;
 };
