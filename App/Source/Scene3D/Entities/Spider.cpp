@@ -322,7 +322,7 @@ void Spider::ProcessMovement(const SPIDERMOVEMENT direction, const float deltaTi
 	if (direction == SPIDERMOVEMENT::FORWARD)
 		vec3Position += vec3Front * velocity;
 	if (direction == SPIDERMOVEMENT::BACKWARD)
-		vec3Position -= vec3Front * velocity;
+		vec3Position -= vec3Front * velocity * 2.f;
 	if (direction == SPIDERMOVEMENT::LEFT)
 		vec3Position -= vec3Right * velocity;
 	if (direction == SPIDERMOVEMENT::RIGHT)
@@ -403,6 +403,13 @@ bool Spider::Update(const double dElapsedTime)
 			if (_DEBUG_FSM == true)
 				cout << "Target found: Switching to Attack State" << endl;
 		}
+		else if (this->currentHP <= 50)
+		{
+			sCurrentFSM = FSM::RUN;
+			iFSMCounter = 0;
+			if (_DEBUG_FSM == true)
+				cout << "Target found: Switching to Run State" << endl;
+		}
 		else
 		{
 			// Process the movement
@@ -437,6 +444,13 @@ bool Spider::Update(const double dElapsedTime)
 			if (_DEBUG_FSM == true)
 				cout << "Attacking now" << endl;
 		}
+		else if (this->currentHP <= 50)
+		{
+			sCurrentFSM = FSM::RUN;
+			iFSMCounter = 0;
+			if (_DEBUG_FSM == true)
+				cout << "Target found: Switching to Run State" << endl;
+		}
 		else
 		{
 			// If NPC loses track of player, then go back to the nearest waypoint
@@ -451,8 +465,8 @@ bool Spider::Update(const double dElapsedTime)
 		}
 		iFSMCounter++;
 		break;
-	case FSM::FLY:
-		if (glm::distance(vec3Position, cPlayer3D->GetPosition())/*this->currentHP*/ )
+	case FSM::RUN:
+		if (glm::distance(vec3Position, cPlayer3D->GetPosition()))
 		{
 			vec3Front = glm::normalize((cPlayer3D->GetPosition() - vec3Position));
 			UpdateFrontAndYaw();

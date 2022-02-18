@@ -13,7 +13,7 @@ public:
 		IDLE = 0,
 		PATROL = 1,
 		ATTACK = 2,
-		FLY = 3,
+		RUN = 3,
 		NUM_FSM
 	};
 
