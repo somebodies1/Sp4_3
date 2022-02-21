@@ -37,6 +37,9 @@
 // Include CTreeKabak3D
 #include "Entities/TreeKabak3D.h"
 
+//Include Math
+#include "Math/MyMath.h"
+
 // Include CSpinTower
 #include "SceneGraph/SpinTower.h"
 
@@ -291,29 +294,45 @@ bool CScene3D::Init(void)
 	cSolidObjectManager->Add(cStructure3D);
 	
 	// Initialise a CStructure3D
-	float fCheckHeight1;
-	fCheckHeight1 = cTerrain->GetHeight(2.0f, -2.0f);
-	CSpeedUpbox* cSpeedUpbox = new CSpeedUpbox(glm::vec3(5.0f, fCheckHeight1, -2.0f));
-	cSpeedUpbox->SetShader("Shader3D");
-	cSpeedUpbox->Init();
-	cSpeedUpbox->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-	cSolidObjectManager->Add(cSpeedUpbox);
-
-	float fCheckHeight2;
-	fCheckHeight2 = cTerrain->GetHeight(2.0f, -2.0f);
-	CInvincibleBox* cInvincibleBox = new CInvincibleBox(glm::vec3(8.0f, fCheckHeight2, -2.0f));
-	cInvincibleBox->SetShader("Shader3D");
-	cInvincibleBox->Init();
-	cInvincibleBox->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-	cSolidObjectManager->Add(cInvincibleBox);
+	for (int i = 0; i < 6; i++)
+	{
+		float x = Math::RandFloatMinMax(-40.f,40.f);
+		float z = Math::RandFloatMinMax(-40.f, 40.f);
+		float fCheckHeight1;
+		fCheckHeight1 = cTerrain->GetHeight(x, z);
+		CSpeedUpbox* cSpeedUpbox = new CSpeedUpbox(glm::vec3(x, fCheckHeight1,z));
+		cSpeedUpbox->SetShader("Shader3D");
+		cSpeedUpbox->Init();
+		cSpeedUpbox->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+		cSolidObjectManager->Add(cSpeedUpbox);
+	}
 	
-	float fCheckHeight3;
-	fCheckHeight3 = cTerrain->GetHeight(2.0f, -2.0f);
-	CHealthUP* cHealthUP = new CHealthUP(glm::vec3(11.0f, fCheckHeight3, -2.0f));
-	cHealthUP->SetShader("Shader3D");
-	cHealthUP->Init();
-	cHealthUP->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-	cSolidObjectManager->Add(cHealthUP);
+	for (int i = 0; i < 6; i++)
+	{
+		float x = Math::RandFloatMinMax(-40.f, 40.f);
+		float z = Math::RandFloatMinMax(-40.f, 40.f);
+		float fCheckHeight2;
+		fCheckHeight2 = cTerrain->GetHeight(x, z);
+		CInvincibleBox* cInvincibleBox = new CInvincibleBox(glm::vec3(x, fCheckHeight2, z));
+		cInvincibleBox->SetShader("Shader3D");
+		cInvincibleBox->Init();
+		cInvincibleBox->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+		cSolidObjectManager->Add(cInvincibleBox);
+	}
+	
+	for (int i = 0; i < 6; i++)
+	{
+		float x = Math::RandFloatMinMax(-40.f, 40.f);
+		float z = Math::RandFloatMinMax(-40.f, 40.f);
+		float fCheckHeight3;
+		fCheckHeight3 = cTerrain->GetHeight(x, z);
+		CHealthUP* cHealthUP = new CHealthUP(glm::vec3(x, fCheckHeight3, z));
+		cHealthUP->SetShader("Shader3D");
+		cHealthUP->Init();
+		cHealthUP->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+		cSolidObjectManager->Add(cHealthUP);
+	}
+	
 
 	//Load the GUI entities
 	//Store the cGUI_Scene3D instance here
