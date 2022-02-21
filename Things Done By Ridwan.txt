@@ -3,3 +3,5 @@ Chargable Weapons
 Player Sliding
 Player SMovements
 Win/Lose Condition
+World Constraints
+Different Weapon projectiles 
