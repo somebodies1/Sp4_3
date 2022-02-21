@@ -19,6 +19,9 @@
 // Include Projectile
 #include "Projectile.h"
 
+#include "../App/Source/SoundController/SoundController.h"
+#include "../Library/Source/System/filesystem.h"
+
 class CWeaponInfo : public CEntity3D
 {
 public:
@@ -29,6 +32,9 @@ public:
 		ASSAULT_RIFLE,
 		NUM_WEAPON_TYPE
 	};
+
+
+	CSoundController* cSoundController;
 
 	// Default Constructor
 	CWeaponInfo(void);

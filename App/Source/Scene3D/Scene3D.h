@@ -22,7 +22,7 @@
 #include "TimeControl\FPSCounter.h"
 
 // Include CSoundController
-#include "..\SoundController\SoundController.h"
+#include "../SoundController/SoundController.h"
 
 // Include CCamera
 #include "Camera.h"

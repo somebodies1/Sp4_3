@@ -197,6 +197,9 @@ bool CScene3D::Init(void)
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\Sound_Explosion.ogg"), 2, true);
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\Sound_Jump.ogg"), 3, true);
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\bgmusic.ogg"), 4, true);
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\reload.ogg"), 5, true, false, false);
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\running.ogg"), 6, true, false, false);
+	//cSoundController->LoadSound(FileSystem::getPath("Sounds\\pistol.wav"), 7, true, false,true);
 
 	cSoundController->PlaySoundByID(4);
 
@@ -730,11 +733,13 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 	{
 		cPlayer3D->SetMovementSpeed(15);
 		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(true);
+		cSoundController->PlaySoundByID(6);
 	}
 	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_LEFT_SHIFT) && cPlayer3D->GetIsSpeed() == true)
 	{
 		cPlayer3D->SetMovementSpeed(35);
 		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(true);
+		cSoundController->PlaySoundByID(6);
 	}
 	else if (CKeyboardController::GetInstance()->IsKeyReleased(GLFW_KEY_LEFT_SHIFT) && cPlayer3D->GetIsSpeed() == false)
 	{
@@ -836,6 +841,7 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_R))
 	{
 		cPlayer3D->GetWeapon()->Reload();
+		cSoundController->PlaySoundByID(5);
 	}
 
 	//Get mouse button updates

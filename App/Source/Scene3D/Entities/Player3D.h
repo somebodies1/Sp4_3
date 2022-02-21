@@ -25,6 +25,9 @@
 // Include WeaponInfo
 #include "../WeaponInfo/WeaponInfo.h"
 
+// Include CSoundController
+#include "../App/Source/SoundController/SoundController.h"
+
 // Include Physics3D
 #include "../Physics3D.h"
 

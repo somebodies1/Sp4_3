@@ -213,6 +213,11 @@ bool CWeaponInfo::GetCanFire(void) const
  */
 bool CWeaponInfo::Init(void)
 {
+	cSoundController = CSoundController::GetInstance();
+	cSoundController->Init();
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\pistol.ogg"), 1, true, false, true);
+
+
 	// The number of ammunition in a magazine for this weapon
 	iMagRounds = 1;
 	// The maximum number of ammunition for this magazine for this weapon
@@ -326,6 +331,7 @@ bool CWeaponInfo::Discharge(glm::vec3 vec3Position,
 				CProjectileManager::GetInstance()->Activate(vec3Position + vec3Front * 0.75f,
 					vec3Front,
 					2.0f, 20.0f, pSource, this->weaponType);
+				cSoundController->PlaySoundByID(1);
 				break;
 			}
 
