@@ -88,6 +88,8 @@ public:
 	virtual void SetInvis(bool isinvis);
 	virtual void SetScore(int pscore);
 	virtual void SetHeathUP(bool ishealthup);
+	virtual void SetSlowed(bool isslowed);
+	virtual void SetIsSpeed(bool isspeed);
 
 	// Get Methods
 	virtual const GLuint GetTextureID(void) const;
@@ -105,6 +107,8 @@ public:
 	virtual bool GetInvis();
 	virtual int GetScore();
 	virtual bool GetHealthUP();
+	virtual bool GetSlowed();
+	virtual bool GetIsSpeed();
 	
 
 	// These methods are for marking this CEntity3D for deletion
@@ -181,6 +185,8 @@ protected:
 
 	bool IsInvis;
 	bool IsHealthUP;
+	bool IsSlowed;
+	bool IsSpeed;
 	int PScore;
 
 	// HP to check if dead

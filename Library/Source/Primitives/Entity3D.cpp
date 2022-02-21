@@ -85,6 +85,8 @@ bool CEntity3D::Init(void)
 	IsInvis = false;
 	IsHealthUP = false;
 	PScore = 0;
+	IsSlowed = false;
+	IsSpeed = false;
 	//activepowerList;
 	return true;
 }
@@ -243,6 +245,16 @@ void CEntity3D::SetHeathUP(bool ishealthup)
 	this->IsHealthUP = ishealthup;
 }
 
+void CEntity3D::SetSlowed(bool isslowed)
+{
+	this->IsSlowed = isslowed;
+}
+
+void CEntity3D::SetIsSpeed(bool isspeed)
+{
+	this->IsSpeed = isspeed;
+}
+
 int CEntity3D::GetScore()
 {
 	return PScore;
@@ -251,6 +263,16 @@ int CEntity3D::GetScore()
 bool CEntity3D::GetHealthUP()
 {
 	return IsHealthUP;
+}
+
+bool CEntity3D::GetSlowed()
+{
+	return IsSlowed;
+}
+
+bool CEntity3D::GetIsSpeed()
+{
+	return IsSpeed;
 }
 
 // These methods are for marking this CEntity3D for deletion
@@ -301,6 +323,7 @@ void CEntity3D::PowerupUpdate(const double dElapsedTime)
 			{
 				activepowerList[i]->setDead(true);
 				this->SetMovementSpeed(5.f); //effect
+				this->SetIsSpeed(false);
 				activepowerList.erase(activepowerList.begin());
 				//std::cout << "Speed Dead" << endl;
 				break;
@@ -318,6 +341,7 @@ void CEntity3D::PowerupUpdate(const double dElapsedTime)
 			{
 				activepowerList[i]->setDead(true);
 				this->SetMovementSpeed(5.f);
+				this->SetSlowed(false);
 				activepowerList.erase(activepowerList.begin());
 			}
 			break;
@@ -376,6 +400,7 @@ void CEntity3D::AddPowerup(CEntity3D* dude, powerup::POWERUPTYPE pType, float ne
 			powerup* p = new powerup(pType, newTime); //create new powerup
 			dude->activepowerList.push_back(p); //push to vector
 			dude->SetMovementSpeed(dude->GetMovementSpeed() * 3.f); //effect
+			dude->SetIsSpeed(true);
 			//std::cout << this->GetMovementSpeed() << endl;
 			//std::cout << "New SPeed" << endl;
 		}
@@ -404,6 +429,7 @@ void CEntity3D::AddPowerup(CEntity3D* dude, powerup::POWERUPTYPE pType, float ne
 			powerup* p = new powerup(pType, newTime); //create new powerup
 			dude->activepowerList.push_back(p); //push to vector
 			dude->SetMovementSpeed(dude->GetMovementSpeed() * 0.5f); //effect
+			dude->SetSlowed(true);
 			//std::cout << this->GetMovementSpeed() << endl;
 			//std::cout << "New SPeed" << endl;
 		}

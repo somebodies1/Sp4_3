@@ -726,14 +726,24 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 	}
 
 	//Sprint
-	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_LEFT_SHIFT))
+	if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_LEFT_SHIFT) && cPlayer3D->GetSlowed()==false && cPlayer3D->GetIsSpeed() == false)
 	{
 		cPlayer3D->SetMovementSpeed(15);
 		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(true);
 	}
-	else if (CKeyboardController::GetInstance()->IsKeyReleased(GLFW_KEY_LEFT_SHIFT))
+	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_LEFT_SHIFT) && cPlayer3D->GetIsSpeed() == true)
+	{
+		cPlayer3D->SetMovementSpeed(35);
+		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(true);
+	}
+	else if (CKeyboardController::GetInstance()->IsKeyReleased(GLFW_KEY_LEFT_SHIFT) && cPlayer3D->GetIsSpeed() == false)
 	{
 		cPlayer3D->SetMovementSpeed(CPlayer3D::GetInstance()->PLAYER_SPEED);
+		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(false);
+	}
+	else if (CKeyboardController::GetInstance()->IsKeyReleased(GLFW_KEY_LEFT_SHIFT) && cPlayer3D->GetIsSpeed() == true)
+	{
+		cPlayer3D->SetMovementSpeed(CPlayer3D::GetInstance()->PLAYER_SPEED *3);
 		CCameraEffectsManager::GetInstance()->Get("SweatScreen")->SetStatus(false);
 	}
 
