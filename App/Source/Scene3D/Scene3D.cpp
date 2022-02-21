@@ -336,6 +336,18 @@ bool CScene3D::Init(void)
 		cSolidObjectManager->Add(cHealthUP);
 	}
 	
+	for (int i = 0; i < 8; i++)
+	{
+		float x = Math::RandFloatMinMax(-50.f, 50.f);
+		float z = Math::RandFloatMinMax(-50.f, 50.f);
+		float fCheckHeight3;
+		fCheckHeight3 = cTerrain->GetHeight(x, z);
+		WatchTower* cWatchTower = new WatchTower(glm::vec3(x, fCheckHeight3-2, z));
+		cWatchTower->SetShader("Shader3DNoColour");
+		cWatchTower->Init();
+		cWatchTower->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+		cSolidObjectManager->Add(cWatchTower);
+	}
 
 	//Load the GUI entities
 	//Store the cGUI_Scene3D instance here
@@ -374,59 +386,59 @@ bool CScene3D::Init(void)
 	cSolidObjectManager->Add(car);
 	
 	// Initialise a suv
-	fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	SUV* suv2 = new SUV(glm::vec3(5.0f, fCheckHeight, 5.0f));
-	suv2->SetShader("Shader3DNoColour");
-	suv2->SetLODStatus(true);
-	suv2->Init();
-	suv2->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
+	//SUV* suv2 = new SUV(glm::vec3(5.0f, fCheckHeight, 5.0f));
+	//suv2->SetShader("Shader3DNoColour");
+	//suv2->SetLODStatus(true);
+	//suv2->Init();
+	//suv2->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 
-	// Add the suv to the cSolidObjectManager
-	cSolidObjectManager->Add(suv2);
-
-	// Initialise a dinosaur
-	fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	Dinosaur* dino = new Dinosaur(glm::vec3(10.0f, fCheckHeight, 5.0f));
-	dino->SetShader("Shader3DNoColour");
-	dino->SetLODStatus(true);
-	dino->Init();
-	dino->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-
-	// Add the Dinosaur to the cSolidObjectManager
-	cSolidObjectManager->Add(dino);
+	//// Add the suv to the cSolidObjectManager
+	//cSolidObjectManager->Add(suv2);
 
 	// Initialise a dinosaur
-	fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	Baryonyx* bary = new Baryonyx(glm::vec3(-10.0f, fCheckHeight, -5.0f));
-	bary->SetShader("Shader3DNoColour");
-	bary->SetLODStatus(true);
-	bary->Init();
-	bary->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
+	//Dinosaur* dino = new Dinosaur(glm::vec3(10.0f, fCheckHeight, 5.0f));
+	//dino->SetShader("Shader3DNoColour");
+	//dino->SetLODStatus(true);
+	//dino->Init();
+	//dino->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 
-	// Add the Dinosaur to the cSolidObjectManager
-	cSolidObjectManager->Add(bary);
-
-	// Initialise a dinosaur
-	fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	Charano* charano = new Charano(glm::vec3(5.0f, fCheckHeight, 10.0f));
-	charano->SetShader("Shader3DNoColour");
-	charano->SetLODStatus(true);
-	charano->Init();
-	charano->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-
-	// Add the Dinosaur to the cSolidObjectManager
-	cSolidObjectManager->Add(charano);
+	//// Add the Dinosaur to the cSolidObjectManager
+	//cSolidObjectManager->Add(dino);
 
 	// Initialise a dinosaur
-	fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	Edo* edo = new Edo(glm::vec3(30.0f, fCheckHeight, 20.0f));
-	edo->SetShader("Shader3DNoColour");
-	edo->SetLODStatus(true);
-	edo->Init();
-	edo->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
+	//Baryonyx* bary = new Baryonyx(glm::vec3(-10.0f, fCheckHeight, -5.0f));
+	//bary->SetShader("Shader3DNoColour");
+	//bary->SetLODStatus(true);
+	//bary->Init();
+	//bary->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 
-	// Add the Dinosaur to the cSolidObjectManager
-	cSolidObjectManager->Add(edo);
+	//// Add the Dinosaur to the cSolidObjectManager
+	//cSolidObjectManager->Add(bary);
+
+	// Initialise a dinosaur
+	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
+	//Charano* charano = new Charano(glm::vec3(5.0f, fCheckHeight, 10.0f));
+	//charano->SetShader("Shader3DNoColour");
+	//charano->SetLODStatus(true);
+	//charano->Init();
+	//charano->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+
+	//// Add the Dinosaur to the cSolidObjectManager
+	//cSolidObjectManager->Add(charano);
+
+	// Initialise a dinosaur
+	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
+	//Edo* edo = new Edo(glm::vec3(30.0f, fCheckHeight, 20.0f));
+	//edo->SetShader("Shader3DNoColour");
+	//edo->SetLODStatus(true);
+	//edo->Init();
+	//edo->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+
+	//// Add the Dinosaur to the cSolidObjectManager
+	//cSolidObjectManager->Add(edo);
 
 	// Initialise the CTreeKabak3D
 	CTreeKabak3D* cTreeKabak3D = new CTreeKabak3D(glm::vec3(0.0f, 0.0f, 0.0f));
@@ -449,11 +461,11 @@ bool CScene3D::Init(void)
 	}
 
 	// Initialise a CSpinTower
-	CSpinTower::Create();
-	Wheel::Create();
-	LVTower::Create();
-	Planet::Create();
-	Decor::Create();
+	//CSpinTower::Create();
+	//Wheel::Create();
+	//LVTower::Create();
+	//Planet::Create();
+	//Decor::Create();
 
 	Enemy();
 

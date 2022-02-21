@@ -303,7 +303,7 @@ CTexture tTextures[NUMTEXTURES];
 bool LoadAllTextures(void)
 {
 	// Load textures
-	string sTextureNames[] = {"fungus.dds", "sand_grass_02.jpg", "rock_2_4w.jpg", "sand.jpg", "path.png"};
+	string sTextureNames[] = {"fungus.dds", "obsidian.jpg", "rock_2_4w.jpg", "lava1.jpg", "path.png"};
 
 	for (int i = 0; i < NUMTEXTURES; i++)
 	{
