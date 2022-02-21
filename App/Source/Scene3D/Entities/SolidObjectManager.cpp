@@ -467,7 +467,22 @@ bool CSolidObjectManager::CheckForCollision(void)
 			}
 		}
 	}
+
+	//check constraint in world
 	
+	for (it = lSolidObject.begin(); it != end; ++it)
+	{
+		// If the entity is not active, then skip it
+		if ((*it)->GetStatus() == false)
+			continue;
+
+		if (((*it)->GetPosition().x >= 45.f || (*it)->GetPosition().x <= -45.f) ||
+			((*it)->GetPosition().z >= 45.f || (*it)->GetPosition().z <= -45.f))
+		{
+			(*it)->SetPosition((*it)->GetPreviousPosition());
+		}
+	}
+
 	if (bResult == true)
 	{
 		CCameraEffectsManager::GetInstance()->Get("BloodScreen")->SetStatus(true);
