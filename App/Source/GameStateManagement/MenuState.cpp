@@ -64,7 +64,7 @@ bool CMenuState::Init(void)
 	CShaderManager::GetInstance()->activeShader->setInt("texture1", 0);
 
 	//Create Background Entity
-	background = new CBackgroundEntity("Image/MenuBackground.jpg");
+	background = new CBackgroundEntity("Image/MenuBackground2.jpg");
 	background->SetShader("2DShader");
 	background->Init();
 
@@ -93,7 +93,7 @@ bool CMenuState::Init(void)
 	VolumeDownButtonData.fileName = "Image\\GUI\\VolumeDown.png";
 	VolumeDownButtonData.textureID = il->LoadTextureGetID(startButtonData.fileName.c_str(), false);
 
-	play3DButtonData.fileName = "Image\\GUI\\PlayButton_3D.png";
+	play3DButtonData.fileName = "Image\\GUI\\PlayButton2.png";
 	play3DButtonData.textureID = il->LoadTextureGetID(play3DButtonData.fileName.c_str(), false);
 
 	exitButtonData.fileName = "Image\\GUI\\ExitButton.png";

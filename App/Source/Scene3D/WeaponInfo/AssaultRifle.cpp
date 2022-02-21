@@ -95,7 +95,7 @@ bool CAssaultRifle::Init(void)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	// load and create a texture 
-	iTextureID = CImageLoader::GetInstance()->LoadTextureGetID("Models/AssaultRifle/assault_rifle.jpg", false);
+	iTextureID = CImageLoader::GetInstance()->LoadTextureGetID("Models/AssaultRifle/assault_rifle2.tga", false);
 	if (iTextureID == 0)
 	{
 		cout << "Unable to load Models/AssaultRifle/assault_rifle.jpg" << endl;

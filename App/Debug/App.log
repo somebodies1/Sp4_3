@@ -1,2 +1,8 @@
-﻿  Scene3D.cpp
+﻿  MenuState.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\Julius\Source\Repos\Sp4_3(NEW)\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\GameStateManagement\MenuState.cpp(139,43): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\GameStateManagement\MenuState.cpp(138,73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\GameStateManagement\MenuState.cpp(140,95): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\GameStateManagement\MenuState.cpp(140,55): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
   App.vcxproj -> C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Debug\App.exe

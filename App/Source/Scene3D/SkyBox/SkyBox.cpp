@@ -105,12 +105,12 @@ bool CSkyBox::Init(void)
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
 	// Create the vector of skybox textures
-	skyboxTexture.push_back("Image/SkyBox2/arid_lf.jpg");
-	skyboxTexture.push_back("Image/SkyBox2/arid_rt.jpg");
-	skyboxTexture.push_back("Image/SkyBox2/arid_up.jpg");
-	skyboxTexture.push_back("Image/SkyBox2/arid_dn.jpg");
-	skyboxTexture.push_back("Image/SkyBox2/arid_ft.jpg");
-	skyboxTexture.push_back("Image/SkyBox2/arid_bk.jpg");
+	skyboxTexture.push_back("Image/SkyBox3/hot_rt.png");
+	skyboxTexture.push_back("Image/SkyBox3/hot_lf.png");
+	skyboxTexture.push_back("Image/SkyBox3/hot_up.png");
+	skyboxTexture.push_back("Image/SkyBox3/hot_dn.png");
+	skyboxTexture.push_back("Image/SkyBox3/hot_ft.png");
+	skyboxTexture.push_back("Image/SkyBox3/hot_bk.png");
 
 	// Load the skybox textures into the Graphics Card
 	iTextureID = LoadSkyBoxTextures();

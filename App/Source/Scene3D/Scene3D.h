@@ -52,6 +52,7 @@
 #include "Entities/SpeedUpbox.h"
 #include "Entities/InvincibleBox.h"
 #include "Entities/HealthUP.h"
+#include "Entities/WatchTower.h"
 
 //Include Enemies
 #include "Entities/Enemy3D.h"
