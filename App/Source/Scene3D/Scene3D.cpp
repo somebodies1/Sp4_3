@@ -199,6 +199,7 @@ bool CScene3D::Init(void)
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\bgmusic.ogg"), 4, true);
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\reload.ogg"), 5, true, false, false);
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\running.ogg"), 6, true, false, false);
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\slide.ogg"), 7, true, false, false);
 	//cSoundController->LoadSound(FileSystem::getPath("Sounds\\pistol.wav"), 7, true, false,true);
 
 	cSoundController->PlaySoundByID(4);
@@ -771,6 +772,7 @@ void CScene3D::PlayerControlsUpdate(const double dElapsedTime)
 		CCameraEffectsManager::GetInstance()->Get("DirtScreen")->SetStatus(!bStatus);
 
 		cPlayer3D->SlideMovement((float)dElapsedTime);
+		cSoundController->PlaySoundByID(7);
 	}
 
 

@@ -216,6 +216,7 @@ bool CWeaponInfo::Init(void)
 	cSoundController = CSoundController::GetInstance();
 	cSoundController->Init();
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\pistol.ogg"), 1, true, false, true);
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\cardd.ogg"), 2, true, false, true);
 
 
 	// The number of ammunition in a magazine for this weapon
@@ -326,6 +327,7 @@ bool CWeaponInfo::Discharge(glm::vec3 vec3Position,
 				CProjectileManager::GetInstance()->Activate(vec3Position + vec3Front * 0.75f,
 					vec3Front,
 					2.0f, 40.0f * dChargeTime, pSource, this->weaponType);
+				cSoundController->PlaySoundByID(2);
 				break;
 			default:
 				CProjectileManager::GetInstance()->Activate(vec3Position + vec3Front * 0.75f,

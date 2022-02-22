@@ -66,6 +66,11 @@ bool CSolidObjectManager::Init(void)
 	// Get the handler to the CInventoryManager instance
 	cInventoryManager = CInventoryManager::GetInstance();
 	enemyCount = 0;
+
+	cSoundController = CSoundController::GetInstance();
+	cSoundController->Init();
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\debuff.ogg"), 1, true, false, true);
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\itempickup.ogg"), 10, true, false, true);
 	return true;
 }
 
@@ -273,6 +278,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					std::cout << (*it)->GetMovementSpeed() << std::endl;
 					(*it_other)->SetStatus(false);
 						cout << "** Collision between Entity and powerUP ***" << endl;
+						cSoundController->PlaySoundByID(10);
 					break;
 				}
 				if (
@@ -290,6 +296,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					//cInventoryItem = cInventoryManager->GetItem("Health");
 					//cInventoryItem->Add(30);
 					cout << "** Collision between Entity and powerUP ***" << endl;
+					cSoundController->PlaySoundByID(10);
 					break;
 				}
 				if (
@@ -307,6 +314,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					cInventoryItem = cInventoryManager->GetItem("Health");
 					cInventoryItem->Add(30);
 					cout << "** Collision between Entity and powerUP ***" << endl;
+					cSoundController->PlaySoundByID(10);
 					break;
 				}
 				if (

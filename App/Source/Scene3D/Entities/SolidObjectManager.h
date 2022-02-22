@@ -25,6 +25,9 @@
 #include "../GameManager3D.h"
 #include "../Entities/Player3D.h"
 
+#include "../App/Source/SoundController/SoundController.h"
+#include "../Library/Source/System/filesystem.h"
+
 class CSolidObjectManager : public CSingletonTemplate<CSolidObjectManager>
 {
 	friend class CSingletonTemplate<CSolidObjectManager>;
@@ -77,6 +80,8 @@ protected:
 	//Handler for player values
 	CInventoryManager* cInventoryManager;
 	CInventoryItem* cInventoryItem;
+
+	CSoundController* cSoundController;
 
 	//Handler for gameManager3D class
 	CGameManager3D* cGameManager3D;
