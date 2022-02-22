@@ -327,6 +327,8 @@ void Soldier::ProcessMovement(const SOLDIERMOVEMENT direction, const float delta
 		vec3Position -= vec3Right * velocity;
 	if (direction == SOLDIERMOVEMENT::RIGHT)
 		vec3Position += vec3Right * velocity;
+	if (direction == SOLDIERMOVEMENT::RUSH)
+		vec3Position += vec3Front * velocity * 2.f;
 
 	// If the camera is attached to this player, then update the camera
 	if (cCamera)
@@ -403,6 +405,13 @@ bool Soldier::Update(const double dElapsedTime)
 			if (_DEBUG_FSM == true)
 				cout << "Target found: Switching to Attack State" << endl;
 		}
+		else if (this->currentHP <= 50)
+		{
+			sCurrentFSM = FSM::SUICIDE;
+			iFSMCounter = 0;
+			if (_DEBUG_FSM == true)
+				cout << "Target found: Switching to Run State" << endl;
+		}
 		else
 		{
 			// Process the movement
@@ -437,6 +446,13 @@ bool Soldier::Update(const double dElapsedTime)
 			if (_DEBUG_FSM == true)
 				cout << "Attacking now" << endl;
 		}
+		else if (this->currentHP <= 50)
+		{
+			sCurrentFSM = FSM::SUICIDE;
+			iFSMCounter = 0;
+			if (_DEBUG_FSM == true)
+				cout << "Target found: Switching to Run State" << endl;
+		}
 		else
 		{
 			// If NPC loses track of player, then go back to the nearest waypoint
@@ -445,9 +461,30 @@ bool Soldier::Update(const double dElapsedTime)
 
 			// Swtich to patrol mode
 			sCurrentFSM = FSM::PATROL;
-			//iFSMCounter = 0;
+			iFSMCounter = 0;
 			if (_DEBUG_FSM == true)
 				cout << "Switching to Patrol State" << endl;
+		}
+		iFSMCounter++;
+		break;
+	case FSM::SUICIDE:
+		//sound_controller->PlaySoundByID(17);
+		vec3Front = glm::normalize((cPlayer3D->GetPosition() - vec3Position));
+		UpdateFrontAndYaw();
+
+		// Process the movement
+		ProcessMovement(SOLDIERMOVEMENT::RUSH, (float)dElapsedTime);
+	
+		cout << iFSMCounter << endl;
+
+		if (iFSMCounter >= 10)
+		{
+			// exlpode 
+			//sound_controller->PlaySoundByID(2);
+			this->currentHP = 0;
+			iFSMCounter = 0;
+			if (_DEBUG_FSM == true)
+				cout << "Exploded" << endl;
 		}
 		iFSMCounter++;
 		break;

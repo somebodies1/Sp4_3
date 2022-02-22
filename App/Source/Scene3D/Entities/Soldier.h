@@ -41,6 +41,7 @@ public:
 		BACKWARD,
 		LEFT,
 		RIGHT,
+		RUSH,
 		NUM_MOVEMENTS
 	};
 

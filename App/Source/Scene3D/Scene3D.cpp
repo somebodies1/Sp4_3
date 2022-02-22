@@ -943,7 +943,7 @@ void CScene3D::Enemy(void)
 	spiderPistol->Init();
 	spiderPistol->SetShader("Shader3D_Model");
 	spider->SetWeapon(0, spiderPistol);
-	spider->SetMaxHP(40);
+	spider->SetMaxHP(60);
 	cSolidObjectManager->Add(spider);
 	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
 
@@ -966,7 +966,7 @@ void CScene3D::Enemy(void)
 	soldierPistol->Init();
 	soldierPistol->SetShader("Shader3D_Model");
 	soldier->SetWeapon(0, soldierPistol);
-	soldier->SetMaxHP(200);
+	soldier->SetMaxHP(40);
 	cSolidObjectManager->Add(soldier);
 	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
 }

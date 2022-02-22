@@ -14,6 +14,7 @@ public:
 		PATROL = 1,
 		ATTACK = 2,
 		RUN = 3,
+		SUICIDE = 4,
 		NUM_FSM
 	};
 
