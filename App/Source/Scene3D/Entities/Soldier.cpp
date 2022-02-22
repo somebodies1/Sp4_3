@@ -483,6 +483,7 @@ bool Soldier::Update(const double dElapsedTime)
 			//sound_controller->PlaySoundByID(2);
 			this->currentHP = 0;
 			iFSMCounter = 0;
+			this->SetStatus(false);
 			if (_DEBUG_FSM == true)
 				cout << "Exploded" << endl;
 		}

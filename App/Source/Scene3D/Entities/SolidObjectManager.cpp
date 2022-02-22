@@ -487,7 +487,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 		if (((*it)->GetPosition().x >= 45.f || (*it)->GetPosition().x <= -45.f) ||
 			((*it)->GetPosition().z >= 45.f || (*it)->GetPosition().z <= -45.f))
 		{
-			(*it)->SetPosition((*it)->GetPreviousPosition());
+			(*it)->RollbackPosition();
 		}
 	}
 

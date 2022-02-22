@@ -312,6 +312,8 @@ float CCar::GetAngle(Vector3 vec1, Vector3 vec2) {
 
 void CCar::updateCar(float dt)
 {
+	StorePositionForRollback();
+
 	float spd = 0.5 * dt;
 	float rotationspd = 7 * dt;
 
@@ -328,16 +330,18 @@ void CCar::updateCar(float dt)
 	}
 	else if (CKeyboardController::GetInstance()->IsKeyDown(GLFW_KEY_M) && buttonPress <= 0.0f)
 	{
-		buttonPress = 1.f;
-		if (player->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::CAR) {
-			player->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::STAND);
-			AttachCamera(nullptr);
-		}
+	buttonPress = 1.f;
+	if (player->GetSMovement() == CPlayer3D::PLAYER_SMOVEMENT::CAR) {
+		player->SetSMovement(CPlayer3D::PLAYER_SMOVEMENT::STAND);
+		AttachCamera(nullptr);
+	}
 	}
 	else if (buttonPress > 0.0f)
 	{
-		buttonPress -= dt;
+	buttonPress -= dt;
 	}
+
+
 
 	if (player->GetSMovement() != CPlayer3D::PLAYER_SMOVEMENT::CAR)
 	{
@@ -419,18 +423,27 @@ void CCar::updateCar(float dt)
 		CarVector += CarDir * currentMPH * dt;
 	}
 
-	vec3Position = glm::vec3(CarVector.x, CarVector.y, CarVector.z);
-	float fHeightCheck = CTerrain::GetInstance()->GetHeight(vec3Position.x, vec3Position.z);
-	vec3Position.y = fHeightCheck + 0.5f;
+	if ((CarVector.x >= 45.f || CarVector.x <= -45.f) ||
+		(CarVector.z >= 45.f || CarVector.z <= -45.f))
+		{
+		this->RollbackPosition(); //Fixed world limit for car but it just cant move afterwards if you touch the world border
+	}
+	else
+	{
+		vec3Position = glm::vec3(CarVector.x, CarVector.y, CarVector.z);
+		float fHeightCheck = CTerrain::GetInstance()->GetHeight(vec3Position.x, vec3Position.z);
+		vec3Position.y = fHeightCheck + 0.5f;
 
-	player->SetPosition(vec3Position);
-	std::cout << "Player posx: " << player->GetPosition().x << endl;
-	std::cout << "Player posy: " << player->GetPosition().y << endl;
-	std::cout << "Player posz: " << player->GetPosition().z << endl;
+		player->SetPosition(vec3Position);
+		std::cout << "Player posx: " << player->GetPosition().x << endl;
+		std::cout << "Player posy: " << player->GetPosition().y << endl;
+		std::cout << "Player posz: " << player->GetPosition().z << endl;
 
-	std::cout << "Car posx: " << vec3Position.x << endl;
-	std::cout << "Car posy: " << vec3Position.y << endl;
-	std::cout << "Car posz: " << vec3Position.z << endl;
+		std::cout << "Car posx: " << vec3Position.x << endl;
+		std::cout << "Car posy: " << vec3Position.y << endl;
+		std::cout << "Car posz: " << vec3Position.z << endl;
+	}
+	
 
 	if (carCam)
 	{
