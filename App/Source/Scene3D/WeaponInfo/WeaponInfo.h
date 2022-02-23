@@ -33,6 +33,7 @@ public:
 		NUM_WEAPON_TYPE
 	};
 
+	float bulletSpread;
 
 	CSoundController* cSoundController;
 
@@ -70,6 +71,13 @@ public:
 
 	virtual void SetMaxChargeTime(double newTime);
 	virtual double GetMaxChargeTime(void) const;
+
+	//Gun recoil
+	virtual void SetGunRecoilPos(glm::vec3 _gunRecoilPos);
+	virtual glm::vec2 GetLowestRecoil(void) const;
+	virtual glm::vec2 GetHighestRecoil(void) const;	
+	virtual glm::vec3 GetGunRecoilPos(void) const;
+	virtual float GetBulletSpread(void) const;
 
 	// Set the time between shots
 	virtual void SetTimeBetweenShots(const double dTimeBetweenShots);
@@ -141,4 +149,8 @@ protected:
 
 	double dChargeTime;
 	double dMaxChargeTime;
+
+	glm::vec2 lowRecoil;
+	glm::vec2 highRecoil;
+	glm::vec3 gunRecoilPos;
 };

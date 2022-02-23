@@ -29,6 +29,10 @@ CWeaponInfo::CWeaponInfo()
 	, dElapsedTime(0.0)
 	, dReloadTime(0.0f)
 	, dMaxReloadTime(5.0f)
+	, lowRecoil(glm::vec2(0.f))
+	, highRecoil(glm::vec2(0.f))
+	, gunRecoilPos(glm::vec3(0.f))
+	, bulletSpread(0.0f)
 	, bFire(true)
 {
 }
@@ -393,6 +397,31 @@ void CWeaponInfo::AddRounds(const int newRounds)
 		iTotalRounds = iMaxTotalRounds;
 	else
 		iTotalRounds += newRounds;
+}
+
+void CWeaponInfo::SetGunRecoilPos(glm::vec3 _gunRecoilPos)
+{
+	gunRecoilPos = _gunRecoilPos;
+}
+
+glm::vec2 CWeaponInfo::GetLowestRecoil(void) const
+{
+	return lowRecoil;
+}
+
+glm::vec2 CWeaponInfo::GetHighestRecoil(void) const
+{
+	return highRecoil;
+}
+
+glm::vec3 CWeaponInfo::GetGunRecoilPos(void) const
+{
+	return gunRecoilPos;
+}
+
+float CWeaponInfo::GetBulletSpread(void) const
+{
+	return bulletSpread;
 }
 
 /**
