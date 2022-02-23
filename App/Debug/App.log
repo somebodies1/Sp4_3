@@ -1,3 +1,4 @@
-﻿  Soldier.cpp
-D:\Sp4_3\App\Source\Scene3D\Entities\Soldier.cpp(317): warning C4715: 'Soldier::DischargeWeapon': not all control paths return a value
-  App.vcxproj -> D:\Sp4_3\Debug\App.exe
+﻿  IntroState2.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\Julius\Source\Repos\Sp4_3(NEW)\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+  App.vcxproj -> C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Debug\App.exe
