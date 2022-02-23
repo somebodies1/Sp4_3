@@ -1,5 +1,3 @@
-﻿  Car.cpp
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(234,12): warning C4244: 'argument': conversion from 'const double' to 'float', possible loss of data
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(317,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Car.cpp(358,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe
+﻿  Soldier.cpp
+D:\Sp4_3\App\Source\Scene3D\Entities\Soldier.cpp(312): warning C4715: 'Soldier::DischargeWeapon': not all control paths return a value
+  App.vcxproj -> D:\Sp4_3\Debug\App.exe

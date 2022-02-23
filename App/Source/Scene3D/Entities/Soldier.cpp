@@ -477,7 +477,7 @@ bool Soldier::Update(const double dElapsedTime)
 	
 		cout << iFSMCounter << endl;
 
-		if (iFSMCounter >= 10)
+		if (iFSMCounter >= 500)
 		{
 			// exlpode 
 			//sound_controller->PlaySoundByID(2);
