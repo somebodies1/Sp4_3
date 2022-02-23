@@ -67,6 +67,10 @@ bool CSolidObjectManager::Init(void)
 	cInventoryManager = CInventoryManager::GetInstance();
 	enemyCount = 0;
 
+	//CGameManager3D
+	cGameManager3D = CGameManager3D::GetInstance();
+	cGameManager3D->Init();
+
 	cSoundController = CSoundController::GetInstance();
 	cSoundController->Init();
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\debuff.ogg"), 1, true, false, true);
@@ -391,7 +395,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					{
 						if ((*it)->DamageCheck(20))
 						{
-							SetEnemyCount(GetEnemyCount() - 1);
+							cGameManager3D->iAmtOfEnemies--;
 							cPlayer3D->SetScore(cPlayer3D->GetScore() + 3);
 						}
 							
@@ -400,15 +404,15 @@ bool CSolidObjectManager::CheckForCollision(void)
 					{
 						if ((*it)->DamageCheck(10))
 						{
-							SetEnemyCount(GetEnemyCount() - 1);
+							cGameManager3D->iAmtOfEnemies--;
 							cPlayer3D->SetScore(cPlayer3D->GetScore() + 1);
 						}
 					}
 					
-					if (GetEnemyCount() <= 0)
+					if (cGameManager3D->iAmtOfEnemies <= 0)
 						CGameManager3D::GetInstance()->bPlayerWon = true;
 					(cProjectileManager->vProjectile[i])->SetStatus(false);
-					cout << "** RayBoxCollision between NPC and Projectile ***" << endl;
+					cout << "** RayBoxCollision between NPC and Projectile ***" << cGameManager3D->iAmtOfEnemies << endl;
 					break;
 				}
 				else if ((*it)->GetType() == CSolidObject::TYPE::STRUCTURE)
@@ -452,15 +456,15 @@ bool CSolidObjectManager::CheckForCollision(void)
 					if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::CARD_PROJECTILE)
 					{
 						if ((*it)->DamageCheck(20))
-							SetEnemyCount(GetEnemyCount() - 1);
+							cGameManager3D->iAmtOfEnemies--;
 					}
 					else if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::PROJECTILE)
 					{
 						if ((*it)->DamageCheck(10))
-							SetEnemyCount(GetEnemyCount() - 1);
+							cGameManager3D->iAmtOfEnemies--;
 					}
 
-					if (GetEnemyCount() <= 0)
+					if (cGameManager3D->iAmtOfEnemies <= 0)
 						CGameManager3D::GetInstance()->bPlayerWon = true;
 					(cProjectileManager->vProjectile[i])->SetStatus(false);
 					cout << "** BoxBoxCollision between NPC and Projectile ***" << endl;
@@ -549,14 +553,4 @@ void CSolidObjectManager::Render(void)
 		(*it)->Render();
 		(*it)->PostRender();
 	}
-}
-
-void CSolidObjectManager::SetEnemyCount(int newCount)
-{
-	enemyCount = newCount;
-}
-
-int CSolidObjectManager::GetEnemyCount(void)
-{
-	return enemyCount;
 }

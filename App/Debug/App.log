@@ -1,4 +1,2 @@
-﻿  IntroState2.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\Users\Julius\Source\Repos\Sp4_3(NEW)\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
-  App.vcxproj -> C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Debug\App.exe
+﻿  GUI_Scene3D.cpp
+  App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe

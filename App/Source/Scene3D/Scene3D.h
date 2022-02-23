@@ -95,6 +95,10 @@ public:
 
 	void Enemy(void);
 
+	//Used to change level and then spawn enemies
+	void UpdateLevel(const double dElapsedTime);
+
+	void AddEnemyIntoList(std::vector<CSolidObject*> list, CSolidObject* enemy);
 protected:
 	// The handler to the CSettings
 	CSettings* cSettings;
@@ -142,6 +146,11 @@ protected:
 	CGameManager3D* cGameManager3D;
 
 	CGameStateManager* cGameStateManager;
+
+	// List of CSolidObject
+	std::vector<CSolidObject*> Round1EnemyList;
+	std::vector<CSolidObject*> Round2EnemyList;
+	std::vector<CSolidObject*> Round3EnemyList;
 
 	// Constructor
 	CScene3D(void);

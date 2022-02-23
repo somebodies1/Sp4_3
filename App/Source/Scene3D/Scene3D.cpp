@@ -150,6 +150,28 @@ CScene3D::~CScene3D(void)
 		cGameManager3D = NULL;
 	}
 
+	std::vector<CSolidObject*>::iterator it = Round1EnemyList.begin(), end = Round1EnemyList.end();
+	while (it != end)
+	{
+		// Delete if done
+		delete* it;
+		it = Round1EnemyList.erase(it);
+	}
+	std::vector<CSolidObject*>::iterator it2 = Round2EnemyList.begin(), end2 = Round2EnemyList.end();
+	while (it2 != end2)
+	{
+		// Delete if done
+		delete* it2;
+		it2 = Round2EnemyList.erase(it2);
+	}
+	std::vector<CSolidObject*>::iterator it3 = Round3EnemyList.begin(), end3 = Round3EnemyList.end();
+	while (it3 != end3)
+	{
+		// Delete if done
+		delete* it3;
+		it3 = Round3EnemyList.erase(it3);
+	}
+
 	// We won't delete this since it was created elsewhere
 	cFPSCounter = NULL;
 
@@ -469,6 +491,8 @@ bool CScene3D::Init(void)
 	//Decor::Create();
 
 	Enemy();
+
+	cGameManager3D->iCurrentLevel = 0;
 
 	return true;
 }
@@ -922,7 +946,7 @@ void CScene3D::Enemy(void)
 	cEnemy3D->SetMaxHP(200);
 
 	cSolidObjectManager->Add(cEnemy3D);
-	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
+	cGameManager3D->iAmtOfEnemies++;
 
 	// Initialise the Spider
 	fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
@@ -945,7 +969,7 @@ void CScene3D::Enemy(void)
 	spider->SetWeapon(0, spiderPistol);
 	spider->SetMaxHP(60);
 	cSolidObjectManager->Add(spider);
-	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
+	cGameManager3D->iAmtOfEnemies++;
 
 	// Initialise the Soldier
 	fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
@@ -968,5 +992,50 @@ void CScene3D::Enemy(void)
 	soldier->SetWeapon(0, soldierPistol);
 	soldier->SetMaxHP(40);
 	cSolidObjectManager->Add(soldier);
-	cSolidObjectManager->SetEnemyCount(cSolidObjectManager->GetEnemyCount() + 1);
+	cGameManager3D->iAmtOfEnemies++;
+}
+
+void CScene3D::UpdateLevel(const double dElapsedTime)
+{
+	if (cGameManager3D->iAmtOfEnemies <= 0 && cGameManager3D->fRoundTimer >= 0.f)
+	{
+		cGameManager3D->UpdateRoundTimer(dElapsedTime);
+		if (cGameManager3D->fRoundTimer <= 0.f)
+		{
+			cGameManager3D->iCurrentLevel++;
+
+			switch (cGameManager3D->iCurrentLevel)
+			{
+			case 1:
+				//spawn in Round 1 Enemies
+				for (int i = 0; i < Round1EnemyList.size(); ++i)
+				{
+					cSolidObjectManager->Add(Round1EnemyList[i]);
+				}
+				break;
+			case 2:
+				//spawn in Round 2 Enemies
+				for (int i = 0; i < Round2EnemyList.size(); ++i)
+				{
+					cSolidObjectManager->Add(Round2EnemyList[i]);
+				}
+				break;
+			case 3:
+				//spawn in Round 3 Enemies
+				for (int i = 0; i < Round2EnemyList.size(); ++i)
+				{
+					cSolidObjectManager->Add(Round2EnemyList[i]);
+				}
+				break;
+			}
+
+			//Set roundtimer to maxroundtimer when kill all
+			cGameManager3D->fRoundTimer = cGameManager3D->fMaxRoundTimer;
+		}
+	}
+}
+
+void CScene3D::AddEnemyIntoList(std::vector<CSolidObject*> list, CSolidObject* enemy)
+{
+	list.push_back(enemy);
 }

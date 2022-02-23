@@ -62,9 +62,6 @@ public:
 
 	// Render this class instance
 	virtual void Render(void);
-
-	virtual void SetEnemyCount(int newCount);
-	virtual int GetEnemyCount(void);
 protected:
 	// Render Settings
 	glm::mat4 model;

@@ -38,6 +38,7 @@ CGUI_Scene3D::CGUI_Scene3D(void)
 	, cInventoryManager(NULL)
 	, cInventoryItem(NULL)
 	, cPlayer3D(NULL)
+	, cGameManager3D(NULL)
 {
 }
 
@@ -77,6 +78,8 @@ CGUI_Scene3D::~CGUI_Scene3D(void)
 
 	// Set the cSettings to NULL since it was initialised elsewhere
 	cSettings = NULL;
+
+	cGameManager3D = NULL;
 }
 
 /**
@@ -93,6 +96,9 @@ bool CGUI_Scene3D::Init(void)
 	// Load the CCameraEffectsManager
 	cCameraEffectsManager = CCameraEffectsManager::GetInstance();
 	cCameraEffectsManager->Init();
+
+	cGameManager3D = CGameManager3D::GetInstance();
+	cGameManager3D->Init();
 
 	// Add the CameraEffects
 	// Add BloodScreen
@@ -322,6 +328,17 @@ void CGUI_Scene3D::Update(const double dElapsedTime)
 		CCamera::GetInstance()->vec3Position.x,
 		CCamera::GetInstance()->vec3Position.y,
 		CCamera::GetInstance()->vec3Position.z);
+	ImGui::End();
+	ImGui::PopStyleColor();
+
+	//Enemies Left:
+	ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.2f, 0.2f, 0.2f, 1.0f));  // Set a background color
+	ImGui::Begin("EnemiesLeft", NULL, inventoryWindowFlags);
+	ImGui::SetWindowPos(ImVec2(cSettings->iWindowWidth * 0.75f, cSettings->iWindowHeight * 0.5f));
+	ImGui::SetWindowSize(ImVec2(200.0f * relativeScale_x, 25.0f * relativeScale_y));
+	ImGui::SetWindowFontScale(1.5f * relativeScale_y);
+	ImGui::TextColored(ImVec4(1, 1, 0, 1), "Enemies Left : ");
+	ImGui::TextColored(ImVec4(1, 1, 0, 1), "%d", cGameManager3D->iAmtOfEnemies);
 	ImGui::End();
 	ImGui::PopStyleColor();
 

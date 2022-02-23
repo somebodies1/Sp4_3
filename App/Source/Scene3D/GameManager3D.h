@@ -31,10 +31,20 @@ public:
 	// Boolean flag to indicate if the game is be restarted
 	bool bGameToRestart;
 
+	//Current Level in scene3D
+	int iCurrentLevel;
+	int iAmtOfEnemies;
 
+	//Round Timer;
+	float fRoundTimer;
+	float fMaxRoundTimer;
+
+	void UpdateRoundTimer(const double dElapsedTime);
 protected:
 	// Constructor
 	CGameManager3D(void);
+
+	
 
 	// Destructor
 	virtual ~CGameManager3D(void);

@@ -47,6 +47,8 @@
 // Include CPlayer3D
 #include "Entities\Player3D.h"
 
+#include "GameManager3D.h"
+
 #include <string>
 using namespace std;
 
@@ -114,4 +116,6 @@ protected:
 	CPlayer3D* cPlayer3D;
 
 	CEntity3D* cEntity3D;
+
+	CGameManager3D* cGameManager3D;
 };
