@@ -84,8 +84,8 @@ bool CMenuState::Init(void)
 
 	// Load the images for buttons
 	CImageLoader* il = CImageLoader::GetInstance();
-	startButtonData.fileName = "Image\\GUI\\PlayButton.png";
-	startButtonData.textureID = il->LoadTextureGetID(startButtonData.fileName.c_str(), false);
+	//startButtonData.fileName = "Image\\GUI\\PlayButton.png";
+	//startButtonData.textureID = il->LoadTextureGetID(startButtonData.fileName.c_str(), false);
 
 	VolumeUpButtonData.fileName = "Image\\GUI\\VoumeUp.png";
 	VolumeUpButtonData.textureID = il->LoadTextureGetID(startButtonData.fileName.c_str(), false);
@@ -136,24 +136,24 @@ bool CMenuState::Update(const double dElapsedTime)
 		// Create a window called "Hello, world!" and append into it.
 		ImGui::Begin("Main Menu", NULL, window_flags);
 		ImGui::SetWindowPos(ImVec2(CSettings::GetInstance()->iWindowWidth/2.0 - buttonWidth/2.0, 
-			CSettings::GetInstance()->iWindowHeight/5.0));				// Set the top-left of the window at (10,10)
+			CSettings::GetInstance()->iWindowHeight/2.5));				// Set the top-left of the window at (10,10)
 		ImGui::SetWindowSize(ImVec2(CSettings::GetInstance()->iWindowWidth, CSettings::GetInstance()->iWindowHeight));
 
 		//Added rounding for nicer effect
 		ImGuiStyle& style = ImGui::GetStyle();
 		style.FrameRounding = 200.0f;
 		
-		// Add codes for Start button here
-		if (ImGui::ImageButton((ImTextureID)startButtonData.textureID, 
-			ImVec2(buttonWidth, buttonHeight), ImVec2(0.0, 0.0), ImVec2(1.0, 1.0)))
-		{
-			// Reset the CKeyboardController
-			CKeyboardController::GetInstance()->Reset();
+		//// Add codes for Start button here
+		//if (ImGui::ImageButton((ImTextureID)startButtonData.textureID, 
+		//	ImVec2(buttonWidth, buttonHeight), ImVec2(0.0, 0.0), ImVec2(1.0, 1.0)))
+		//{
+		//	// Reset the CKeyboardController
+		//	CKeyboardController::GetInstance()->Reset();
 
-			// Load the menu state
-			cout << "Loading PlayGameState" << endl;
-			CGameStateManager::GetInstance()->SetActiveGameState("PlayGameState");
-		}
+		//	// Load the menu state
+		//	cout << "Loading PlayGameState" << endl;
+		//	CGameStateManager::GetInstance()->SetActiveGameState("PlayGameState");
+		//}
 		// Add codes for Play3D button here
 		if (ImGui::ImageButton((ImTextureID)play3DButtonData.textureID,
 			ImVec2(buttonWidth, buttonHeight), ImVec2(0.0, 0.0), ImVec2(1.0, 1.0)))

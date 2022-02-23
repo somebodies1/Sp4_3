@@ -82,6 +82,8 @@
     <ClCompile Include="Source\Scene3D\Entities\Soldier.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\HealthUP.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\WatchTower.cpp" />
+    <ClCompile Include="Source\GameStateManagement\IntroState2.cpp" />
+    <ClCompile Include="Source\GameStateManagement\IntroState3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -166,5 +168,7 @@
     <ClInclude Include="Source\Scene3D\Entities\Soldier.h" />
     <ClInclude Include="Source\Scene3D\Entities\HealthUP.h" />
     <ClInclude Include="Source\Scene3D\Entities\WatchTower.h" />
+    <ClInclude Include="Source\GameStateManagement\IntroState2.h" />
+    <ClInclude Include="Source\GameStateManagement\IntroState3.h" />
   </ItemGroup>
 </Project>
