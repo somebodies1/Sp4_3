@@ -150,26 +150,19 @@ CScene3D::~CScene3D(void)
 		cGameManager3D = NULL;
 	}
 
-	std::vector<CSolidObject*>::iterator it = Round1EnemyList.begin(), end = Round1EnemyList.end();
-	while (it != end)
+	for (int i = 0; i < Round1EnemyList.size(); ++i)
 	{
-		// Delete if done
-		delete* it;
-		it = Round1EnemyList.erase(it);
+		Round1EnemyList[i] = nullptr;
 	}
-	std::vector<CSolidObject*>::iterator it2 = Round2EnemyList.begin(), end2 = Round2EnemyList.end();
-	while (it2 != end2)
+
+	for (int i = 0; i < Round2EnemyList.size(); ++i)
 	{
-		// Delete if done
-		delete* it2;
-		it2 = Round2EnemyList.erase(it2);
+		Round2EnemyList[i] = nullptr;
 	}
-	std::vector<CSolidObject*>::iterator it3 = Round3EnemyList.begin(), end3 = Round3EnemyList.end();
-	while (it3 != end3)
+
+	for (int i = 0; i < Round3EnemyList.size(); ++i)
 	{
-		// Delete if done
-		delete* it3;
-		it3 = Round3EnemyList.erase(it3);
+		Round3EnemyList[i] = nullptr;
 	}
 
 	// We won't delete this since it was created elsewhere
@@ -385,17 +378,6 @@ bool CScene3D::Init(void)
 	cGameManager3D = CGameManager3D::GetInstance();
 	cGameManager3D->Init();
 
-	// Initialise a CHut_Concrete
-	fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	//CHut_Concrete* cHut_Concrete = new CHut_Concrete(glm::vec3(-2.0f, fCheckHeight, 2.0f));
-	//cHut_Concrete->SetShader("Shader3DNoColour");
-	//cHut_Concrete->SetLODStatus(true);
-	//cHut_Concrete->Init();
-	//cHut_Concrete->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-	//
-	//// Add the cHut_Concrete to the cSolidObjectManager
-	//cSolidObjectManager->Add(cHut_Concrete);
-
 	// Initialise a suv
 	fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
 	CCar* car = new CCar(glm::vec3(5.0f, fCheckHeight, 0.f));
@@ -407,61 +389,6 @@ bool CScene3D::Init(void)
 
 	// Add the suv to the cSolidObjectManager
 	cSolidObjectManager->Add(car);
-	
-	// Initialise a suv
-	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	//SUV* suv2 = new SUV(glm::vec3(5.0f, fCheckHeight, 5.0f));
-	//suv2->SetShader("Shader3DNoColour");
-	//suv2->SetLODStatus(true);
-	//suv2->Init();
-	//suv2->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-
-	//// Add the suv to the cSolidObjectManager
-	//cSolidObjectManager->Add(suv2);
-
-	// Initialise a dinosaur
-	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	//Dinosaur* dino = new Dinosaur(glm::vec3(10.0f, fCheckHeight, 5.0f));
-	//dino->SetShader("Shader3DNoColour");
-	//dino->SetLODStatus(true);
-	//dino->Init();
-	//dino->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-
-	//// Add the Dinosaur to the cSolidObjectManager
-	//cSolidObjectManager->Add(dino);
-
-	// Initialise a dinosaur
-	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	//Baryonyx* bary = new Baryonyx(glm::vec3(-10.0f, fCheckHeight, -5.0f));
-	//bary->SetShader("Shader3DNoColour");
-	//bary->SetLODStatus(true);
-	//bary->Init();
-	//bary->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-
-	//// Add the Dinosaur to the cSolidObjectManager
-	//cSolidObjectManager->Add(bary);
-
-	// Initialise a dinosaur
-	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	//Charano* charano = new Charano(glm::vec3(5.0f, fCheckHeight, 10.0f));
-	//charano->SetShader("Shader3DNoColour");
-	//charano->SetLODStatus(true);
-	//charano->Init();
-	//charano->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-
-	//// Add the Dinosaur to the cSolidObjectManager
-	//cSolidObjectManager->Add(charano);
-
-	// Initialise a dinosaur
-	//fCheckHeight = cTerrain->GetHeight(-2.0f, 2.0f);
-	//Edo* edo = new Edo(glm::vec3(30.0f, fCheckHeight, 20.0f));
-	//edo->SetShader("Shader3DNoColour");
-	//edo->SetLODStatus(true);
-	//edo->Init();
-	//edo->InitCollider("Shader3D_Line", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-
-	//// Add the Dinosaur to the cSolidObjectManager
-	//cSolidObjectManager->Add(edo);
 
 	// Initialise the CTreeKabak3D
 	CTreeKabak3D* cTreeKabak3D = new CTreeKabak3D(glm::vec3(0.0f, 0.0f, 0.0f));
@@ -490,8 +417,11 @@ bool CScene3D::Init(void)
 	//Planet::Create();
 	//Decor::Create();
 
-	Enemy();
+	//Enemy();
 
+	Round1();
+	Round2();
+	Round3();
 	cGameManager3D->iCurrentLevel = 0;
 
 	return true;
@@ -572,6 +502,8 @@ bool CScene3D::Update(const double dElapsedTime)
 
 	// Post Update the mouse controller
 	cMouseController->PostUpdate();
+
+	UpdateLevel(dElapsedTime);
 
 	return true;
 }
@@ -997,45 +929,130 @@ void CScene3D::Enemy(void)
 
 void CScene3D::UpdateLevel(const double dElapsedTime)
 {
-	if (cGameManager3D->iAmtOfEnemies <= 0 && cGameManager3D->fRoundTimer >= 0.f)
+	//Check if player has finished level
+	if (cGameManager3D->iAmtOfEnemies <= 0)
 	{
+		cGameManager3D->bLevelCompleted = true;
+	}
+
+	//Round count down
+	if (cGameManager3D->bLevelCompleted == true && cGameManager3D->fRoundTimer >= 0.f)
+	{
+		//Decrease round timer
 		cGameManager3D->UpdateRoundTimer(dElapsedTime);
+		std::cout << "Round timer: " << cGameManager3D->fRoundTimer << std::endl;
 		if (cGameManager3D->fRoundTimer <= 0.f)
 		{
+			//Go to next level
 			cGameManager3D->iCurrentLevel++;
 
+			//Switch enemies based on the list they're in
 			switch (cGameManager3D->iCurrentLevel)
 			{
 			case 1:
 				//spawn in Round 1 Enemies
 				for (int i = 0; i < Round1EnemyList.size(); ++i)
 				{
-					cSolidObjectManager->Add(Round1EnemyList[i]);
+					//cSolidObjectManager->Add(Round1EnemyList[i]);
+					Round1EnemyList[i]->SetStatus(true);
+					cGameManager3D->iAmtOfEnemies++;
 				}
 				break;
 			case 2:
 				//spawn in Round 2 Enemies
 				for (int i = 0; i < Round2EnemyList.size(); ++i)
 				{
-					cSolidObjectManager->Add(Round2EnemyList[i]);
+					Round2EnemyList[i]->SetStatus(true);
+					cGameManager3D->iAmtOfEnemies++;
 				}
 				break;
 			case 3:
 				//spawn in Round 3 Enemies
 				for (int i = 0; i < Round2EnemyList.size(); ++i)
 				{
-					cSolidObjectManager->Add(Round2EnemyList[i]);
+					Round3EnemyList[i]->SetStatus(true);
+					cGameManager3D->iAmtOfEnemies++;
 				}
 				break;
 			}
 
 			//Set roundtimer to maxroundtimer when kill all
 			cGameManager3D->fRoundTimer = cGameManager3D->fMaxRoundTimer;
+			cGameManager3D->bLevelCompleted = false;
 		}
 	}
 }
 
-void CScene3D::AddEnemyIntoList(std::vector<CSolidObject*> list, CSolidObject* enemy)
+void CScene3D::Round1(void)
 {
-	list.push_back(enemy);
+	// Initialise the Soldier
+	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
+	Soldier* soldier = new Soldier(glm::vec3(0.0f, fCheckHeight, -20.0f));
+	soldier->SetShader("Shader3DNoColour");
+	soldier->Init();
+	soldier->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
+	soldier->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	////cEnemy3D->SetScale(glm::vec3(0.5f));
+	//
+	// Assign a cPistol to the cEnemy3D
+	CPistol* soldierPistol = new CPistol();
+	// Set the position, rotation and scale of this weapon
+	//cEnemyPistol->SetPosition(glm::vec3(0.05f, -0.075f, 0.5f));
+	//cEnemyPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
+	soldierPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
+	// Initialise the instance
+	soldierPistol->Init();
+	soldierPistol->SetShader("Shader3D_Model");
+	soldier->SetWeapon(0, soldierPistol);
+	soldier->SetMaxHP(40);
+	soldier->SetStatus(false);
+	//AddEnemyIntoList(Round1EnemyList, soldier);
+	Round1EnemyList.push_back(soldier);
+	cSolidObjectManager->Add(soldier);
+}
+
+void CScene3D::Round2(void)
+{
+	// Initialise the Spider
+	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
+	Spider* spider = new Spider(glm::vec3(0.0f, fCheckHeight, -20.0f));
+	spider->SetShader("Shader3DNoColour");
+	spider->Init();
+	spider->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
+	spider->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+
+	// Assign a cPistol to the cEnemy3D
+	CPistol* spiderPistol = new CPistol();
+	spiderPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
+	// Initialise the instance
+	spiderPistol->Init();
+	spiderPistol->SetShader("Shader3D_Model");
+	spider->SetWeapon(0, spiderPistol);
+	spider->SetMaxHP(60);
+	spider->SetStatus(false);
+	Round2EnemyList.push_back(spider);
+	cSolidObjectManager->Add(spider);
+}
+
+void CScene3D::Round3(void)
+{
+	// Initialise the cEnemy3D
+	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
+	CEnemy3D* cEnemy3D = new CEnemy3D(glm::vec3(0.0f, fCheckHeight, -10.0f));
+	cEnemy3D->SetShader("Shader3D");
+	cEnemy3D->Init();
+	cEnemy3D->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
+	cEnemy3D->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+
+	// Assign a cPistol to the cEnemy3D
+	CPistol* cEnemyPistol = new CPistol();
+	cEnemyPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
+	// Initialise the instance
+	cEnemyPistol->Init();
+	cEnemyPistol->SetShader("Shader3D_Model");
+	cEnemy3D->SetWeapon(0, cEnemyPistol);
+	cEnemy3D->SetMaxHP(50);
+	cEnemy3D->SetStatus(false);
+	Round3EnemyList.push_back(cEnemy3D);
+	cSolidObjectManager->Add(cEnemy3D);
 }

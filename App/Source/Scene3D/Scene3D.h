@@ -98,7 +98,9 @@ public:
 	//Used to change level and then spawn enemies
 	void UpdateLevel(const double dElapsedTime);
 
-	void AddEnemyIntoList(std::vector<CSolidObject*> list, CSolidObject* enemy);
+	void Round1(void);
+	void Round2(void);
+	void Round3(void);
 protected:
 	// The handler to the CSettings
 	CSettings* cSettings;

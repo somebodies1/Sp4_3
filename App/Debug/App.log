@@ -1,2 +1,9 @@
-﻿  GUI_Scene3D.cpp
+﻿  ProjectileManager.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(29,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(59,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(180,32): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(194,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(205,21): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(230,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(260,20): warning C4018: '<': signed/unsigned mismatch
   App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe

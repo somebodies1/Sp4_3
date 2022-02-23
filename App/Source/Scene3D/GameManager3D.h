@@ -40,6 +40,8 @@ public:
 	float fMaxRoundTimer;
 
 	void UpdateRoundTimer(const double dElapsedTime);
+
+	void WinChecker(void);
 protected:
 	// Constructor
 	CGameManager3D(void);

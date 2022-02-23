@@ -395,7 +395,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					{
 						if ((*it)->DamageCheck(20))
 						{
-							cGameManager3D->iAmtOfEnemies--;
+							cGameManager3D->WinChecker();
 							cPlayer3D->SetScore(cPlayer3D->GetScore() + 3);
 						}
 							
@@ -404,13 +404,10 @@ bool CSolidObjectManager::CheckForCollision(void)
 					{
 						if ((*it)->DamageCheck(10))
 						{
-							cGameManager3D->iAmtOfEnemies--;
+							cGameManager3D->WinChecker();
 							cPlayer3D->SetScore(cPlayer3D->GetScore() + 1);
 						}
 					}
-					
-					if (cGameManager3D->iAmtOfEnemies <= 0)
-						CGameManager3D::GetInstance()->bPlayerWon = true;
 					(cProjectileManager->vProjectile[i])->SetStatus(false);
 					cout << "** RayBoxCollision between NPC and Projectile ***" << cGameManager3D->iAmtOfEnemies << endl;
 					break;
@@ -456,16 +453,13 @@ bool CSolidObjectManager::CheckForCollision(void)
 					if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::CARD_PROJECTILE)
 					{
 						if ((*it)->DamageCheck(20))
-							cGameManager3D->iAmtOfEnemies--;
+							cGameManager3D->WinChecker();
 					}
 					else if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::PROJECTILE)
 					{
 						if ((*it)->DamageCheck(10))
-							cGameManager3D->iAmtOfEnemies--;
+							cGameManager3D->WinChecker();
 					}
-
-					if (cGameManager3D->iAmtOfEnemies <= 0)
-						CGameManager3D::GetInstance()->bPlayerWon = true;
 					(cProjectileManager->vProjectile[i])->SetStatus(false);
 					cout << "** BoxBoxCollision between NPC and Projectile ***" << endl;
 					break;

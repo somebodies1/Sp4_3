@@ -20,6 +20,20 @@ void CGameManager3D::UpdateRoundTimer(const double dElapsedTime)
 	fRoundTimer -= dElapsedTime;
 }
 
+void CGameManager3D::WinChecker(void)
+{
+	iAmtOfEnemies--;
+
+	if (iAmtOfEnemies <= 0)
+	{
+		bLevelCompleted = true;
+		if (iCurrentLevel == 3)
+		{
+			bPlayerWon = true;
+		}
+	}
+}
+
 /**
 @brief Destructor
 */

@@ -129,7 +129,11 @@ int CProjectileManager::Activate(	glm::vec3 vec3Position,
 		vProjectile[uiIndexLast]->SetScale(glm::vec3(1.0f));
 		vProjectile[uiIndexLast]->SetType(CEntity3D::PROJECTILE);
 	}
-		
+	else
+	{
+		vProjectile[uiIndexLast]->SetScale(glm::vec3(1.0f));
+		vProjectile[uiIndexLast]->SetType(CEntity3D::TYPE::PROJECTILE);
+	}
 	//vProjectile[uiIndexLast]->SetType(CEntity3D::TYPE::PROJECTILE);
 
 	// Increase the uiIndexLast by 1 since a projectile is going to be added
