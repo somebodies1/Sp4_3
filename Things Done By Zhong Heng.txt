@@ -3,3 +3,4 @@ Imrpoved minimap
 Score System
 Sprinting mechanic
 Random Spawn of Powerups
+Game Aesthetics/ Map Design
