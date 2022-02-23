@@ -124,6 +124,11 @@ bool Soldier::Init(void)
 	// Call the parent's Init()
 	CSolidObject::Init();
 
+	cSoundController = CSoundController::GetInstance();
+	cSoundController->Init();
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\explode.ogg"), 31, true, false, true);
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\scream.ogg"), 32, true, false, true);
+
 	// Set the type
 	SetType(CEntity3D::TYPE::NPC);
 
@@ -474,14 +479,15 @@ bool Soldier::Update(const double dElapsedTime)
 
 		// Process the movement
 		ProcessMovement(SOLDIERMOVEMENT::RUSH, (float)dElapsedTime);
+		cSoundController->PlaySoundByID(32);
 	
 		cout << iFSMCounter << endl;
 
-		if (iFSMCounter >= 500)
+		if (iFSMCounter >= 500 || this->currentHP == 0)
 		{
-			// exlpode 
-			//sound_controller->PlaySoundByID(2);
-			this->currentHP = 0;
+			// exlpode
+			cSoundController->PlaySoundByID(31);
+			//this->currentHP = 0;
 			iFSMCounter = 0;
 			this->SetStatus(false);
 			if (_DEBUG_FSM == true)

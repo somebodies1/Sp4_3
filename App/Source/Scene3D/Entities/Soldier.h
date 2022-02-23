@@ -24,6 +24,10 @@ Soldier
 // Include FSM
 #include "../AI/FSM.h"
 
+#include "../App/Source/Scene3D/Scene3D.h"
+
+#include "../App/Source/SoundController/SoundController.h"
+
 // Include WaypointManager
 #include "../Waypoint/WaypointManager.h"
 
@@ -122,6 +126,8 @@ protected:
 
 	// The handle to the CCamera class instance
 	CCamera* cCamera;
+
+	CSoundController* cSoundController;
 
 	// The handle to the CWeaponInfo class instance
 	CWeaponInfo* cPrimaryWeapon;
