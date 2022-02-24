@@ -14,6 +14,8 @@
 // Include CProjectileManager
 #include "ProjectileManager.h"
 
+#include "../App/Source/Scene3D/Math/MyMath.h"
+
 #include <iostream>
 using namespace std;
 
@@ -29,8 +31,8 @@ CWeaponInfo::CWeaponInfo()
 	, dElapsedTime(0.0)
 	, dReloadTime(0.0f)
 	, dMaxReloadTime(5.0f)
-	, lowRecoil(glm::vec2(0.f))
-	, highRecoil(glm::vec2(0.f))
+	, lowRecoil(glm::vec2(1.f))
+	, highRecoil(glm::vec2(5.f))
 	, gunRecoilPos(glm::vec3(0.f))
 	, bulletSpread(0.0f)
 	, bFire(true)
@@ -246,6 +248,12 @@ bool CWeaponInfo::Init(void)
 	dChargeTime = 0.0f;
 	dMaxChargeTime = 0.0f;
 
+
+	bulletSpread = 0.015f;
+
+	lowRecoil = glm::vec2(-0.6f, 1.f);
+	highRecoil = glm::vec2(0.6f, 1.f);
+
 	// Update the model matrix
 	model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
 	model = glm::translate(model, glm::vec3(vec3Position.x, vec3Position.y, vec3Position.z));
@@ -264,9 +272,12 @@ bool CWeaponInfo::Init(void)
  */
 bool CWeaponInfo::Update(const double dt)
 {
+	gunRecoilPos.y = Math::Lerp(gunRecoilPos.y, 0.f, (float)dt);
+	gunRecoilPos.z = Math::Lerp(gunRecoilPos.z, 0.f, (float)dt);
+
 	// Update the model matrix
 	model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-	model = glm::translate(model, glm::vec3(vec3Position.x, vec3Position.y, vec3Position.z));
+	model = glm::translate(model, glm::vec3(vec3Position.x, vec3Position.y, vec3Position.z) + gunRecoilPos);
 	model = glm::scale(model, vec3Scale);
 	model = glm::rotate(model, fRotationAngle, vec3RotationAxis);
 	// If the weapon can fire, then just fire and return

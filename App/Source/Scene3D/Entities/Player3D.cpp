@@ -14,6 +14,8 @@
 //For allowing creating of Mesh 
 #include "Primitives/MeshBuilder.h"
 
+#include "../App/Source/Scene3D/Math/MyMath.h"
+
 #include <iostream>
 using namespace std;
 
@@ -267,15 +269,24 @@ void CPlayer3D::SetCurrentWeapon(const int iSlot)
  @param iSlot A const int variable which contains the weapon info to check for. 0 == Primary, 1 == Secondary
  @return A bool variable
  */
-bool CPlayer3D::DischargeWeapon(void) const
+bool CPlayer3D::DischargeWeapon(void)
 {
 	if ((iCurrentWeapon == 0) && (cPrimaryWeapon))
 	{
-		return cPrimaryWeapon->Discharge(vec3Position, vec3Front, (CSolidObject*)this);
+		bool firedBullet = cPrimaryWeapon->Discharge(vec3Position, vec3Front, (CSolidObject*)this);
+		if (firedBullet) //if first bullet is fired, apply recoil
+			ApplyRecoil(cPrimaryWeapon);
+
+		return firedBullet;
 	}
 	else if ((iCurrentWeapon == 1) && (cSecondaryWeapon))
 	{
-		return cSecondaryWeapon->Discharge(vec3Position, vec3Front, (CSolidObject*)this);
+		bool firedBullet = cSecondaryWeapon->Discharge(vec3Position, vec3Front, (CSolidObject*)this);
+
+		if (firedBullet)
+			ApplyRecoil(cSecondaryWeapon);
+
+		return firedBullet;
 	}
 	return NULL;
 }
@@ -640,6 +651,27 @@ void CPlayer3D::UpdateJumpFall(const double dElapsedTime)
 			cPhysics3D.SetStatus(CPhysics3D::STATUS::IDLE);
 		}
 	}
+}
+
+void CPlayer3D::ApplyRecoil(CWeaponInfo* weapon)
+{
+	//Get random recoil range
+	float horizontalRecoil = Math::RandFloatMinMax(weapon->GetLowestRecoil().x, weapon->GetHighestRecoil().x);
+	float verticalRecoil = Math::RandFloatMinMax(weapon->GetLowestRecoil().y, weapon->GetHighestRecoil().y);
+
+	//Update the yaw and pitch based on the recoil
+	fYaw += horizontalRecoil;
+	fPitch += verticalRecoil;
+
+	//Clamp the weapon recoil positions
+	float weaponRecoilPosY = Math::Clamp(verticalRecoil / 30, 0.0015f, 0.003f);
+	float weaponRecoilPosZ = Math::Clamp(horizontalRecoil / 15, -0.015f, 0.015f);
+
+	//Update the weapon recoil position based on the recoil
+	weapon->SetGunRecoilPos(glm::vec3(0, weaponRecoilPosY, -fabs(weaponRecoilPosZ)));
+
+	//Update the player's vector as the yaw and pitch has been updated
+	UpdatePlayerVectors();
 }
 
 /**

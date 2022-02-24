@@ -105,7 +105,7 @@ public:
 	void SetCurrentWeapon(const int iSlot);
 
 	// Discharge current weapon
-	bool DischargeWeapon(void) const;
+	bool DischargeWeapon(void);
 
 	// Set to Jump
 	void SetToJump(void);
@@ -141,7 +141,7 @@ public:
 	// Print Self
 	virtual void PrintSelf(void);
 
-	
+	void ApplyRecoil(CWeaponInfo* weapon);
 
 protected:
 	// The handle to the CCamera class instance

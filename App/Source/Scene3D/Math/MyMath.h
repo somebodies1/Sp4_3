@@ -172,6 +172,11 @@ namespace Math
 		return x * x;
 	}
 /******************************************************************************/
+	template<typename T>
+	T Lerp(T a, T b, T t)
+	{
+		return a * (1.0f - t) + b * t;
+	}
 /*!
 \brief
 Initialize Random Number Generator
