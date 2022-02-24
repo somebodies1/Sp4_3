@@ -13,13 +13,13 @@
   CollisionManager.cpp
   Entity2D.cpp
   Entity3D.cpp
-C:\Users\Ridwan\source\repos\Sp4_3\Library\Source\Primitives\Entity3D.cpp(316,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ridwan\source\repos\Sp4_3\Library\Source\Primitives\Entity3D.cpp(459,20): warning C4018: '<': signed/unsigned mismatch
+C:\School\Sp4_3\Library\Source\Primitives\Entity3D.cpp(316,20): warning C4018: '<': signed/unsigned mismatch
+C:\School\Sp4_3\Library\Source\Primitives\Entity3D.cpp(459,20): warning C4018: '<': signed/unsigned mismatch
   LevelOfDetails.cpp
   Mesh.cpp
   MeshBuilder.cpp
   SpriteAnimation.cpp
-C:\Users\Ridwan\source\repos\Sp4_3\Library\Source\Primitives\SpriteAnimation.cpp(75,62): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\School\Sp4_3\Library\Source\Primitives\SpriteAnimation.cpp(75,62): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
   ShaderManager.cpp
   Generating Code...
   Compiling...
@@ -31,4 +31,4 @@ C:\Users\Ridwan\source\repos\Sp4_3\Library\Source\Primitives\SpriteAnimation.cpp
   FPSCounter.cpp
   StopWatch.cpp
   Generating Code...
-  Library.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\Library.lib
+  Library.vcxproj -> C:\School\Sp4_3\Debug\Library.lib

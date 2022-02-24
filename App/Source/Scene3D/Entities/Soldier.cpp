@@ -127,7 +127,7 @@ bool Soldier::Init(void)
 	cSoundController = CSoundController::GetInstance();
 	cSoundController->Init();
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\explode.ogg"), 31, true, false, true);
-	cSoundController->LoadSound(FileSystem::getPath("Sounds\\scream.ogg"), 32, true, false, true);
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\scream.ogg"), 32, true, false, false);
 
 	// Set the type
 	SetType(CEntity3D::TYPE::NPC);

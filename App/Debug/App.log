@@ -1,7 +1,3 @@
-﻿  AssaultRifle.cpp
-  WeaponInfo.cpp
-C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(122,9): warning C4244: 'return': conversion from 'const double' to 'float', possible loss of data
-C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(127,9): warning C4244: 'return': conversion from 'const double' to 'float', possible loss of data
-C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(333,18): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Generating Code...
-  App.vcxproj -> C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Debug\App.exe
+﻿  Soldier.cpp
+C:\School\Sp4_3\App\Source\Scene3D\Entities\Soldier.cpp(317): warning C4715: 'Soldier::DischargeWeapon': not all control paths return a value
+  App.vcxproj -> C:\School\Sp4_3\Debug\App.exe
