@@ -929,6 +929,17 @@ void CScene3D::Enemy(void)
 
 void CScene3D::UpdateLevel(const double dElapsedTime)
 {
+	if (cGameManager3D->bPlayerWon == true)
+	{
+		// Reset the CKeyboardController
+		CKeyboardController::GetInstance()->Reset();
+
+		// Load the menu state
+		cout << "Loading WinState" << endl;
+		CGameStateManager::GetInstance()->SetActiveGameState("WinState");
+		return;
+	}
+
 	//Check if player has finished level
 	if (cGameManager3D->iAmtOfEnemies <= 0)
 	{

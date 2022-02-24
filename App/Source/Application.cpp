@@ -44,6 +44,7 @@ using namespace std;
 #include "GameStateManagement/PauseState.h"
 #include "GameStateManagement/IntroState2.h"
 #include "GameStateManagement/IntroState3.h"
+#include "GameStateManagement/WinState.h"
 
 /**
  @brief Define an error callback
@@ -250,6 +251,7 @@ bool Application::Init(void)
 	CGameStateManager::GetInstance()->AddGameState("PauseState", new CPauseState());
 	CGameStateManager::GetInstance()->AddGameState("IntroState2", new CIntroState2());
 	CGameStateManager::GetInstance()->AddGameState("IntroState3", new CIntroState3());
+	CGameStateManager::GetInstance()->AddGameState("WinState", new CWinState());
 
 	// Set the active scene
 	CGameStateManager::GetInstance()->SetActiveGameState("IntroState");
