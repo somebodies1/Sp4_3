@@ -48,6 +48,7 @@
     <ClCompile Include="Source\Scene3D\CameraEffects\SweatScreen.cpp" />
     <ClCompile Include="Source\Scene3D\CameraEffects\WinScreen.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\Baryonyx.cpp" />
+    <ClCompile Include="Source\Scene3D\Entities\Boss.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\Car.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\Charano.cpp" />
     <ClCompile Include="Source\Scene3D\Entities\Dinosaur.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="Source\Scene3D\CameraEffects\SweatScreen.h" />
     <ClInclude Include="Source\Scene3D\CameraEffects\WinScreen.h" />
     <ClInclude Include="Source\Scene3D\Entities\Baryonyx.h" />
+    <ClInclude Include="Source\Scene3D\Entities\Boss.h" />
     <ClInclude Include="Source\Scene3D\Entities\Car.h" />
     <ClInclude Include="Source\Scene3D\Entities\Charano.h" />
     <ClInclude Include="Source\Scene3D\Entities\Dinosaur.h" />

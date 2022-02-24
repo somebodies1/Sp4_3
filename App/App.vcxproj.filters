@@ -88,6 +88,7 @@
     <ClCompile Include="Source\GameStateManagement\WinState2.cpp" />
     <ClCompile Include="Source\GameStateManagement\WinState3.cpp" />
     <ClCompile Include="Source\GameStateManagement\WinState4.cpp" />
+    <ClCompile Include="Source\Scene3D\Entities\Boss.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -178,5 +179,6 @@
     <ClInclude Include="Source\GameStateManagement\WinState2.h" />
     <ClInclude Include="Source\GameStateManagement\WinState3.h" />
     <ClInclude Include="Source\GameStateManagement\WinState4.h" />
+    <ClInclude Include="Source\Scene3D\Entities\Boss.h" />
   </ItemGroup>
 </Project>
