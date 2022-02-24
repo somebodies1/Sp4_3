@@ -1,9 +1,7 @@
-﻿  ProjectileManager.cpp
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(29,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(59,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(180,32): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(194,32): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(205,21): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(230,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\WeaponInfo\ProjectileManager.cpp(260,20): warning C4018: '<': signed/unsigned mismatch
-  App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe
+﻿  AssaultRifle.cpp
+  WeaponInfo.cpp
+C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(122,9): warning C4244: 'return': conversion from 'const double' to 'float', possible loss of data
+C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(127,9): warning C4244: 'return': conversion from 'const double' to 'float', possible loss of data
+C:\Users\Julius\source\repos\Sp4_3(NEW)\App\Source\Scene3D\WeaponInfo\WeaponInfo.cpp(333,18): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+  Generating Code...
+  App.vcxproj -> C:\Users\Julius\Source\Repos\Sp4_3(NEW)\Debug\App.exe

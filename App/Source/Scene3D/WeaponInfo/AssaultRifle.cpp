@@ -50,7 +50,7 @@ bool CAssaultRifle::Init(void)
 	// The elapsed time (between shots)
 	dElapsedTime = 0.0;
 	// The maximum elapsed time for reloading of a magazine in milliseconds
-	dMaxReloadTime = 3.0f;
+	dMaxReloadTime = 1.0f;
 	// Boolean flag to indicate if weapon can fire now
 	bFire = true;
 
