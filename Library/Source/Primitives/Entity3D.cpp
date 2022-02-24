@@ -106,7 +106,7 @@ bool CEntity3D::DamageCheck(const int damage)
 	int tempHp = currentHP;
 
 	currentHP -= damage;
-	if (tempHp > currentHP && TYPE::SPIDER)
+	if (tempHp > currentHP && eType == TYPE::SPIDER)
 	{
 		vec3Position.y += 1.f;
 		cout << eType;
