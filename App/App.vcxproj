@@ -21,6 +21,9 @@
     <ClCompile Include="Source\GameStateManagement\Play3DGameState.cpp" />
     <ClCompile Include="Source\GameStateManagement\PlayGameState.cpp" />
     <ClCompile Include="Source\GameStateManagement\WinState.cpp" />
+    <ClCompile Include="Source\GameStateManagement\WinState2.cpp" />
+    <ClCompile Include="Source\GameStateManagement\WinState3.cpp" />
+    <ClCompile Include="Source\GameStateManagement\WinState4.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Scene2D\BackgroundEntity.cpp" />
     <ClCompile Include="Source\Scene2D\Enemy2D.cpp" />
@@ -108,6 +111,9 @@
     <ClInclude Include="Source\GameStateManagement\Play3DGameState.h" />
     <ClInclude Include="Source\GameStateManagement\PlayGameState.h" />
     <ClInclude Include="Source\GameStateManagement\WinState.h" />
+    <ClInclude Include="Source\GameStateManagement\WinState2.h" />
+    <ClInclude Include="Source\GameStateManagement\WinState3.h" />
+    <ClInclude Include="Source\GameStateManagement\WinState4.h" />
     <ClInclude Include="Source\Scene2D\BackgroundEntity.h" />
     <ClInclude Include="Source\Scene2D\Enemy2D.h" />
     <ClInclude Include="Source\Scene2D\GameManager.h" />

@@ -85,6 +85,9 @@
     <ClCompile Include="Source\GameStateManagement\IntroState2.cpp" />
     <ClCompile Include="Source\GameStateManagement\IntroState3.cpp" />
     <ClCompile Include="Source\GameStateManagement\WinState.cpp" />
+    <ClCompile Include="Source\GameStateManagement\WinState2.cpp" />
+    <ClCompile Include="Source\GameStateManagement\WinState3.cpp" />
+    <ClCompile Include="Source\GameStateManagement\WinState4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -172,5 +175,8 @@
     <ClInclude Include="Source\GameStateManagement\IntroState2.h" />
     <ClInclude Include="Source\GameStateManagement\IntroState3.h" />
     <ClInclude Include="Source\GameStateManagement\WinState.h" />
+    <ClInclude Include="Source\GameStateManagement\WinState2.h" />
+    <ClInclude Include="Source\GameStateManagement\WinState3.h" />
+    <ClInclude Include="Source\GameStateManagement\WinState4.h" />
   </ItemGroup>
 </Project>
