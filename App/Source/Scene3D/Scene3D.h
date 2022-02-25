@@ -58,6 +58,7 @@
 #include "Entities/Enemy3D.h"
 #include "Entities/Spider.h"
 #include "Entities/Soldier.h"
+#include "Entities//Boss.h"
 
 //Include GUI_Scene3D
 #include "GUI_Scene3D.h"

@@ -141,7 +141,7 @@ bool Boss::Init(void)
 	std::vector<ModelVertex> vertex_buffer_data;
 	std::vector<GLuint> index_buffer_data;
 
-	std::string file_path = "Models/Enemy/Boss.obj";
+	std::string file_path = "Models/Enemy/boss.obj";
 	bool success = CLoadOBJ::LoadOBJ(file_path.c_str(), vertices, uvs, normals, true);
 	if (!success)
 	{
@@ -169,10 +169,10 @@ bool Boss::Init(void)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	// load and create a texture 
-	iTextureID = CImageLoader::GetInstance()->LoadTextureGetID("Models/Enemy/Boss.png", false);
+	iTextureID = CImageLoader::GetInstance()->LoadTextureGetID("Models/Enemy/boss.jpg", false);
 	if (iTextureID == 0)
 	{
-		cout << "Unable to load caveman png" << endl;
+		cout << "Unable to load boss png" << endl;
 		return false;
 	}
 
@@ -332,8 +332,6 @@ void Boss::ProcessMovement(const BOSSMOVEMENT direction, const float deltaTime)
 		vec3Position -= vec3Right * velocity;
 	if (direction == BOSSMOVEMENT::RIGHT)
 		vec3Position += vec3Right * velocity;
-	if (direction == BOSSMOVEMENT::RUSH)
-		vec3Position += vec3Front * velocity * 2.f;
 
 	// If the camera is attached to this player, then update the camera
 	if (cCamera)
@@ -410,13 +408,6 @@ bool Boss::Update(const double dElapsedTime)
 			if (_DEBUG_FSM == true)
 				cout << "Target found: Switching to Attack State" << endl;
 		}
-		else if (this->currentHP <= 50)
-		{
-			sCurrentFSM = FSM::SUICIDE;
-			iFSMCounter = 0;
-			if (_DEBUG_FSM == true)
-				cout << "Target found: Switching to Run State" << endl;
-		}
 		else
 		{
 			// Process the movement
@@ -451,13 +442,6 @@ bool Boss::Update(const double dElapsedTime)
 			if (_DEBUG_FSM == true)
 				cout << "Attacking now" << endl;
 		}
-		else if (this->currentHP <= 50)
-		{
-			sCurrentFSM = FSM::SUICIDE;
-			iFSMCounter = 0;
-			if (_DEBUG_FSM == true)
-				cout << "Target found: Switching to Run State" << endl;
-		}
 		else
 		{
 			// If NPC loses track of player, then go back to the nearest waypoint
@@ -469,29 +453,6 @@ bool Boss::Update(const double dElapsedTime)
 			iFSMCounter = 0;
 			if (_DEBUG_FSM == true)
 				cout << "Switching to Patrol State" << endl;
-		}
-		iFSMCounter++;
-		break;
-	case FSM::SUICIDE:
-		//sound_controller->PlaySoundByID(17);
-		vec3Front = glm::normalize((cPlayer3D->GetPosition() - vec3Position));
-		UpdateFrontAndYaw();
-
-		// Process the movement
-		ProcessMovement(BOSSMOVEMENT::RUSH, (float)dElapsedTime);
-		cSoundController->PlaySoundByID(32);
-	
-		cout << iFSMCounter << endl;
-
-		if (iFSMCounter >= 500 || this->currentHP == 0)
-		{
-			// exlpode
-			cSoundController->PlaySoundByID(31);
-			//this->currentHP = 0;
-			iFSMCounter = 0;
-			this->SetStatus(false);
-			if (_DEBUG_FSM == true)
-				cout << "Exploded" << endl;
 		}
 		iFSMCounter++;
 		break;
