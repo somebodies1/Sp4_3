@@ -371,7 +371,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					}
 					else if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::PROJECTILE && (*it)->GetInvis() == false)
 					{
-						cInventoryItem->Remove(10);
+						cInventoryItem->Remove(5);
 					}
 					
 

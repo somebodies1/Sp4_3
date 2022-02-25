@@ -422,7 +422,7 @@ bool CScene3D::Init(void)
 	Round1();
 	Round2();
 	Round3();
-	cGameManager3D->iCurrentLevel = 2;
+	cGameManager3D->iCurrentLevel = 0;
 
 	return true;
 }
