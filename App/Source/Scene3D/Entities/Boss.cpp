@@ -130,7 +130,7 @@ bool Boss::Init(void)
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\scream.ogg"), 32, true, false, false);*/
 
 	// Set the type
-	SetType(CEntity3D::TYPE::NPC);
+	SetType(CEntity3D::TYPE::BOSS);
 
 	// Initialise the cPlayer3D
 	cPlayer3D = CPlayer3D::GetInstance();
@@ -205,7 +205,27 @@ bool Boss::Init(void)
 	vec3Front = glm::normalize((cWaypointManager->GetNearestWaypoint(vec3Position)->GetPosition() - vec3Position));
 	UpdateFrontAndYaw();
 
+	/*for (unsigned i = 0; i < 3; ++i) {
+		CCollider* collider = new CCollider();
+		collider.posit
+		collider->InitCollider()
+	}*/
+
 	return true;
+}
+
+bool Boss::DamageCheck(const int damage)
+{
+	//CHECK Y AXIS IF BOTTOM MED OR HIGH
+	if (currentHP <= 0)
+	{
+		SetStatus(false);
+		return true;
+	}/*
+	if (InitCollider)*/
+	 
+	//if not dead yet
+	return false;
 }
 
 /**

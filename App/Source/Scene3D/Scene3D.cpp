@@ -1073,7 +1073,9 @@ void CScene3D::Round3(void)
 	boss->SetShader("Shader3D");
 	boss->Init();
 	boss->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
-	boss->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	float w = 3.f;
+	float h = 10.f;
+	boss->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),glm::vec3(-w,-.5,-w),glm::vec3(w,h,w));
 
 	// Assign a cPistol to the cEnemy3D
 	CPistol* bossPistol = new CPistol();

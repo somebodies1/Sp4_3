@@ -418,6 +418,16 @@ bool CSolidObjectManager::CheckForCollision(void)
 					cout << "** RayBoxCollision between Structure and Projectile ***" << endl;
 					break;
 				}
+				else if ((*it)->GetType() == CSolidObject::TYPE::BOSS)
+				{
+					if ((*it)->DamageCheck(10)) {
+						(cProjectileManager->vProjectile[i])->SetStatus(false);
+						cGameManager3D->WinChecker();
+						cPlayer3D->SetScore(cPlayer3D->GetScore() + 10);
+						cout << "** RayBoxCollision between Boss ***" << endl;
+					}
+					break;
+				}
 			}
 
 			// Check for collisions between the 2 entities

@@ -106,6 +106,8 @@ public:
 	// PostRender
 	virtual void PostRender(void);
 
+	virtual bool DamageCheck(const int damage);
+
 protected:
 	// Enemy Attributes
 	glm::vec3 vec3Up;
@@ -151,4 +153,7 @@ protected:
 
 	// Update Front Vector and Yaw
 	void UpdateFrontAndYaw(void);
+
+	//An array of colliders!
+	//std::vector<CCollider*> colliderArr;
 };

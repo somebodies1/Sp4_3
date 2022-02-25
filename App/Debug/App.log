@@ -2,7 +2,7 @@
 D:\Sp4_3\App\Source\Scene3D\Scene3D.cpp(153,20): warning C4018: '<': signed/unsigned mismatch
 D:\Sp4_3\App\Source\Scene3D\Scene3D.cpp(158,20): warning C4018: '<': signed/unsigned mismatch
 D:\Sp4_3\App\Source\Scene3D\Scene3D.cpp(163,20): warning C4018: '<': signed/unsigned mismatch
-D:\Sp4_3\App\Source\Scene3D\Scene3D.cpp(965,23): warning C4018: '<': signed/unsigned mismatch
-D:\Sp4_3\App\Source\Scene3D\Scene3D.cpp(974,23): warning C4018: '<': signed/unsigned mismatch
-D:\Sp4_3\App\Source\Scene3D\Scene3D.cpp(982,23): warning C4018: '<': signed/unsigned mismatch
+D:\Sp4_3\App\Source\Scene3D\Scene3D.cpp(966,23): warning C4018: '<': signed/unsigned mismatch
+D:\Sp4_3\App\Source\Scene3D\Scene3D.cpp(975,23): warning C4018: '<': signed/unsigned mismatch
+D:\Sp4_3\App\Source\Scene3D\Scene3D.cpp(983,23): warning C4018: '<': signed/unsigned mismatch
   App.vcxproj -> D:\Sp4_3\Debug\App.exe

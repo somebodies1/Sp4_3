@@ -1,34 +1,4 @@
-﻿  Settings.cpp
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  GUI.cpp
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  KeyboardController.cpp
-  MouseController.cpp
-  Collider.cpp
-  CollisionManager.cpp
-  Entity2D.cpp
-  Entity3D.cpp
+﻿  Entity3D.cpp
 D:\Sp4_3\Library\Source\Primitives\Entity3D.cpp(316,20): warning C4018: '<': signed/unsigned mismatch
 D:\Sp4_3\Library\Source\Primitives\Entity3D.cpp(459,20): warning C4018: '<': signed/unsigned mismatch
-  LevelOfDetails.cpp
-  Mesh.cpp
-  MeshBuilder.cpp
-  SpriteAnimation.cpp
-D:\Sp4_3\Library\Source\Primitives\SpriteAnimation.cpp(75,62): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-  ShaderManager.cpp
-  Generating Code...
-  Compiling...
-  TextRenderer.cpp
-  CSVReader.cpp
-  CSVWriter.cpp
-  ImageLoader.cpp
-  LoadOBJ.cpp
-  FPSCounter.cpp
-  StopWatch.cpp
-  Generating Code...
   Library.vcxproj -> D:\Sp4_3\Debug\Library.lib
