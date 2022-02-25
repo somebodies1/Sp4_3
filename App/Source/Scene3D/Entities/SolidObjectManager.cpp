@@ -5,6 +5,7 @@
  */
 
 #include "SolidObjectManager.h"
+#include "Boss.h"
 
 // Include CCollisionManager
 #include "Primitives/CollisionManager.h"
@@ -478,6 +479,17 @@ bool CSolidObjectManager::CheckForCollision(void)
 				{
 					(cProjectileManager->vProjectile[i])->SetStatus(false);
 					cout << "** BoxBoxCollision between Structure and Projectile ***" << endl;
+					break;
+				} 
+				else if ((*it)->GetType() == CSolidObject::TYPE::BOSS)
+				{
+					(cProjectileManager->vProjectile[i])->SetStatus(false);
+					if ((*it)->DamageCheck(10)) {
+						(dynamic_cast<Boss*>(*it))->SetStatus(false);
+						cGameManager3D->WinChecker();
+						cPlayer3D->SetScore(cPlayer3D->GetScore() + 10);
+					}
+					cout << "** BoxBoxCollision between Projectile and BOSS D ***" << endl;
 					break;
 				}
 			}

@@ -1084,7 +1084,7 @@ void CScene3D::Round3(void)
 	bossPistol->Init();
 	bossPistol->SetShader("Shader3D_Model");
 	boss->SetWeapon(0, bossPistol);
-	boss->SetMaxHP(50);
+	boss->SetMaxHP(30);
 	boss->SetStatus(false);
 	Round3EnemyList.push_back(boss);
 	cSolidObjectManager->Add(boss);

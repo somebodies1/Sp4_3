@@ -217,6 +217,7 @@ bool Boss::Init(void)
 bool Boss::DamageCheck(const int damage)
 {
 	//CHECK Y AXIS IF BOTTOM MED OR HIGH
+	currentHP -= damage;
 	if (currentHP <= 0)
 	{
 		SetStatus(false);
