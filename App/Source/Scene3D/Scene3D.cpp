@@ -996,79 +996,72 @@ void CScene3D::UpdateLevel(const double dElapsedTime)
 
 void CScene3D::Round1(void)
 {
-	// Initialise the Soldier
-	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
-	Soldier* soldier = new Soldier(glm::vec3(0.0f, fCheckHeight, -20.0f));
-	soldier->SetShader("Shader3DNoColour");
-	soldier->Init();
-	soldier->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
-	soldier->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-	////cEnemy3D->SetScale(glm::vec3(0.5f));
-	//
-	// Assign a cPistol to the cEnemy3D
-	CPistol* soldierPistol = new CPistol();
-	// Set the position, rotation and scale of this weapon
-	//cEnemyPistol->SetPosition(glm::vec3(0.05f, -0.075f, 0.5f));
-	//cEnemyPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
-	soldierPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
-	// Initialise the instance
-	soldierPistol->Init();
-	soldierPistol->SetShader("Shader3D_Model");
-	soldier->SetWeapon(0, soldierPistol);
-	soldier->SetMaxHP(40);
-	soldier->SetStatus(false);
-	//AddEnemyIntoList(Round1EnemyList, soldier);
-	Round1EnemyList.push_back(soldier);
-	cSolidObjectManager->Add(soldier);
+	for (int i = 0; i < 5; i++)
+	{
+		// Initialise the Soldier
+		float x = Math::RandFloatMinMax(-40.f, 40.f);
+		float z = Math::RandFloatMinMax(-40.f, 40.f);
+		float fCheckHeight1;
+		fCheckHeight1 = cTerrain->GetHeight(x, z);
+		Soldier* soldier = new Soldier(glm::vec3(x, fCheckHeight1, z));
+		soldier->SetShader("Shader3DNoColour");
+		soldier->Init();
+		soldier->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
+		soldier->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		////cEnemy3D->SetScale(glm::vec3(0.5f));
+		//
+		// Assign a cPistol to the cEnemy3D
+		CPistol* soldierPistol = new CPistol();
+		// Set the position, rotation and scale of this weapon
+		//cEnemyPistol->SetPosition(glm::vec3(0.05f, -0.075f, 0.5f));
+		//cEnemyPistol->SetRotation(3.14159f, glm::vec3(0.0f, 1.0f, 0.0f));
+		soldierPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
+		// Initialise the instance
+		soldierPistol->Init();
+		soldierPistol->SetShader("Shader3D_Model");
+		soldier->SetWeapon(0, soldierPistol);
+		soldier->SetMaxHP(100);
+		soldier->SetStatus(false);
+		//AddEnemyIntoList(Round1EnemyList, soldier);
+		Round1EnemyList.push_back(soldier);
+		cSolidObjectManager->Add(soldier);
+	}
 }
 
 void CScene3D::Round2(void)
 {
-	// Initialise the Spider
-	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
-	Spider* spider = new Spider(glm::vec3(0.0f, fCheckHeight, -20.0f));
-	spider->SetShader("Shader3DNoColour");
-	spider->Init();
-	spider->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
-	spider->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	for (int i = 0; i < 5; i++)
+	{
+		// Initialise the Spider
+		float x = Math::RandFloatMinMax(-40.f, 40.f);
+		float z = Math::RandFloatMinMax(-40.f, 40.f);
+		float fCheckHeight1;
+		fCheckHeight1 = cTerrain->GetHeight(x, z);
+		Spider* spider = new Spider(glm::vec3(x, fCheckHeight1, z));
+		spider->SetShader("Shader3DNoColour");
+		spider->Init();
+		spider->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
+		spider->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 
-	// Assign a cPistol to the cEnemy3D
-	CPistol* spiderPistol = new CPistol();
-	spiderPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
-	// Initialise the instance
-	spiderPistol->Init();
-	spiderPistol->SetShader("Shader3D_Model");
-	spider->SetWeapon(0, spiderPistol);
-	spider->SetMaxHP(60);
-	spider->SetStatus(false);
-	Round2EnemyList.push_back(spider);
-	cSolidObjectManager->Add(spider);
+		// Assign a cPistol to the cEnemy3D
+		CPistol* spiderPistol = new CPistol();
+		spiderPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
+		// Initialise the instance
+		spiderPistol->Init();
+		spiderPistol->SetShader("Shader3D_Model");
+		spider->SetWeapon(0, spiderPistol);
+		spider->SetMaxHP(50);
+		spider->SetStatus(false);
+		Round2EnemyList.push_back(spider);
+		cSolidObjectManager->Add(spider);
+	}
 }
 
 void CScene3D::Round3(void)
 {
 	// Initialise the cEnemy3D
 	float fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
-	//CEnemy3D* cEnemy3D = new CEnemy3D(glm::vec3(0.0f, fCheckHeight, -10.0f));
-	//cEnemy3D->SetShader("Shader3D");
-	//cEnemy3D->Init();
-	//cEnemy3D->SetRotation(-180.f, glm::vec3(0.0f, 1.0f, 0.0f));
-	//cEnemy3D->InitCollider("Shader3D_Line", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 
-	//// Assign a cPistol to the cEnemy3D
-	//CPistol* cEnemyPistol = new CPistol();
-	//cEnemyPistol->SetScale(glm::vec3(1.75f, 1.75f, 1.75f));
-	//// Initialise the instance
-	//cEnemyPistol->Init();
-	//cEnemyPistol->SetShader("Shader3D_Model");
-	//cEnemy3D->SetWeapon(0, cEnemyPistol);
-	//cEnemy3D->SetMaxHP(50);
-	//cEnemy3D->SetStatus(false);
-	//Round3EnemyList.push_back(cEnemy3D);
-	//cSolidObjectManager->Add(cEnemy3D);
-
-	// Initialise the cEnemy3D
-	fCheckHeight = cTerrain->GetHeight(0.0f, -10.0f);
 	Boss* boss = new Boss(glm::vec3(0.0f, fCheckHeight, -10.0f));
 	boss->SetShader("Shader3D");
 	boss->Init();
@@ -1084,8 +1077,9 @@ void CScene3D::Round3(void)
 	bossPistol->Init();
 	bossPistol->SetShader("Shader3D_Model");
 	boss->SetWeapon(0, bossPistol);
-	boss->SetMaxHP(30);
+	boss->SetMaxHP(100);
 	boss->SetStatus(false);
 	Round3EnemyList.push_back(boss);
 	cSolidObjectManager->Add(boss);
+
 }

@@ -446,7 +446,7 @@ bool CSolidObjectManager::CheckForCollision(void)
 					}
 					else if (cProjectileManager->vProjectile[i]->GetType() == CEntity3D::PROJECTILE)
 					{
-						cInventoryItem->Remove(10);
+						cInventoryItem->Remove(2);
 					}
 
 					if (cInventoryItem->GetCount() <= 0)
