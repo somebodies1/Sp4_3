@@ -215,6 +215,8 @@ bool CScene3D::Init(void)
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\reload.ogg"), 5, true, false, false);
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\running.ogg"), 6, true, false, false);
 	cSoundController->LoadSound(FileSystem::getPath("Sounds\\slide.ogg"), 7, true, false, false);
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\1st.ogg"), 8, true, false, false);
+
 	//cSoundController->LoadSound(FileSystem::getPath("Sounds\\pistol.wav"), 7, true, false,true);
 
 	cSoundController->PlaySoundByID(4);

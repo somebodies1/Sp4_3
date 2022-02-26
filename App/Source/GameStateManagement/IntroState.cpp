@@ -59,6 +59,11 @@ bool CIntroState::Init(void)
 {
 	cout << "CIntroState::Init()\n" << endl;
 
+	cSoundController = CSoundController::GetInstance();
+	cSoundController->Init();
+	cSoundController->LoadSound(FileSystem::getPath("Sounds//1st.ogg"), 10, true, false, false);
+
+
 	// Include Shader Manager
 	CShaderManager::GetInstance()->Use("2DShader");
 	CShaderManager::GetInstance()->activeShader->setInt("texture1", 0);
@@ -81,6 +86,9 @@ bool CIntroState::Update(const double dElapsedTime)
 	{
 		// Reset the CKeyboardController
 		CKeyboardController::GetInstance()->Reset();
+
+
+		cSoundController->PlaySoundByID(10);
 
 		// Load the menu state
 		cout << "Loading Introstate2" << endl;

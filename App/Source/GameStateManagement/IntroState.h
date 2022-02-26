@@ -13,9 +13,14 @@
 #include "../Scene2D/BackgroundEntity.h"
 #include <string>
 
+#include "../App/Source/SoundController/SoundController.h"
+#include "../Library/Source/System/filesystem.h"
+
 class CIntroState : public CGameStateBase
 {
 public:
+	CSoundController* cSoundController;
+
 	// Constructor
 	CIntroState(void);
 	// Destructor
