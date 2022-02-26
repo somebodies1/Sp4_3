@@ -1,3 +1,4 @@
-﻿  Spider.cpp
-C:\School\Sp4_3\App\Source\Scene3D\Entities\Spider.cpp(312): warning C4715: 'Spider::DischargeWeapon': not all control paths return a value
-  App.vcxproj -> C:\School\Sp4_3\Debug\App.exe
+﻿  IntroState3.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\Ridwan\source\repos\Sp4_3\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+  App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe

@@ -41,6 +41,7 @@ using namespace std;
  */
 CIntroState3::CIntroState3(void)
 	: background(NULL)
+	, cSoundController(NULL)
 {
 
 }
@@ -59,6 +60,10 @@ bool CIntroState3::Init(void)
 {
 	cout << "CIntroState3::Init()\n" << endl;
 
+	cSoundController = CSoundController::GetInstance();
+	cSoundController->Init();
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\2nd.wav"), 41, true, false, false);
+
 	// Include Shader Manager
 	CShaderManager::GetInstance()->Use("2DShader");
 	CShaderManager::GetInstance()->activeShader->setInt("texture1", 0);
@@ -67,6 +72,7 @@ bool CIntroState3::Init(void)
 	background = new CBackgroundEntity("Image/IntroBackground3.png");
 	background->SetShader("2DShader");
 	background->Init();
+	voiceover = false;
 
 	return true;
 }
@@ -76,6 +82,13 @@ bool CIntroState3::Init(void)
  */
 bool CIntroState3::Update(const double dElapsedTime)
 {
+	if (voiceover == false)
+	{
+		cSoundController->PlaySoundByID(41);
+		cout << "Playing IntroState 3 Sound" << endl;
+		voiceover = true;
+	}
+
 	//cout << "CIntroState3::Update()\n" << endl;
 	if (CKeyboardController::GetInstance()->IsKeyReleased(GLFW_KEY_SPACE))
 	{

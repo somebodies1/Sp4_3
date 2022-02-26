@@ -114,6 +114,7 @@ bool CSoundController::LoadSound(string filename,
 void CSoundController::PlaySoundByID(const int ID)
 {
 	CSoundInfo* pSoundInfo = GetSound(ID);
+	cout << "Sound #" << ID << " is playing." << endl;
 	if (!pSoundInfo)
 	{
 		cout << "Sound #" << ID << " is not playable." << endl;

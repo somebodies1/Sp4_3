@@ -154,16 +154,19 @@ CScene3D::~CScene3D(void)
 	{
 		Round1EnemyList[i] = nullptr;
 	}
+	Round1EnemyList.clear();
 
 	for (int i = 0; i < Round2EnemyList.size(); ++i)
 	{
 		Round2EnemyList[i] = nullptr;
 	}
+	Round2EnemyList.clear();
 
 	for (int i = 0; i < Round3EnemyList.size(); ++i)
 	{
 		Round3EnemyList[i] = nullptr;
 	}
+	Round3EnemyList.clear();
 
 	// We won't delete this since it was created elsewhere
 	cFPSCounter = NULL;

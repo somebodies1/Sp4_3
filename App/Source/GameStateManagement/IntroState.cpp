@@ -41,6 +41,7 @@ using namespace std;
  */
 CIntroState::CIntroState(void)
 	: background(NULL)
+	//, cSoundController(NULL)
 {
 
 }
@@ -50,6 +51,7 @@ CIntroState::CIntroState(void)
  */
 CIntroState::~CIntroState(void)
 {
+	
 }
 
 /**
@@ -59,10 +61,10 @@ bool CIntroState::Init(void)
 {
 	cout << "CIntroState::Init()\n" << endl;
 
-	cSoundController = CSoundController::GetInstance();
-	cSoundController->Init();
-	cSoundController->LoadSound(FileSystem::getPath("Sounds//1st.ogg"), 10, true, false, false);
-
+	//cSoundController = CSoundController::GetInstance();
+	//cSoundController->Init();
+	//cSoundController->LoadSound(FileSystem::getPath("Sounds\\1st.ogg"), 40, true, false, false);
+	//cSoundController->PlaySoundByID(40);
 
 	// Include Shader Manager
 	CShaderManager::GetInstance()->Use("2DShader");
@@ -84,11 +86,12 @@ bool CIntroState::Update(const double dElapsedTime)
 	//cout << "CIntroState::Update()\n" << endl;
 	if (CKeyboardController::GetInstance()->IsKeyReleased(GLFW_KEY_SPACE))
 	{
+		
 		// Reset the CKeyboardController
 		CKeyboardController::GetInstance()->Reset();
 
 
-		cSoundController->PlaySoundByID(10);
+		
 
 		// Load the menu state
 		cout << "Loading Introstate2" << endl;

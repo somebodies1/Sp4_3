@@ -11,7 +11,9 @@
 
 #include "Primitives/Mesh.h"
 #include "../Scene2D/BackgroundEntity.h"
-#include <string>
+
+#include "../App/Source/SoundController/SoundController.h"
+#include "../Library/Source/System/filesystem.h"
 
 class CIntroState2 : public CGameStateBase
 {
@@ -32,4 +34,6 @@ public:
 
 protected:
 	CBackgroundEntity* background;
+	CSoundController* cSoundController;
+	bool voiceover;
 };
