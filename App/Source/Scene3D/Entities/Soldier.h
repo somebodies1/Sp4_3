@@ -143,6 +143,9 @@ protected:
 	// WaypointManager
 	CWaypointManager* cWaypointManager;
 
+	//Handler to gameManager class
+	CGameManager3D* cGameManager3D;
+
 	// Calculates the front vector from the Enemy's (updated) Euler Angles
 	void UpdateSoldierVectors(void);
 

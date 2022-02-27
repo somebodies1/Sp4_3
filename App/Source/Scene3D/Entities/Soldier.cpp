@@ -39,6 +39,7 @@ Soldier::Soldier(void)
 	, cPlayer3D(NULL)
 	, cTerrain(NULL)
 	, cWaypointManager(NULL)
+	, cGameManager3D(NULL)
 {
 	// Set the default position to the origin
 	vec3Position = glm::vec3(0.0f, +fHeightOffset, 0.0f);
@@ -71,6 +72,7 @@ Soldier::Soldier(const glm::vec3 vec3Position,
 	, cPlayer3D(NULL)
 	, cTerrain(NULL)
 	, cWaypointManager(NULL)
+	, cGameManager3D(NULL)
 {
 	this->vec3Position = vec3Position;
 	this->vec3Position.y += +fHeightOffset;
@@ -111,6 +113,11 @@ Soldier::~Soldier(void)
 		cCamera = NULL;
 	}
 
+	if (cGameManager3D)
+	{
+		cGameManager3D = NULL;
+	}
+
 	// Delete the rendering objects in the graphics card
 	glDeleteVertexArrays(1, &VAO);
 }
@@ -121,6 +128,8 @@ Soldier::~Soldier(void)
  */
 bool Soldier::Init(void)
 {
+	cGameManager3D = CGameManager3D::GetInstance();
+
 	// Call the parent's Init()
 	CSolidObject::Init();
 
@@ -488,7 +497,9 @@ bool Soldier::Update(const double dElapsedTime)
 			cSoundController->PlaySoundByID(31);
 			//this->currentHP = 0;
 			iFSMCounter = 0;
+			cGameManager3D->iAmtOfEnemies--;
 			this->SetStatus(false);
+
 			if (_DEBUG_FSM == true)
 				cout << "Exploded" << endl;
 		}

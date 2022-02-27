@@ -1,4 +1,21 @@
-﻿  IntroState3.cpp
+﻿  Application.cpp
+  IntroState3.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\Ridwan\source\repos\Sp4_3\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+  Play3DGameState.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\Ridwan\source\repos\Sp4_3\glfw\include\GLFW\glfw3.h(98): message : see previous definition of 'APIENTRY'
+  Boss.cpp
+  Soldier.cpp
+  SolidObjectManager.cpp
+  Scene3D.cpp
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Scene3D.cpp(153,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Scene3D.cpp(159,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Scene3D.cpp(165,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Scene3D.cpp(970,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Scene3D.cpp(979,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Scene3D.cpp(987,23): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Soldier.cpp(326): warning C4715: 'Soldier::DischargeWeapon': not all control paths return a value
+C:\Users\Ridwan\source\repos\Sp4_3\App\Source\Scene3D\Entities\Boss.cpp(338): warning C4715: 'Boss::DischargeWeapon': not all control paths return a value
   App.vcxproj -> C:\Users\Ridwan\source\repos\Sp4_3\Debug\App.exe
