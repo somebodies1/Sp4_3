@@ -984,7 +984,7 @@ void CScene3D::UpdateLevel(const double dElapsedTime)
 				break;
 			case 3:
 				//spawn in Round 3 Enemies
-				for (int i = 0; i < Round2EnemyList.size(); ++i)
+				for (int i = 0; i < Round3EnemyList.size(); ++i)
 				{
 					Round3EnemyList[i]->SetStatus(true);
 					cGameManager3D->iAmtOfEnemies++;

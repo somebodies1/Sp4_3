@@ -41,9 +41,9 @@ bool CAssaultRifle::Init(void)
 	// The maximum number of ammunition for this magazine for this weapon
 	iMaxMagRounds = 20;
 	// The current total number of rounds currently carried by this player
-	iTotalRounds = 100;
+	iTotalRounds = 1000;
 	// The max total number of rounds currently carried by this player
-	iMaxTotalRounds = 100;
+	iMaxTotalRounds = 1000;
 
 	// The time between shots
 	dTimeBetweenShots = 0.1111;

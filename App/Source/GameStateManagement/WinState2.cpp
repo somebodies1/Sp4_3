@@ -41,6 +41,7 @@ using namespace std;
  */
 CWinState2::CWinState2(void)
 	: background(NULL)
+	, cSoundController(NULL)
 {
 
 }
@@ -59,6 +60,10 @@ bool CWinState2::Init(void)
 {
 	cout << "CWinState2::Init()\n" << endl;
 
+	cSoundController = CSoundController::GetInstance();
+	cSoundController->Init();
+	cSoundController->LoadSound(FileSystem::getPath("Sounds\\3rd.wav"), 42, true, false, false);
+
 	// Include Shader Manager
 	CShaderManager::GetInstance()->Use("2DShader");
 	CShaderManager::GetInstance()->activeShader->setInt("texture1", 0);
@@ -68,6 +73,8 @@ bool CWinState2::Init(void)
 	background->SetShader("2DShader");
 	background->Init();
 
+	voiceover = false;
+
 	return true;
 }
 
@@ -76,6 +83,13 @@ bool CWinState2::Init(void)
  */
 bool CWinState2::Update(const double dElapsedTime)
 {
+	if (voiceover == false)
+	{
+		cSoundController->PlaySoundByID(42);
+		cout << "Playing WinState 2 Sound" << endl;
+		voiceover = true;
+	}
+
 	//cout << "CWinState2::Update()\n" << endl;
 	if (CKeyboardController::GetInstance()->IsKeyReleased(GLFW_KEY_SPACE))
 	{

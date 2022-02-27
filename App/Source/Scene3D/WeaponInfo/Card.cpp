@@ -41,9 +41,9 @@ bool CCard::Init(void)
 	// The maximum number of ammunition for this magazine for this weapon
 	iMaxMagRounds = 4;
 	// The current total number of rounds currently carried by this player
-	iTotalRounds = 20;
+	iTotalRounds = 200;
 	// The max total number of rounds currently carried by this player
-	iMaxTotalRounds = 20;
+	iMaxTotalRounds = 200;
 
 	// The time between shots
 	dTimeBetweenShots = 0.1666;
